@@ -162,7 +162,7 @@ struct WishlistView: View {
         }
             .navigationBarTitle("Wishlist", displayMode: .inline)
             .navigationBarItems(trailing: Button (action: {
-                self.self.dismiss()
+                self.dismiss()
             }) {Text("Done").fontWeight(.semibold)})
     }
 }

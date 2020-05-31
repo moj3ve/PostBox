@@ -24,17 +24,13 @@ struct RepoPrompt: View {
     var body: some View {
         NavigationView {
             VStack {
-                HStack(alignment: .center) {
-                    Picker("Repo", selection: $selected) {
-                        ForEach(0..<packageManagers.count) {
-                            Text(self.packageManagers[$0])
-                        }
+                Picker("Repo", selection: $selected) {
+                    ForEach(0..<packageManagers.count) {
+                        Text(self.packageManagers[$0])
                     }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding(.top, 20)
-                    
-                    Image(systemName: "info.circle")
                 }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding(.top, 20)
                 
                 Spacer()
                 
@@ -100,6 +96,7 @@ struct Info: View {
                 self.self.dismiss()
             }) {Text("Done").fontWeight(.semibold)}
         )
+            
     }
 }
 
