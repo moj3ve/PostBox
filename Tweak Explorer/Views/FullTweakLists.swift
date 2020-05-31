@@ -77,6 +77,6 @@ struct FullScreenList: View {
 
 struct FullTweakList_Previews: PreviewProvider {
     static var previews: some View {
-        FullSceenList(Constants.tweakLists.long)
+        FullScreenList(Constants.tweakLists.long)
     }
 }
