@@ -27,6 +27,7 @@
 		E925A529247E0CA600AFDFB9 /* Tweaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A528247E0CA600AFDFB9 /* Tweaks.swift */; };
 		E925A52B247E180D00AFDFB9 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A52A247E180D00AFDFB9 /* CardList.swift */; };
 		E95015E62483484800BD617F /* PackageDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95015E52483484800BD617F /* PackageDatabase.swift */; };
+		E963E587248445D9009FD1F7 /* FullTweakLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963E586248445D9009FD1F7 /* FullTweakLists.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		E925A528247E0CA600AFDFB9 /* Tweaks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweaks.swift; sourceTree = "<group>"; };
 		E925A52A247E180D00AFDFB9 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		E95015E52483484800BD617F /* PackageDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageDatabase.swift; sourceTree = "<group>"; };
+		E963E586248445D9009FD1F7 /* FullTweakLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullTweakLists.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				E925A52A247E180D00AFDFB9 /* CardList.swift */,
 				E91EE953247F730600CA07EF /* TweakView.swift */,
 				E91EE9552481CE1E00CA07EF /* RepoPrompt.swift */,
+				E963E586248445D9009FD1F7 /* FullTweakLists.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				E91EE9562481CE1E00CA07EF /* RepoPrompt.swift in Sources */,
 				E925A50E247C8E1900AFDFB9 /* StoryView.swift in Sources */,
 				E925A4FB247C8DD000AFDFB9 /* SceneDelegate.swift in Sources */,
+				E963E587248445D9009FD1F7 /* FullTweakLists.swift in Sources */,
 				E91EE95B24823BDE00CA07EF /* BannerCard.swift in Sources */,
 				E925A4FD247C8DD000AFDFB9 /* ContentView.swift in Sources */,
 				E925A519247CBBFA00AFDFB9 /* Paragraph.swift in Sources */,
