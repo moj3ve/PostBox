@@ -94,7 +94,7 @@ struct Tweaks: View {
                             .font(.headline)
                             .fontWeight(.bold)
                         Spacer()
-                        NavigationLink(destination: FullSceenList(Constants.tweakLists.free)) {
+                        NavigationLink(destination: FullScreenList(Constants.tweakLists.free)) {
                             Text("See All")
                                 .foregroundColor(.teal)
                         }

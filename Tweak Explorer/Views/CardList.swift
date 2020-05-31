@@ -24,11 +24,11 @@ struct CardList: View {
         Button(action: {}) {
             ZStack {
                 // Background Tap
-                NavigationLink(destination: FullSceenList(Constants.tweakLists.long, subhead: self.subhead)) {
+                NavigationLink(destination: FullScreenList(Constants.tweakLists.long, subhead: self.subhead)) {
                     Color(UIColor.secondarySystemBackground)
                 }.buttonStyle(NoReactionButtonStyle())
                 // Text Tap
-                NavigationLink(destination: FullSceenList(Constants.tweakLists.long, subhead: self.subhead)) {
+                NavigationLink(destination: FullScreenList(Constants.tweakLists.long, subhead: self.subhead)) {
                     VStack (alignment: .leading) {
                         Text(self.subhead.uppercased())
                             .font(.headline)
@@ -51,7 +51,7 @@ struct CardList: View {
                     VStack(alignment: .leading, spacing: 20) {
                         ForEach(0..<4) { i in
                             HStack {
-                                NavigationLink(destination: FullSceenList(Constants.tweakLists.long, subhead: self.subhead)) {
+                                NavigationLink(destination: FullScreenList(Constants.tweakLists.long, subhead: self.subhead)) {
                                     CardViewInnerSection(tweak: self.tweaks[i])
                                 }.buttonStyle(NoReactionButtonStyle())
                                 ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweaks[i])}) {
@@ -136,7 +136,7 @@ struct MediumButton: View {
 struct CardList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FullSceenList(Constants.tweakLists.long)
+            FullScreenList(Constants.tweakLists.long)
         }
     }
 }

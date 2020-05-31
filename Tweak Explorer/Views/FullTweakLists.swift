@@ -9,7 +9,7 @@
 import SwiftUI
 import ModalView
 
-struct FullSceenListOnly: View {
+struct FullScreenListOnly: View {
     public var subhead: String
     public var tweaks: [Tweak]
     
@@ -55,7 +55,7 @@ struct FullSceenListOnly: View {
     }
 }
 
-struct FullSceenList: View {
+struct FullScreenList: View {
     public var subhead: String
     public var tweaks: [Tweak]
     
@@ -66,7 +66,7 @@ struct FullSceenList: View {
     
     var body: some View {
         ScrollView {
-            FullSceenListOnly(self.tweaks, subhead: self.subhead)
+            FullScreenListOnly(self.tweaks, subhead: self.subhead)
             .padding(20)
         }
         .navigationBarTitle(Text(self.subhead), displayMode: .inline)
