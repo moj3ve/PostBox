@@ -171,12 +171,12 @@ struct SmallButton: View {
     
     var body: some View {
         Text(text)
-            .font(.callout)
+            .font(.footnote)
             .foregroundColor(.white)
             .fontWeight(.bold)
             .zIndex(1)
             .frame(width: 70, height: 28)
-            .background(Color.teal.cornerRadius(14))
+            .background(Color.teal.cornerRadius(15))
     }
 }
 
