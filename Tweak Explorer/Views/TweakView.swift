@@ -168,14 +168,6 @@ struct FullImageView: View {
 }
 
 struct TweakView_Previews: PreviewProvider {
-    static let desc = """
-        Inspired by the watchOS Motion face, Jellyfish aims to make your Lock screen more modern, more beautiful, and more useful.
-
-        Jellyfish refreshes the Lock screen with a beautiful new design, emphasizing both the time and date. The date takes its colour from your wallpaper, creating a beautiful blended effect, while still retaining its legibility.
-
-        Jellyfish also adds weather to your Lock screen, so you can always view it at a quick glance. While adding this new level of information, your Lock screen retains its simplicity, avoiding a cluttered look.
-        """
-    
     static var previews: some View {
         ModalPresenter {
             NavigationView {
@@ -186,7 +178,6 @@ struct TweakView_Previews: PreviewProvider {
                           dev: "Dynastic",
                           repo: "https://repo.dynastic.co",
                           shortDesc: "Modernize your lockscreen.",
-                          longDesc: desc,
                           type: "tweak",
                           price: 0.99))
                     ) {

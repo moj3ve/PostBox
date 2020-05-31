@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E91EE952247F672100CA07EF /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE951247F672100CA07EF /* TestConstants.swift */; };
+		E91EE952247F672100CA07EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE951247F672100CA07EF /* Constants.swift */; };
 		E91EE954247F730600CA07EF /* TweakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE953247F730600CA07EF /* TweakView.swift */; };
 		E91EE9562481CE1E00CA07EF /* RepoPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE9552481CE1E00CA07EF /* RepoPrompt.swift */; };
 		E91EE95924823BAD00CA07EF /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE95824823BAD00CA07EF /* Banner.swift */; };
@@ -30,7 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E91EE951247F672100CA07EF /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
+		E91EE951247F672100CA07EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E91EE953247F730600CA07EF /* TweakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakView.swift; sourceTree = "<group>"; };
 		E91EE9552481CE1E00CA07EF /* RepoPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoPrompt.swift; sourceTree = "<group>"; };
 		E91EE95824823BAD00CA07EF /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 				E925A506247C8DD200AFDFB9 /* Info.plist */,
 				E925A500247C8DD100AFDFB9 /* Preview Content */,
 				E925A511247CA1FC00AFDFB9 /* InterfaceAdjustments.swift */,
-				E91EE951247F672100CA07EF /* TestConstants.swift */,
+				E91EE951247F672100CA07EF /* Constants.swift */,
 			);
 			path = "Tweak Explorer";
 			sourceTree = "<group>";
@@ -213,7 +213,7 @@
 				E95015E62483484800BD617F /* PackageDatabase.swift in Sources */,
 				E91EE954247F730600CA07EF /* TweakView.swift in Sources */,
 				E925A4F9247C8DD000AFDFB9 /* AppDelegate.swift in Sources */,
-				E91EE952247F672100CA07EF /* TestConstants.swift in Sources */,
+				E91EE952247F672100CA07EF /* Constants.swift in Sources */,
 				E91EE9562481CE1E00CA07EF /* RepoPrompt.swift in Sources */,
 				E925A50E247C8E1900AFDFB9 /* StoryView.swift in Sources */,
 				E925A4FB247C8DD000AFDFB9 /* SceneDelegate.swift in Sources */,

@@ -24,13 +24,17 @@ struct RepoPrompt: View {
     var body: some View {
         NavigationView {
             VStack {
-                Picker("Repo", selection: $selected) {
-                    ForEach(0..<packageManagers.count) {
-                        Text(self.packageManagers[$0])
+                HStack(alignment: .center) {
+                    Picker("Repo", selection: $selected) {
+                        ForEach(0..<packageManagers.count) {
+                            Text(self.packageManagers[$0])
+                        }
                     }
-                }
                     .pickerStyle(SegmentedPickerStyle())
                     .padding(.top, 20)
+                    
+                    Image(systemName: "info.circle")
+                }
                 
                 Spacer()
                 
@@ -64,17 +68,38 @@ struct RepoPrompt: View {
             }
             .padding(.horizontal, 20)
             .navigationBarTitle("Get \(self.tweak.name)", displayMode: .inline)
+            .navigationBarItems(
+                leading: NavigationLink(destination: Info(dismiss: self.dismiss)) {Image(systemName: "info.circle").font(.system(size: 20))},
+                trailing: Button (action: {
+                    self.self.dismiss()
+                }) {Text("Done").fontWeight(.semibold)}
+            )
         }
     }
 }
 
-struct RepoPrompt_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalPresenter {
-            ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.free)}) {
-                Text("Tap Here")
+struct Info: View {
+    var dismiss: () -> ()
+    
+    var body: some View {
+        ScrollView {
+            VStack (spacing: 20) {
+                Banner(["JAILBREAK INFO", "Package Managers", "What is a package manager?"], image: "banner3", bannerHeight: 300, blur: true)
+                
+                Paragraph(first: "Package managers are", "applications that help users ")
+                    .padding(20)
+                
+                CardList(Constants.tweakLists.paid)
             }
         }
+        .navigationBarTitle("Package Managers", displayMode: .inline)
+        .navigationBarBackButtonHidden(false)
+        .navigationBarHidden(false)
+        .navigationBarItems(
+            trailing: Button (action: {
+                self.self.dismiss()
+            }) {Text("Done").fontWeight(.semibold)}
+        )
     }
 }
 
@@ -90,5 +115,15 @@ struct AddRepoButton: View {
                 .foregroundColor(.white)
                 .fontWeight(.semibold)
         }.frame(height: 50)
+    }
+}
+
+struct RepoPrompt_Previews: PreviewProvider {
+    static var previews: some View {
+        ModalPresenter {
+            ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.free!)}) {
+                Text("Tap Here")
+            }
+        }
     }
 }

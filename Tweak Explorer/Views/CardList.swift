@@ -13,7 +13,7 @@ struct CardList: View {
     public var subhead: String
     public var title: String
     public var tweaks: [Tweak]
-
+    
     init(_ tweaks: [Tweak], subhead: String? = nil, title: String? = nil) {
         self.tweaks = tweaks
         self.subhead = subhead ?? "Jailbreak tweaks"
@@ -63,10 +63,10 @@ struct CardList: View {
                 }
                 .padding(20)
             }
-                .frame(height: 415)
-                .cornerRadius(15)
-                .padding(.horizontal, 20)
-                .shadow(radius: 30, y: 7)
+            .frame(height: 415)
+            .cornerRadius(15)
+            .padding(.horizontal, 20)
+            .shadow(radius: 30, y: 7)
         }
         .buttonStyle(CardButtonStyle())
     }
@@ -96,6 +96,52 @@ struct CardViewInnerSection: View {
     }
 }
 
+struct FullSceenListOnly: View {
+    public var subhead: String
+    public var tweaks: [Tweak]
+    
+    init(_ tweaks: [Tweak], subhead: String? = nil) {
+        self.tweaks = tweaks
+        self.subhead = subhead ?? "iOS Tweaks"
+    }
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            ForEach(self.tweaks) { tweak in
+                HStack(alignment: .top) {
+                    // Icon
+                    NavigationLink (destination: TweakView(tweak: tweak)) {
+                        tweak.getIcon(size: 100).padding(.trailing, 10)
+                    }.buttonStyle(NoReactionButtonStyle())
+                    // Text | Button | Divider
+                    VStack(alignment: .leading, spacing: 20) {
+                        VStack(alignment: .leading, spacing: 0) {
+                            NavigationLink (destination: TweakView(tweak: tweak)) {
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text(tweak.name)
+                                        .font(.body)
+                                    Text(tweak.shortDesc)
+                                        .font(.footnote)
+                                        .foregroundColor(Color.gray)
+                                        .lineLimit(2)
+                                }
+                            }.buttonStyle(NoReactionButtonStyle())
+                            
+                            Spacer()
+                            
+                            ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
+                                SmallButton(tweak.getPrice())
+                            }.buttonStyle(InstallButtonStyle())
+                        }
+                        .frame(height: 100)
+                        Divider()
+                    }
+                }
+            }
+        }
+    }
+}
+
 struct FullSceenList: View {
     public var subhead: String
     public var tweaks: [Tweak]
@@ -107,39 +153,8 @@ struct FullSceenList: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
-                ForEach(self.tweaks) { tweak in
-                    HStack(alignment: .top) {
-                        // Icon
-                        NavigationLink (destination: TweakView(tweak: tweak)) {
-                            tweak.getIcon(size: 100).padding(.trailing, 10)
-                        }.buttonStyle(NoReactionButtonStyle())
-                        // Text | Button | Divider
-                        VStack(alignment: .leading, spacing: 20) {
-                            VStack(alignment: .leading, spacing: 0) {
-                                NavigationLink (destination: TweakView(tweak: tweak)) {
-                                    VStack(alignment: .leading, spacing: 5) {
-                                        Text(tweak.name)
-                                            .font(.body)
-                                        Text(tweak.shortDesc)
-                                            .font(.footnote)
-                                            .foregroundColor(Color.gray)
-                                            .lineLimit(2)
-                                    }
-                                }.buttonStyle(NoReactionButtonStyle())
-                                
-                                Spacer()
-                                
-                                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
-                                    SmallButton(tweak.getPrice())
-                                }.buttonStyle(InstallButtonStyle())
-                            }
-                                .frame(height: 100)
-                            Divider()
-                        }
-                    }.padding(.horizontal, 20)
-                }
-            }.padding(.vertical, 20)
+            FullSceenListOnly(self.tweaks, subhead: self.subhead)
+            .padding(20)
         }
         .navigationBarTitle(Text(self.subhead), displayMode: .inline)
         .navigationBarBackButtonHidden(false)
@@ -186,6 +201,8 @@ struct MediumButton: View {
 
 struct CardList_Previews: PreviewProvider {
     static var previews: some View {
-        FullSceenList(Constants.tweakLists.long)
+        NavigationView {
+            FullSceenList(Constants.tweakLists.long)
+        }
     }
 }

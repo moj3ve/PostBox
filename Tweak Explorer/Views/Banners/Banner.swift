@@ -14,12 +14,14 @@ struct Banner: View {
     public var img: String
     public var bannerHeight: CGFloat
     private var hideText: Bool
+    private var blur: Bool
     
-    init (_ texts: [String], image: String? = nil, bannerHeight: CGFloat? = nil) {
+    init (_ texts: [String], image: String? = nil, bannerHeight: CGFloat? = nil, blur: Bool? = nil) {
         self.texts = texts
         self.img = image ?? "banner1.1"
         self.bannerHeight = bannerHeight ?? 410
         self.hideText = texts.count == 0
+        self.blur = blur ?? false
     }
     
     var body: some View {
@@ -44,26 +46,47 @@ struct Banner: View {
             
             // Text
             if (!self.hideText) {
-                HStack {
-                    VStack (alignment: .leading) {
-                        Spacer()
-                        Text(texts[0].uppercased())
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .opacity(0.6)
-                            .padding(.bottom, 4)
-                        Text(texts[1])
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                        Text(texts[2])
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                            .padding(.top, 10)
-                            .opacity(0.6)
-                    }
-                    .padding(20)
-                    .foregroundColor(.white)
+                VStack (alignment: .leading) {
                     Spacer()
+                    if (self.blur){
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(texts[0].uppercased())
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .opacity(0.6)
+                                    .padding(.bottom, 4)
+                                Text(texts[1])
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                Text(texts[2])
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .padding(.top, 10)
+                                    .opacity(0.6)
+                            }.padding(20)
+                            Spacer()
+                        }.background(Blur(.systemMaterial))
+                    } else {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(texts[0].uppercased())
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .opacity(0.6)
+                                    .padding(.bottom, 4)
+                                Text(texts[1])
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                Text(texts[2])
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .padding(.top, 10)
+                                    .opacity(0.6)
+                            }.padding(20)
+                            Spacer()
+                        }.foregroundColor(.white)
+                    }
                 }
             }
         }

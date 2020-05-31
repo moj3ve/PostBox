@@ -18,21 +18,19 @@ class Tweak: Identifiable, Comparable {
     public var repo: String
     public var repoWithProtocol: String
     public var shortDesc: String
-    public var longDesc: String
     
     /// Tweak = `"tweak"` | Theme = `"theme"` | Application = `"app"` | Widget = "widget"
     public var type: String = "tweak"
     public var price: Double = 0
     
     /// Arguments: `name`, `repo`, `shortDesc`, `longDesc`, `type`, `price`
-    init(name: String? = nil, dev: String? = nil, repo: String? = nil, shortDesc: String? = nil, longDesc: String? = nil, type: String? = nil, price: Double? = nil) {
+    init(name: String? = nil, dev: String? = nil, repo: String? = nil, shortDesc: String? = nil, type: String? = nil, price: Double? = nil) {
         let possibleName = name ?? "Unknown Tweak"
         
         self.id = possibleName.lowercased().replacingOccurrences(of: " ", with: "_")
         self.name = possibleName
         self.repo = repo?.replacingOccurrences(of: "https://", with: "") ?? "Unknown Repo"
         self.shortDesc = shortDesc ?? "Awesome tweak"
-        self.longDesc = longDesc ?? "No description given."
         self.type = type ?? "tweak"
         self.price = price ?? 0
         self.repoWithProtocol = repo ?? ""
@@ -105,7 +103,7 @@ class Tweak: Identifiable, Comparable {
     }
     
     public func getLongDesc() -> some View {
-        let blocks = self.longDesc.components(separatedBy: "\n\n")
+        let blocks = PackageDatabase.descs[self.getTweakID()]!.components(separatedBy: "\n\n")
         let first = Paragraph(first: self.shortDesc, blocks[0])
         
         return VStack(spacing: 40) {
