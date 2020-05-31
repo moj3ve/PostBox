@@ -19,13 +19,13 @@ struct Tweaks: View {
                 ZStack {
                     GeometryReader { g in
                         if (g.frame(in: .global).minY <= 0) {
-                            Image("banner1").resizable()
+                            Image("banner1.1").resizable()
                                 .renderingMode(.original)
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: g.size.width, height: g.size.height)
                                 .clipped(antialiased: true)
                         } else {
-                            Image("banner1").resizable()
+                            Image("banner1.1").resizable()
                                 .renderingMode(.original)
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
@@ -33,7 +33,7 @@ struct Tweaks: View {
                                 .offset(y: -g.frame(in: .global).minY)
                         }
                     }
-                        .frame(height: 480)
+                        .frame(height: 600)
                     // Text | Button
                     VStack(alignment: .center, spacing: 5) {
                         Spacer()
@@ -85,10 +85,10 @@ struct Tweaks: View {
                     }
                         .padding(.trailing, 20)
                         .padding(.top, 50)
-                }.frame(height: 480)
+                }.frame(height: 600)
                 
                 // Content
-                VStack(alignment: .leading, spacing: 25) {
+                VStack(alignment: .leading, spacing: 20) {
                     HStack {
                         Text("Popular Free Tweaks")
                             .font(.headline)
@@ -109,8 +109,6 @@ struct Tweaks: View {
                                 HStack {
                                     NavigationLink(destination: TweakView(tweak: tweak)) {
                                         VStack(alignment: .leading, spacing: 3) {
-                                            Text(tweak.repo)
-                                                .font(.caption)
                                             Text(tweak.name)
                                                 .font(.headline)
                                             Text(tweak.shortDesc)

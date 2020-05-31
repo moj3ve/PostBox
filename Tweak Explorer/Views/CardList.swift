@@ -79,10 +79,9 @@ struct CardViewInnerSection: View {
         VStack {
             HStack {
                 self.tweak.getIcon(size: 45)
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 3) {
                     Text(self.tweak.name)
                         .font(.headline)
-                        .padding(.bottom, 3)
                     Text(self.tweak.shortDesc)
                         .font(.caption)
                         .foregroundColor(Color.gray)
