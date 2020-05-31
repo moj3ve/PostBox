@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import ModalView
 
 struct FullSceenListOnly: View {
     public var subhead: String
@@ -76,6 +77,6 @@ struct FullSceenList: View {
 
 struct FullTweakList_Previews: PreviewProvider {
     static var previews: some View {
-        FullTweakList()
+        FullSceenList(Constants.tweakLists.long)
     }
 }
