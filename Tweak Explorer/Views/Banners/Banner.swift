@@ -17,7 +17,7 @@ struct Banner: View {
     
     init (_ texts: [String], image: String? = nil, bannerHeight: CGFloat? = nil) {
         self.texts = texts
-        self.img = image ?? "banner1"
+        self.img = image ?? "banner1.1"
         self.bannerHeight = bannerHeight ?? 410
         self.hideText = texts.count == 0
     }
@@ -44,23 +44,27 @@ struct Banner: View {
             
             // Text
             if (!self.hideText) {
-                VStack (alignment: .leading) {
-                    Spacer()
-                    Blur(.systemChromeMaterialLight)
-                        .frame(height: 17)
-                        .mask(Text(texts[0].uppercased())
+                HStack {
+                    VStack (alignment: .leading) {
+                        Spacer()
+                        Text(texts[0].uppercased())
                             .font(.subheadline)
-                            .fontWeight(.semibold))
-                    Text(texts[1])
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    Text(texts[2])
-                        .font(.caption)
-                        .fontWeight(.semibold)
-                        .padding(.top, 10)
+                            .fontWeight(.semibold)
+                            .opacity(0.6)
+                            .padding(.bottom, 4)
+                        Text(texts[1])
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        Text(texts[2])
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                            .padding(.top, 10)
+                            .opacity(0.6)
+                    }
+                    .padding(20)
+                    .foregroundColor(.white)
+                    Spacer()
                 }
-                .padding(20)
-                .foregroundColor(.white)
             }
         }
         .frame(height: self.bannerHeight)
