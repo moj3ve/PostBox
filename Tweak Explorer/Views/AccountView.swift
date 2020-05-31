@@ -129,7 +129,7 @@ struct WishlistView: View {
             
             ScrollView {
                 VStack(spacing: 20) {
-                    ForEach(sortMethod = 0 ? self.user.getWishlist().sorted() : self.user.getWishlist()) { tweak in
+                    ForEach(sortMethod == 0 ? self.user.getWishlist().sorted() : self.user.getWishlist()) { tweak in
                         HStack(alignment: .top) {
                             // Icon
                             NavigationLink (destination: TweakView(tweak: tweak)) {

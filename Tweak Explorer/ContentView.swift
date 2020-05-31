@@ -39,6 +39,18 @@ class Tweak: Identifiable, Comparable {
         self.dev = dev ?? "Unknown Developer"
     }
     
+    static func == (lhs: Tweak, rhs: Tweak) -> Bool {
+        return lhs.getTweakID() == rhs.getTweakID()
+    }
+
+    static func < (lhs: Tweak, rhs: Tweak) -> Bool {
+        return lhs.getTweakID() < rhs.getTweakID()
+    }
+    
+    static func > (lhs: Tweak, rhs: Tweak) -> Bool {
+        return lhs.getTweakID() > rhs.getTweakID()
+    }
+    
     /// Returns an ID of type `String`
     public func getTweakID() -> String {
         return self.name.lowercased()
@@ -191,10 +203,6 @@ class User: ObservableObject {
     func saveWishlist() {
         self.defaults.set(self.wishlist, forKey: "wishlist")
     }
-}
-
-func < (lhs: Tweak, rhs: Tweak) -> Bool {
-    return lhs.name < rhs.name
 }
 
 
