@@ -30,7 +30,7 @@ struct PackageDatabase {
         "portrait_xi"   : Tweak(
             name: "Portrait XI", dev: "Fortfoxmobile", repo: "https://repo.packix.co", shortDesc: "Single camera portait mode.", longDesc: desc, type: "tweak", price: 4.99),
         "xen_html"      : Tweak(
-            name: "Xen HTML", dev: "Matt Clarke", repo: "https://repo.packix.com", shortDesc: "Unified HTML widgets.", longDesc: desc, type: "tweak", price: 0),
+            name: "Xen HTML", dev: "Matt Clarke", repo: "https://repo.packix.com", shortDesc: "Xen HTML allows for displaying widgets on both the iOS Lockscreen and Homescreen.", longDesc: desc, type: "tweak", price: 0),
         "activator"     : Tweak(
             name: "Activator", dev: "Ryan Petrich", repo: "https://rpetri.ch/repo", shortDesc: "Centralized gestures, button and shortcut management for iOS.", longDesc: desc, type: "tweak", price: 0),
         "kalm"          : Tweak(
