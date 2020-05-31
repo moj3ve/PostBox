@@ -30,17 +30,17 @@ struct CardList: View {
                 // Text Tap
                 NavigationLink(destination: FullScreenList(Constants.tweakLists.long, subhead: self.subhead)) {
                     VStack (alignment: .leading) {
-                        Text(self.subhead.uppercased())
-                            .font(.headline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.gray)
-                            .padding(.bottom, 10)
-                        HStack {
-                            Text(self.title) 
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .lineLimit(2)
-                            Spacer()
+                            Text(self.subhead.uppercased())
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.gray)
+                                .padding(.bottom, 10)
+                            HStack {
+                                Text(self.title)
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .lineLimit(2)
+                                    Spacer ()
                         }
                         Spacer()
                     }.padding(20)
@@ -63,7 +63,7 @@ struct CardList: View {
                 }
                 .padding(20)
             }
-            .frame(height: 415)
+            .frame(height: 395)
             .cornerRadius(15)
             .padding(.horizontal, 20)
             .shadow(radius: 30, y: 7)
@@ -78,13 +78,11 @@ struct CardViewInnerSection: View {
     var body: some View {
         VStack {
             HStack {
-                self.tweak.getIcon(size: 50)
+                self.tweak.getIcon(size: 45)
                 VStack(alignment: .leading) {
-                    Text(self.tweak.repo)
-                        .lineLimit(1)
-                        .font(.caption)
                     Text(self.tweak.name)
                         .font(.headline)
+                        .padding(.bottom, 3)
                     Text(self.tweak.shortDesc)
                         .font(.caption)
                         .foregroundColor(Color.gray)
@@ -107,10 +105,10 @@ struct SmallButton: View {
         Text(text)
             .font(.footnote)
             .foregroundColor(.white)
-            .fontWeight(.bold)
+            .fontWeight(.semibold)
             .zIndex(1)
-            .frame(width: 70, height: 28)
-            .background(Color.teal.cornerRadius(15))
+            .frame(width: 65, height: 26)
+            .background(Color.teal.cornerRadius(13))
     }
 }
 
@@ -135,8 +133,6 @@ struct MediumButton: View {
 
 struct CardList_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            FullScreenList(Constants.tweakLists.long)
-        }
+        CardList(Constants.tweakLists.free)
     }
 }

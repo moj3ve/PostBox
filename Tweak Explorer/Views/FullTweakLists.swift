@@ -24,7 +24,7 @@ struct FullScreenListOnly: View {
                 HStack(alignment: .top) {
                     // Icon
                     NavigationLink (destination: TweakView(tweak: tweak)) {
-                        tweak.getIcon(size: 100).padding(.trailing, 10)
+                        tweak.getIcon(size: 80).padding(.trailing, 10)
                     }.buttonStyle(NoReactionButtonStyle())
                     // Text | Button | Divider
                     VStack(alignment: .leading, spacing: 20) {
@@ -36,7 +36,6 @@ struct FullScreenListOnly: View {
                                     Text(tweak.shortDesc)
                                         .font(.footnote)
                                         .foregroundColor(Color.gray)
-                                        .lineLimit(2)
                                 }
                             }.buttonStyle(NoReactionButtonStyle())
                             
@@ -46,7 +45,7 @@ struct FullScreenListOnly: View {
                                 SmallButton(tweak.getPrice())
                             }.buttonStyle(InstallButtonStyle())
                         }
-                        .frame(height: 100)
+                        .frame(height: 80)
                         Divider()
                     }
                 }
