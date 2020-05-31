@@ -109,31 +109,31 @@ struct FullSceenList: View {
         ScrollView {
             VStack(spacing: 20) {
                 ForEach(self.tweaks) { tweak in
-                        HStack(alignment: .top) {
-                            // Icon
+                    HStack(alignment: .top) {
+                        // Icon
+                        NavigationLink (destination: TweakView(tweak: tweak)) {
+                            tweak.getIcon(size: 100).padding(.trailing, 20)
+                        }.buttonStyle(NoReactionButtonStyle())
+                        // Text | Button | Divider
+                        VStack(alignment: .leading, spacing: 5) {
                             NavigationLink (destination: TweakView(tweak: tweak)) {
-                                tweak.getIcon(size: 100).padding(.trailing, 20)
+                                VStack(alignment: .leading, spacing: 5) {
+                                    Text(tweak.name)
+                                        .font(.body)
+                                    Text(tweak.shortDesc)
+                                        .font(.footnote)
+                                        .foregroundColor(Color.gray)
+                                }
                             }.buttonStyle(NoReactionButtonStyle())
-                            // Text | Button | Divider
-                            VStack(alignment: .leading, spacing: 5) {
-                                NavigationLink (destination: TweakView(tweak: tweak)) {
-                                    VStack(alignment: .leading, spacing: 5) {
-                                        Text(tweak.name)
-                                            .font(.body)
-                                        Text(tweak.shortDesc)
-                                            .font(.footnote)
-                                            .foregroundColor(Color.gray)
-                                    }
-                                }.buttonStyle(NoReactionButtonStyle())
-                                
-                                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
-                                    SmallButton(tweak.getPrice())
-                                        .padding(.vertical, 10)
-                                }.buttonStyle(InstallButtonStyle())
-                                Divider()
-                            }
                             
-                        }.padding(.horizontal, 20)
+                            ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
+                                SmallButton(tweak.getPrice())
+                                    .padding(.vertical, 10)
+                            }.buttonStyle(InstallButtonStyle())
+                            Divider()
+                        }
+                        
+                    }.padding(.horizontal, 20)
                 }
             }.padding(.vertical, 20)
         }
@@ -151,16 +151,32 @@ struct SmallButton: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.teal.cornerRadius(14)
-            Text(text)
-                .font(.callout)
-                .foregroundColor(.white)
-                .fontWeight(.bold)
-                .zIndex(1)
-            
-        }
-        .frame(width: 70, height: 28)
+        Text(text)
+            .font(.callout)
+            .foregroundColor(.white)
+            .fontWeight(.bold)
+            .zIndex(1)
+            .frame(width: 70, height: 28)
+            .background(Color.teal.cornerRadius(14))
+    }
+}
+
+struct MediumButton: View {
+    public var text: String
+    
+    init(_ text: String) {
+        self.text = text
+    }
+    
+    var body: some View {
+        Text(text)
+            .font(.callout)
+            .foregroundColor(.white)
+            .fontWeight(.bold)
+            .padding(.horizontal, 20)
+            .zIndex(1)
+            .frame(height: 28)
+            .background(Color.teal.cornerRadius(14))
     }
 }
 

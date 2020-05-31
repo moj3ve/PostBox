@@ -122,7 +122,7 @@ struct Tweaks: View {
                                     Spacer()
                                     ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
                                         SmallButton(tweak.getPrice())
-                                    }
+                                    }.buttonStyle(InstallButtonStyle())
                                 }
                             }
                         }

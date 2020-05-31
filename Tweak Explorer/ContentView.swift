@@ -10,9 +10,9 @@ import SwiftUI
 import ModalView
 
 /// Custom `Tweak` class.
-class Tweak: Identifiable {
+class Tweak: Identifiable, Comparable {
     /// Basic data: `id` (name), `repo`, `shortDesc`, `longDesc` Arguments: `name`, `repo`, `shortDesc`, `longDesc`, `type`, `price`
-    public var id = UUID()
+    public var id: String
     public var name: String
     public var dev: String
     public var repo: String
@@ -26,7 +26,10 @@ class Tweak: Identifiable {
     
     /// Arguments: `name`, `repo`, `shortDesc`, `longDesc`, `type`, `price`
     init(name: String? = nil, dev: String? = nil, repo: String? = nil, shortDesc: String? = nil, longDesc: String? = nil, type: String? = nil, price: Double? = nil) {
-        self.name = name ?? "Unknown Tweak"
+        let possibleName = name ?? "Unknown Tweak"
+        
+        self.id = possibleName.lowercased().replacingOccurrences(of: " ", with: "_")
+        self.name = possibleName
         self.repo = repo?.replacingOccurrences(of: "https://", with: "") ?? "Unknown Repo"
         self.shortDesc = shortDesc ?? "Awesome tweak"
         self.longDesc = longDesc ?? "No description given."
@@ -37,7 +40,7 @@ class Tweak: Identifiable {
     }
     
     /// Returns an ID of type `String`
-    private func getTweakID() -> String {
+    public func getTweakID() -> String {
         return self.name.lowercased()
             .replacingOccurrences(of: " ", with: "_")
     }
@@ -105,6 +108,7 @@ class Tweak: Identifiable {
 class User: ObservableObject {
     @Published var img: String
     @Published var name: String
+    @Published var wishlist: String
     
     var defaults = UserDefaults.standard
     
@@ -118,6 +122,11 @@ class User: ObservableObject {
             defaults.set("generic", forKey: "stored_pic")
         }
         self.img = defaults.string(forKey: "stored_pic")!
+        
+        if (defaults.object(forKey: "wishlist") == nil) {
+            defaults.set("", forKey: "wishlist")
+        }
+        self.wishlist = defaults.string(forKey: "wishlist")!
     }
     
     func saveName(_ new: String? = nil) {
@@ -143,7 +152,51 @@ class User: ObservableObject {
         
         self.defaults.set(updateText, forKey: "stored_pic")
     }
+    
+    private func addToWishlist(_ package: Tweak) {
+        self.wishlist += package.getTweakID() + " "
+    }
+    
+    private func removeFromWishlist(_ package: Tweak) {
+        self.wishlist = self.wishlist.replacingOccurrences(of: package.getTweakID() + " ", with: "")
+    }
+    
+    func inWishlist(_ package: Tweak) -> Bool {
+        return self.wishlist.contains(package.getTweakID())
+    }
+    
+    func getWishlist() -> [Tweak] {
+        var wishlistIDs = self.wishlist.components(separatedBy: .whitespaces)
+        _ = wishlistIDs.popLast()
+        
+        var wishes = [Tweak]()
+        
+        for id in wishlistIDs {
+            wishes.append(PackageDatabase.database[id]!)
+        }
+        
+        return wishes
+    }
+    
+    func toggleWishlistItem(_ package: Tweak) {
+        if (self.inWishlist(package)) {
+            self.removeFromWishlist(package)
+        } else {
+            self.addToWishlist(package)
+        }
+        
+        self.saveWishlist()
+    }
+    
+    func saveWishlist() {
+        self.defaults.set(self.wishlist, forKey: "wishlist")
+    }
 }
+
+func < (lhs: Tweak, rhs: Tweak) -> Bool {
+    return lhs.name < rhs.name
+}
+
 
 struct ContentView: View {
     var body: some View {

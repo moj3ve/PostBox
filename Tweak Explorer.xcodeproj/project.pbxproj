@@ -26,6 +26,7 @@
 		E925A51E247CC54B00AFDFB9 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A51D247CC54B00AFDFB9 /* Home.swift */; };
 		E925A529247E0CA600AFDFB9 /* Tweaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A528247E0CA600AFDFB9 /* Tweaks.swift */; };
 		E925A52B247E180D00AFDFB9 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A52A247E180D00AFDFB9 /* CardList.swift */; };
+		E95015E62483484800BD617F /* PackageDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95015E52483484800BD617F /* PackageDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		E925A51D247CC54B00AFDFB9 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		E925A528247E0CA600AFDFB9 /* Tweaks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweaks.swift; sourceTree = "<group>"; };
 		E925A52A247E180D00AFDFB9 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
+		E95015E52483484800BD617F /* PackageDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				E925A4F8247C8DD000AFDFB9 /* AppDelegate.swift */,
 				E925A4FA247C8DD000AFDFB9 /* SceneDelegate.swift */,
 				E925A4FC247C8DD000AFDFB9 /* ContentView.swift */,
+				E95015E52483484800BD617F /* PackageDatabase.swift */,
 				E925A4FE247C8DD100AFDFB9 /* Assets.xcassets */,
 				E925A503247C8DD200AFDFB9 /* LaunchScreen.storyboard */,
 				E925A506247C8DD200AFDFB9 /* Info.plist */,
@@ -207,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E925A529247E0CA600AFDFB9 /* Tweaks.swift in Sources */,
+				E95015E62483484800BD617F /* PackageDatabase.swift in Sources */,
 				E91EE954247F730600CA07EF /* TweakView.swift in Sources */,
 				E925A4F9247C8DD000AFDFB9 /* AppDelegate.swift in Sources */,
 				E91EE952247F672100CA07EF /* TestConstants.swift in Sources */,

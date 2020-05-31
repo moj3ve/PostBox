@@ -23,7 +23,7 @@ struct AccountView: View {
         NavigationView {
             Form {
                 Section {
-                    NavigationLink(destination: UserPrefs()) {
+                    NavigationLink(destination: UserPrefs(dismiss: self.dismiss)) {
                         HStack(spacing: 15) {
                             Image(self.user.img).resizable()
                                 .aspectRatio(contentMode: .fill)
@@ -40,8 +40,8 @@ struct AccountView: View {
                 }
                 
                 Section {
-                    NavigationLink(destination: UserPrefs()) {
-                        Text("Wishlists")
+                    NavigationLink(destination: WishlistView(dismiss: self.dismiss)) {
+                        Text("Wishlist")
                     }.padding(.leading, 5)
                 }
             }
@@ -57,6 +57,8 @@ struct UserPrefs: View {
     @EnvironmentObject var user: User
     @State var newName = ""
     @State var gender = 0
+    
+    var dismiss: () -> ()
     
     var genderPics = ["generic", "generic_f"]
     var genderOps = ["Picture #1", "Picture #2"]
@@ -95,11 +97,73 @@ struct UserPrefs: View {
             }   .padding(40)
                 .padding(.top, 20)
         }
+        .navigationBarTitle("Account Settings", displayMode: .inline)
+        .navigationBarItems(trailing: Button (action: {
+            self.self.dismiss()
+            self.user.savePic(self.genderPics[self.gender])
+        }) {Text("Done").fontWeight(.semibold)})
     }
 }
 
 struct WishlistView: View {
+    @EnvironmentObject var user: User
+    @State var sortMethod = 0
     
+    var dismiss: () -> ()
+    var sortMethods = ["ABC", "Date"]
+    
+    var body: some View {
+        ZStack {
+            VStack {
+                Picker("Gender", selection: $sortMethod) {
+                    ForEach(0..<sortMethods.count) {
+                        Text(self.sortMethods[$0])
+                    }
+                }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .padding(10)
+                    .background(Blur(.systemMaterial))
+                
+                Spacer()
+            }.zIndex(1)
+            
+            ScrollView {
+                VStack(spacing: 20) {
+                    ForEach(sortMethod = 0 ? self.user.getWishlist().sorted() : self.user.getWishlist()) { tweak in
+                        HStack(alignment: .top) {
+                            // Icon
+                            NavigationLink (destination: TweakView(tweak: tweak)) {
+                                tweak.getIcon(size: 100).padding(.trailing, 20)
+                            }.buttonStyle(NoReactionButtonStyle())
+                            // Text | Button | Divider
+                            VStack(alignment: .leading, spacing: 5) {
+                                NavigationLink (destination: TweakView(tweak: tweak)) {
+                                    VStack(alignment: .leading, spacing: 5) {
+                                        Text(tweak.name)
+                                            .font(.body)
+                                        Text(tweak.shortDesc)
+                                            .font(.footnote)
+                                            .foregroundColor(Color.gray)
+                                    }
+                                }.buttonStyle(NoReactionButtonStyle())
+                                
+                                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
+                                    SmallButton(tweak.getPrice())
+                                        .padding(.vertical, 10)
+                                }.buttonStyle(InstallButtonStyle())
+                                Divider()
+                            }
+                            
+                        }.padding(.horizontal, 20)
+                    }
+                }.padding(.top, 80)
+            }
+        }
+            .navigationBarTitle("Wishlist", displayMode: .inline)
+            .navigationBarItems(trailing: Button (action: {
+                self.self.dismiss()
+            }) {Text("Done").fontWeight(.semibold)})
+    }
 }
 
 struct AccountView_Previews: PreviewProvider {

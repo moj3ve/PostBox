@@ -7,6 +7,15 @@
 //
 
 struct Constants {
+    static let db: [String: Tweak] = PackageDatabase.database
+    static let desc = """
+        Inspired by the watchOS Motion face, Jellyfish aims to make your Lock screen more modern, more beautiful, and more useful.
+
+        Jellyfish refreshes the Lock screen with a beautiful new design, emphasizing both the time and date. The date takes its colour from your wallpaper, creating a beautiful blended effect, while still retaining its legibility.
+
+        Jellyfish also adds weather to your Lock screen, so you can always view it at a quick glance. While adding this new level of information, your Lock screen retains its simplicity, avoiding a cluttered look.
+        """
+    
     struct tweak {
         static let desc = """
         Inspired by the watchOS Motion face, Jellyfish aims to make your Lock screen more modern, more beautiful, and more useful.
@@ -22,14 +31,6 @@ struct Constants {
     }
     
     struct tweakLists {
-        static let desc = """
-            Inspired by the watchOS Motion face, Jellyfish aims to make your Lock screen more modern, more beautiful, and more useful.
-
-            Jellyfish refreshes the Lock screen with a beautiful new design, emphasizing both the time and date. The date takes its colour from your wallpaper, creating a beautiful blended effect, while still retaining its legibility.
-
-            Jellyfish also adds weather to your Lock screen, so you can always view it at a quick glance. While adding this new level of information, your Lock screen retains its simplicity, avoiding a cluttered look.
-            """
-        
         static let paid = [
             Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 2.50),
             Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 2.50),
@@ -51,15 +52,16 @@ struct Constants {
             Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 0.99),
         ]
         
-        static let long = [
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co",               shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 1.99),
-            Tweak(name: "SnowBoard", dev: "Spark Dev", repo: "sparkdev.me",                    shortDesc: "Snowboard theming engine.", longDesc: desc, type: "tweak", price: 0),
-            Tweak(name: "Cylinder", dev: "R33d", repo: "https://repo.packix.com",                 shortDesc: "Make your icons dance.", longDesc: desc, type: "tweak", price: 0),
-            Tweak(name: "Lockplus Pro", dev: "Junesiphone", repo: "https://junesiphone.com/supersecret", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 5.00),
-            Tweak(name: "Portrait XI", dev: "Fortfoxmobile", repo: "https://repo.packix.co",               shortDesc: "Single camera portait mode.", longDesc: desc, type: "tweak", price: 4.99),
-            Tweak(name: "Xen HTML", dev: "Matt Clarke", repo: "https://repo.packix.com",                 shortDesc: "Unified HTML widgets.", longDesc: desc, type: "tweak", price: 0),
-            Tweak(name: "Activator", dev: "Ryan Petrich", repo: "https://rpetri.ch/repo",                 shortDesc: "Centralized gestures, button and shortcut management for iOS.", longDesc: desc, type: "tweak", price: 0),
-            Tweak(name: "Kalm", dev: "UBIK", repo: "https://repo.chariz.com",                     shortDesc: "A beautiful first sight.", longDesc: desc, type: "tweak", price: 0.99),
+        static let long: [Tweak] = [
+            db["jellyfish"]!,
+            db["snowboard"]!,
+            db["cylinder"]!,
+            db["lockplus_pro"]!,
+            db["portrait_xi"]!,
+            db["xen_html"]!,
+            db["activator"]!,
+            db["kalm"]!,
         ]
+
     }
 }

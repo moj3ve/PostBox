@@ -10,7 +10,10 @@ import ModalView
 
 struct TweakView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @EnvironmentObject var user: User
+    
     @State var openShareSheet = false
+    @State var inWishlist = false
     
     public var tweak: Tweak
     
@@ -51,7 +54,7 @@ struct TweakView: View {
                             HStack {
                                 ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweak)}) {
                                     SmallButton(self.tweak.getPrice())
-                                }
+                                }.buttonStyle(InstallButtonStyle())
                                 Spacer()
                                 Button(action: {self.shareURL()}) {
                                     Image(systemName: "square.and.arrow.up")
@@ -76,10 +79,15 @@ struct TweakView: View {
                         
                         Spacer()
                         
-                        Text(tweak.dev)
-                            .font(.headline)
-                            .foregroundColor(.teal)
-                            .fontWeight(.bold)
+                        Group {
+                            Text("Devs: ")
+                                .font(.headline)
+                                .foregroundColor(.lightgray)
+                                .fontWeight(.semibold)
+                            + Text(self.tweak.dev)
+                                .font(.headline)
+                                .fontWeight(.bold)
+                        }
                         
                     }.padding(20)
                     
@@ -112,9 +120,19 @@ struct TweakView: View {
                         Text(tweak.name)
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                        ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweak)}) {
-                            SmallButton(self.tweak.getPrice())
-                        }
+                        HStack {
+                            ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweak)}) {
+                                SmallButton(self.tweak.getPrice())
+                            }.buttonStyle(InstallButtonStyle())
+                            Button(action: {
+                                self.user.toggleWishlistItem(self.tweak)
+                                self.inWishlist.toggle()
+                            }) {
+                                Image(systemName: self.inWishlist ? "heart.fill" : "heart")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.red)
+                            }.onAppear(perform: {self.inWishlist = self.user.inWishlist(self.tweak)})
+                        }.padding(.top, 15)
                     }.padding(.bottom, 150)
                 }
             }
@@ -175,7 +193,7 @@ struct TweakView_Previews: PreviewProvider {
 
                     Text("Click me to go there.")
                 }
-            }
+            }.environmentObject(User())
         }
     }
 }
