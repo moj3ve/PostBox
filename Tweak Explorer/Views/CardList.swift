@@ -112,27 +112,31 @@ struct FullSceenList: View {
                     HStack(alignment: .top) {
                         // Icon
                         NavigationLink (destination: TweakView(tweak: tweak)) {
-                            tweak.getIcon(size: 100).padding(.trailing, 20)
+                            tweak.getIcon(size: 100).padding(.trailing, 10)
                         }.buttonStyle(NoReactionButtonStyle())
                         // Text | Button | Divider
-                        VStack(alignment: .leading, spacing: 5) {
-                            NavigationLink (destination: TweakView(tweak: tweak)) {
-                                VStack(alignment: .leading, spacing: 5) {
-                                    Text(tweak.name)
-                                        .font(.body)
-                                    Text(tweak.shortDesc)
-                                        .font(.footnote)
-                                        .foregroundColor(Color.gray)
-                                }
-                            }.buttonStyle(NoReactionButtonStyle())
-                            
-                            ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
-                                SmallButton(tweak.getPrice())
-                                    .padding(.vertical, 10)
-                            }.buttonStyle(InstallButtonStyle())
+                        VStack(alignment: .leading, spacing: 20) {
+                            VStack(alignment: .leading, spacing: 0) {
+                                NavigationLink (destination: TweakView(tweak: tweak)) {
+                                    VStack(alignment: .leading, spacing: 5) {
+                                        Text(tweak.name)
+                                            .font(.body)
+                                        Text(tweak.shortDesc)
+                                            .font(.footnote)
+                                            .foregroundColor(Color.gray)
+                                            .lineLimit(2)
+                                    }
+                                }.buttonStyle(NoReactionButtonStyle())
+                                
+                                Spacer()
+                                
+                                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
+                                    SmallButton(tweak.getPrice())
+                                }.buttonStyle(InstallButtonStyle())
+                            }
+                                .frame(height: 100)
                             Divider()
                         }
-                        
                     }.padding(.horizontal, 20)
                 }
             }.padding(.vertical, 20)
@@ -182,8 +186,6 @@ struct MediumButton: View {
 
 struct CardList_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            CardList(Constants.tweakLists.long)
-        }
+        FullSceenList(Constants.tweakLists.long)
     }
 }

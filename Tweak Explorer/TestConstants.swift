@@ -32,24 +32,17 @@ struct Constants {
     
     struct tweakLists {
         static let paid = [
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 2.50),
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 2.50),
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 2.50),
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 2.50),
+            db["jellyfish"]!,
+            db["lockplus_pro"]!,
+            db["portrait_xi"]!,
+            db["kalm"]!,
         ]
         
         static let free = [
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 0),
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 0),
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 0),
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 0),
-        ]
-        
-        static let mix = [
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 1.00),
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 4.50),
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 0),
-            Tweak(name: "Jellyfish", dev: "Dynastic", repo: "https://repo.dynastic.co", shortDesc: "Modernize your lockscreen.", longDesc: desc, type: "tweak", price: 0.99),
+            db["snowboard"]!,
+            db["cylinder"]!,
+            db["xen_html"]!,
+            db["activator"]!,
         ]
         
         static let long: [Tweak] = [

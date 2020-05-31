@@ -31,7 +31,7 @@ struct AccountView: View {
                                 .padding(.leading, 5)
                             VStack (alignment: .leading, spacing: 3) {
                                 Text(self.user.name)
-                                Text("nath49ers@gmail.com")
+                                Text("Avid Jailbreaker")
                                     .font(.footnote)
                                     .foregroundColor(.gray)
                             }
@@ -54,6 +54,7 @@ struct AccountView: View {
 }
 
 struct UserPrefs: View {
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @EnvironmentObject var user: User
     @State var newName = ""
     @State var gender = 0
@@ -85,23 +86,19 @@ struct UserPrefs: View {
                     }.pickerStyle(SegmentedPickerStyle())
                 }.padding(.top, 50)
                 
-                HStack {
-                    TextField("Name", text: $newName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
-                    Button("Save", action: {
-                        self.user.saveName(self.newName)
-                        self.user.savePic(self.genderPics[self.gender])
-                    })
-                }
+                
+                TextField("Name", text: $newName)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
             }   .padding(40)
                 .padding(.top, 20)
         }
         .navigationBarTitle("Account Settings", displayMode: .inline)
         .navigationBarItems(trailing: Button (action: {
-            self.self.dismiss()
+            self.mode.wrappedValue.dismiss()
+            self.user.saveName(self.newName)
             self.user.savePic(self.genderPics[self.gender])
-        }) {Text("Done").fontWeight(.semibold)})
+        }) {Text("Save").fontWeight(.semibold)})
     }
 }
 
@@ -133,31 +130,35 @@ struct WishlistView: View {
                         HStack(alignment: .top) {
                             // Icon
                             NavigationLink (destination: TweakView(tweak: tweak)) {
-                                tweak.getIcon(size: 100).padding(.trailing, 20)
+                                tweak.getIcon(size: 100).padding(.trailing, 10)
                             }.buttonStyle(NoReactionButtonStyle())
                             // Text | Button | Divider
-                            VStack(alignment: .leading, spacing: 5) {
-                                NavigationLink (destination: TweakView(tweak: tweak)) {
-                                    VStack(alignment: .leading, spacing: 5) {
-                                        Text(tweak.name)
-                                            .font(.body)
-                                        Text(tweak.shortDesc)
-                                            .font(.footnote)
-                                            .foregroundColor(Color.gray)
-                                    }
-                                }.buttonStyle(NoReactionButtonStyle())
-                                
-                                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
-                                    SmallButton(tweak.getPrice())
-                                        .padding(.vertical, 10)
-                                }.buttonStyle(InstallButtonStyle())
+                            VStack(alignment: .leading, spacing: 20) {
+                                VStack(alignment: .leading, spacing: 0) {
+                                    NavigationLink (destination: TweakView(tweak: tweak)) {
+                                        VStack(alignment: .leading, spacing: 5) {
+                                            Text(tweak.name)
+                                                .font(.body)
+                                            Text(tweak.shortDesc)
+                                                .font(.footnote)
+                                                .foregroundColor(Color.gray)
+                                                .lineLimit(2)
+                                        }
+                                    }.buttonStyle(NoReactionButtonStyle())
+                                    
+                                    Spacer()
+                                    
+                                    ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
+                                        SmallButton(tweak.getPrice())
+                                    }.buttonStyle(InstallButtonStyle())
+                                }
+                                    .frame(height: 100)
                                 Divider()
                             }
-                            
                         }.padding(.horizontal, 20)
                     }
-                }.padding(.top, 80)
-            }
+                }
+            }.padding(.top, 80)
         }
             .navigationBarTitle("Wishlist", displayMode: .inline)
             .navigationBarItems(trailing: Button (action: {
