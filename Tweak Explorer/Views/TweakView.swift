@@ -43,14 +43,14 @@ struct TweakView: View {
                         VStack (alignment: .leading, spacing: 10) {
                             Group {
                                 Text(self.tweak.name) // Title
-                                    .font(.system(size: 20))
+                                    .font(.title)
                                     .fontWeight(.semibold)
                                 + Text("\n" + self.tweak.shortDesc) // Subtitle
-                                    .font(.callout)
+                                    .font(.footnote)
                                     .foregroundColor(.lightgray)
                             }
                                 .lineLimit(3)
-                            
+                                Spacer()
                             HStack {
                                 ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweak)}) {
                                     SmallButton(self.tweak.getPrice())
@@ -69,24 +69,22 @@ struct TweakView: View {
                     HStack(spacing: 10) {
                         Group {
                             Text("Type: ")
-                                .font(.headline)
+                                .font(.callout)
                                 .foregroundColor(.lightgray)
-                                .fontWeight(.semibold)
                             + Text(self.tweak.type.firstUppercased)
-                                .font(.headline)
-                                .fontWeight(.bold)
+                                .font(.callout)
+                                .fontWeight(.semibold)
                         }
                         
                         Spacer()
                         
                         Group {
-                            Text("Devs: ")
-                                .font(.headline)
+                            Text("Dev: ")
+                                .font(.callout)
                                 .foregroundColor(.lightgray)
-                                .fontWeight(.semibold)
                             + Text(self.tweak.dev)
-                                .font(.headline)
-                                .fontWeight(.bold)
+                                .font(.callout)
+                                .fontWeight(.semibold)
                         }
                         
                     }.padding(20)
@@ -104,7 +102,7 @@ struct TweakView: View {
                         HStack {
                             Text("Description")
                                 .font(.title)
-                                .fontWeight(.bold)
+                                .fontWeight(.semibold)
                                 .foregroundColor(.teal)
                             Spacer()
                         }
@@ -171,19 +169,17 @@ struct TweakView_Previews: PreviewProvider {
     static var previews: some View {
         ModalPresenter {
             NavigationView {
-                NavigationLink(destination: TweakView(tweak:
+                TweakView(tweak:
 
-                    Tweak(
-                        name: "Jellyfish",
-                          dev: "Dynastic",
-                          repo: "https://repo.dynastic.co",
-                          shortDesc: "Modernize your lockscreen.",
-                          type: "tweak",
-                          price: 0.99))
-                    ) {
-
-                    Text("Click me to go there.")
-                }
+                Tweak(
+                    name: "Jellyfish",
+                      dev: "Dynastic",
+                      repo: "https://repo.dynastic.co",
+                      shortDesc: "Modernize your lockscreen.",
+                      type: "tweak",
+                      price: 0.99))
+                
+                
             }.environmentObject(User())
         }
     }

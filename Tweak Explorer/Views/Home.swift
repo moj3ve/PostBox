@@ -23,7 +23,7 @@ struct Home: View {
     
     var body: some View {
         ScrollView(showsIndicators: true) {
-            VStack(alignment: .center, spacing: 30) {
+            VStack(alignment: .center, spacing: 20) {
                 HomeNavBar().zIndex(1)
                 
                 ForEach(self.flow, id: \.self) { card in
@@ -64,7 +64,7 @@ struct HomeNavBar: View {
     var body: some View {
         HStack {
             // Today and date text
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 3) {
                 Text(self.dateText)
                     .font(.caption)
                     .fontWeight(.semibold)

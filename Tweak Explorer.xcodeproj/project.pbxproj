@@ -97,10 +97,10 @@
 			children = (
 				E925A50C247C8DF800AFDFB9 /* Views */,
 				E925A4F8247C8DD000AFDFB9 /* AppDelegate.swift */,
-				E925A4FA247C8DD000AFDFB9 /* SceneDelegate.swift */,
 				E925A4FC247C8DD000AFDFB9 /* ContentView.swift */,
-				E95015E52483484800BD617F /* PackageDatabase.swift */,
+				E925A4FA247C8DD000AFDFB9 /* SceneDelegate.swift */,
 				E925A4FE247C8DD100AFDFB9 /* Assets.xcassets */,
+				E95015E52483484800BD617F /* PackageDatabase.swift */,
 				E925A503247C8DD200AFDFB9 /* LaunchScreen.storyboard */,
 				E925A506247C8DD200AFDFB9 /* Info.plist */,
 				E925A500247C8DD100AFDFB9 /* Preview Content */,
