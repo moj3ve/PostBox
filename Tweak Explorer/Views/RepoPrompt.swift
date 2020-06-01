@@ -69,13 +69,14 @@ struct RepoPrompt: View {
                 VStack {
                     Spacer()
                     VStack {
-                        self.tweak.getIcon(size: 100)
+                        self.tweak.getIcon(size: 130)
                         Text(self.tweak.name)
                             .font(.largeTitle)
                             .fontWeight(.bold)
                         Text(self.tweak.repo)
                             .font(.headline)
                             .opacity(0.8)
+                            .padding(10)
                     }
                     Button(action: {self.showActionMenu.toggle()}) {
                         AddRepoButton()
@@ -85,7 +86,7 @@ struct RepoPrompt: View {
                 }
                     .foregroundColor(.white)
                     .zIndex(1) // VStack
-                    .offset(y: 175)
+                    .offset(y: 225)
                 
                 VStack {
                     Spacer()
@@ -162,7 +163,7 @@ struct AddRepoButton: View {
                 .foregroundColor(.white)
                 .fontWeight(.semibold)
         }
-        .frame(width: 212, height: 45)
+        .frame(width: 212, height: 40)
     }
 }
 
@@ -182,6 +183,6 @@ struct RepoPrompt_Previews: PreviewProvider {
                     SmallButton("Three")
                 }.buttonStyle(InstallButtonStyle())
             }
-        }
+        }.environmentObject(User())
     }
 }
