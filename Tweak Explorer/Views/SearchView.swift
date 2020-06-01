@@ -8,20 +8,20 @@
 
 import SwiftUI
 
-struct SearchView: View {
-    var body: some View {
-        let values = Constants.db.map{$0.key}
-        
-        List {
-            ForEach(values) { tweak in
-                Text(tweak.name)
-            }
-        }
-    }
-}
+//struct SearchView: View {
+//    var body: some View {
+//        let values = Constants.db.map{$0.key}
+//        
+//        List {
+//            ForEach(values) { tweak in
+//                Text(tweak.name)
+//            }
+//        }
+//    }
+//}
 
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView()
-    }
-}
+//struct SearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SearchView()
+//    }
+//}

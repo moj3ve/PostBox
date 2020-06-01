@@ -46,7 +46,7 @@ struct PackageDatabase {
         "activator"     : Tweak(
         name: "Activator", dev: "Ryan Petrich", repo: "https://rpetri.ch/repo", shortDesc: "Centralized gestures, button and shortcut management for iOS.", type: "tweak", price: 0),
         "cydia"         : Tweak(
-            name: "Cydia", dev: "Jay Freeman (saurik)", repo: "https://apt.binger.com/", shortDesc: "Graphical iPhone font-end for APT"),
+            name: "Cydia", dev: "Jay Freeman (saurik)", repo: "https://apt.binger.com/", shortDesc: "Graphical iPhone font-end for APT", type: "application", price: 0),
         "cylinder"      : Tweak(
         name: "Cylinder", dev: "R33d", repo: "https://repo.packix.com", shortDesc: "Make your icons dance.", type: "tweak", price: 0),
         "jellyfish"     : Tweak(
@@ -58,7 +58,7 @@ struct PackageDatabase {
         "portrait_xi"   : Tweak(
         name: "Portrait XI", dev: "Fortfoxmobile", repo: "https://repo.packix.co", shortDesc: "Single camera portait mode.", type: "tweak", price: 4.99),
         "snowboard"     : Tweak(
-        name: "SnowBoard", dev: "Spark Dev", repo: "sparkdev.me", shortDesc: "Snowboard theming engine.", type: "tweak", price: 0),
+        name: "SnowBoard", dev: "Spark Dev", repo: "https://sparkdev.me", shortDesc: "Snowboard theming engine.", type: "tweak", price: 0),
         "xen_html"      : Tweak(
         name: "Xen HTML", dev: "Matt Clarke", repo: "https://repo.packix.com", shortDesc: "Xen HTML allows for displaying widgets on both the iOS Lockscreen and Homescreen.", type: "tweak", price: 0),
     ]
