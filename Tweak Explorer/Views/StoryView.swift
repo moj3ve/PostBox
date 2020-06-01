@@ -11,9 +11,11 @@ struct StoryView: View {
     @State var show = false
     
     public var headingText: [String]
+    public var image: String
     
-    init(_ headingText: [String]) {
+    init(_ headingText: [String], image: String? = nil) {
         self.headingText = headingText
+        self.image = image ?? "banner1.1"
     }
     
     var body: some View {
@@ -21,7 +23,7 @@ struct StoryView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     // Image | Title
-                    Banner(self.headingText, image: "banner1.1")
+                    Banner(self.headingText, image: self.image)
                     
                     // Content
                     VStack(alignment: .center, spacing: 40) {
@@ -55,7 +57,7 @@ struct BackButton: View {
     var body: some View {
         VStack {
             HStack {
-                Blur(.systemChromeMaterialLight)
+                Blur(.systemChromeMaterial)
                     .frame(width: 30, height: 40)
                     .mask(
                         VStack {

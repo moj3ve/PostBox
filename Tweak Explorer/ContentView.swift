@@ -71,7 +71,7 @@ class Tweak: Identifiable, Comparable {
         return Image(fileID).resizable()
             .renderingMode(.original)
             .frame(width: size, height: size)
-            .cornerRadius(CGFloat(10.0/57.0 * Double(size)))
+            .cornerRadius(CGFloat((10.0/57.0) * Double(size)))
     }
     
     /// Returns a screenshot of given `frameSize`

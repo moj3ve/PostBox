@@ -18,7 +18,7 @@ struct Constants {
     
     struct tweak {
         static let free = db["snowboard"]
-        static let paid = db["xen_html"]
+        static let paid = db["jellyfish"]
     }
     
     struct tweakLists {

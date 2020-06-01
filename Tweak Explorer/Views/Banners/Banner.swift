@@ -15,34 +15,56 @@ struct Banner: View {
     public var bannerHeight: CGFloat
     private var hideText: Bool
     private var blur: Bool
+    private var inModal: Bool
     
-    init (_ texts: [String], image: String? = nil, bannerHeight: CGFloat? = nil, blur: Bool? = nil) {
+    init (_ texts: [String], image: String? = nil, bannerHeight: CGFloat? = nil, blur: Bool? = nil, inModal: Bool? = nil) {
         self.texts = texts
         self.img = image ?? "banner1.1"
         self.bannerHeight = bannerHeight ?? 410
         self.hideText = texts.count == 0
         self.blur = blur ?? false
+        self.inModal = inModal ?? false
     }
     
     var body: some View {
         ZStack {
             // Image (Stretch)
             GeometryReader { g in
-                if (g.frame(in: .global).minY <= 0) {
-                    Image(self.img).resizable()
-                        .renderingMode(.original)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: g.size.width, height: g.size.height)
-                        .clipped(antialiased: true)
+                if (self.inModal) {
+                    if (g.frame(in: .global).minY <= 0) {
+                        Image(self.img).resizable()
+                            .renderingMode(.original)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: g.size.width, height: g.size.height)
+                            .clipped(antialiased: true)
+                            .animation(.spring(response: 0.2))
+                    } else {
+                        Image(self.img).resizable()
+                            .renderingMode(.original)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
+                            .clipped(antialiased: true)
+                            .offset(y: -g.frame(in: .global).minY)
+                            .animation(.spring(response: 0.2))
+                    }
                 } else {
-                    Image(self.img).resizable()
-                        .renderingMode(.original)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
-                        .clipped(antialiased: true)
-                        .offset(y: -g.frame(in: .global).minY)
+                    if (g.frame(in: .global).minY <= 0) {
+                        Image(self.img).resizable()
+                            .renderingMode(.original)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: g.size.width, height: g.size.height)
+                            .clipped(antialiased: true)
+                    } else {
+                        Image(self.img).resizable()
+                            .renderingMode(.original)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
+                            .clipped(antialiased: true)
+                            .offset(y: -g.frame(in: .global).minY)
+                    }
                 }
-            }.frame(height: self.bannerHeight)
+            }
+                .frame(height: self.bannerHeight)
             
             // Text
             if (!self.hideText) {

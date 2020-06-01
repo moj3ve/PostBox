@@ -28,7 +28,7 @@ struct Home: View {
                 
                 ForEach(self.flow, id: \.self) { card in
                     NavigationLink(destination:
-                        StoryView(card)
+                        StoryView(card, image: card[3])
                     ) {
                         if card[4] == "none" {
                             BannerCardFull(card, image: card[3])

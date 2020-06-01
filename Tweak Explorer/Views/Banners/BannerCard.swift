@@ -52,7 +52,6 @@ struct BannerCard: View {
                         Spacer()
                     }
                     .background(Blur(.systemChromeMaterial))
-                    //.background(Color(UIColor.secondarySystemBackground))
                 }
             }
         }
