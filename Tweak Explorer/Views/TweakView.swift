@@ -46,7 +46,7 @@ struct TweakView: View {
                                     .font(.title)
                                     .fontWeight(.semibold)
                                 + Text("\n" + self.tweak.shortDesc) // Subtitle
-                                    .font(.footnote)
+                                    .font(.subheadline)
                                     .foregroundColor(.lightgray)
                             }
                                 .lineLimit(3)
