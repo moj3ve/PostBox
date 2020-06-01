@@ -86,11 +86,11 @@ struct RepoPrompt: View {
                 }
                     .foregroundColor(.white)
                     .zIndex(1) // VStack
-                    .offset(y: 225)
+                    .offset(y: 180)
                 
                 VStack {
                     Spacer()
-                    Blur(.systemThinMaterialLight)
+                    Blur(.systemThinMaterialDark)
                         .frame(height: 260)
                         .overlay(VStack {
                             HStack {
