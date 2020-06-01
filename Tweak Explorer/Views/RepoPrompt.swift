@@ -109,7 +109,7 @@ struct RepoPrompt: View {
                                 
                                 Spacer()
                             }
-                            .offset(y: -50)
+                            .offset(y: -52)
                                 .foregroundColor(.white)
                         )
                         .overlay(VStack {
