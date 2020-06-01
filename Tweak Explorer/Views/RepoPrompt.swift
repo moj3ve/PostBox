@@ -86,7 +86,7 @@ struct RepoPrompt: View {
             }
             .actionSheet(isPresented: self.$showActionMenu) {
                 ActionSheet(title: Text("Select Package Manager"),
-                message: Text("Click the info button on the top left for more information on package managers."),
+                message: Text("Click the info button for more information."),
                 buttons: self.getApps())
             }
             .navigationBarTitle("Get \(self.tweak.name)", displayMode: .inline)
@@ -106,12 +106,10 @@ struct Info: View {
     var body: some View {
         ScrollView {
             VStack (spacing: 20) {
-                Banner(["JAILBREAK INFO", "Package Managers", "What is a package manager?"], image: "banner3", bannerHeight: 300, inModal: true)
+                Banner(["FAQ", "Package Managers", "What is a package manager?"], image: "banner3", bannerHeight: 300, blur: true, inModal: true)
                 
                 Paragraph(first: "Package managers are", "applications that help users ")
                     .padding(20)
-                
-                CardList(Constants.tweakLists.paid)
             }
         }
         .navigationBarTitle("Package Managers", displayMode: .inline)
@@ -131,8 +129,9 @@ struct AddRepoButton: View {
         ZStack {
             Color.teal.cornerRadius(10)
             Text("Add Repo")
+                .font(.callout)
                 .foregroundColor(.white)
-                .fontWeight(.bold)
+                .fontWeight(.semibold)
         }
         .frame(width: 212, height: 45)
     }
