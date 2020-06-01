@@ -66,7 +66,7 @@ struct CardList: View {
             .frame(height: 395)
             .cornerRadius(15)
             .padding(.horizontal, 20)
-            .shadow(color: Color.black.opacity(0.2), radius: 50, y: 50)
+            .shadow(color: Color.black.opacity(0.15), radius: 50, y: 30)
         }
         .buttonStyle(CardButtonStyle())
     }
