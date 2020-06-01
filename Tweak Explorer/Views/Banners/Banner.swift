@@ -35,7 +35,7 @@ struct BannerFull: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: g.size.width, height: g.size.height)
                             .clipped(antialiased: true)
-                            .animation(.spring(response: 0.2))
+                            .animation(.easeOut(duration: 0.4))
                     } else {
                         Image(self.img).resizable()
                             .renderingMode(.original)
@@ -43,7 +43,7 @@ struct BannerFull: View {
                             .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
                             .clipped(antialiased: true)
                             .offset(y: -g.frame(in: .global).minY)
-                            .animation(.spring(response: 0.2))
+                            .animation(.easeOut(duration: 0.4))
                     }
                 } else {
                     if (g.frame(in: .global).minY <= 0) {
@@ -121,7 +121,7 @@ struct Banner: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: g.size.width, height: g.size.height)
                             .clipped(antialiased: true)
-                            .animation(.spring(response: 0.2))
+                            .animation(.easeOut(duration: 0.4))
                     } else {
                         Image(self.img).resizable()
                             .renderingMode(.original)
@@ -129,7 +129,7 @@ struct Banner: View {
                             .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
                             .clipped(antialiased: true)
                             .offset(y: -g.frame(in: .global).minY)
-                            .animation(.spring(response: 0.2))
+                            .animation(.easeOut(duration: 0.4))
                     }
                 } else {
                     if (g.frame(in: .global).minY <= 0) {

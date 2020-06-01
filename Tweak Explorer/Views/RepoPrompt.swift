@@ -13,6 +13,7 @@ struct RepoPrompt: View {
     @State var selected: Int = 0
     @State var showAlert = false
     @State var showActionMenu = false
+    @State var copied = false
     
     var packageManagers = ["Cydia", "Sileo", "Zebra", "Installer"]
     var initialProtocolUrls = ["cydia://url/https://cydia.saurik.com/api/share#?source=",
@@ -45,13 +46,23 @@ struct RepoPrompt: View {
         return buttonList
     }
     
+    // Sharesheet
+    func copyURL() {
+        self.copied = true
+        let string = tweak.repoWithProtocol
+        UIPasteboard.general.string = string
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
                 GeometryReader { g in
-                    self.tweak.getFull()
-                        .offset(y: CGFloat(Double(g.frame(in: .global).minY).squareRoot()))
-                        .frame(height: g.size.height)
+                    VStack {
+                        self.tweak.getFull()
+                            .frame(height: g.size.height)
+                        
+                        Spacer()
+                    }.offset(y: 50)
                 }
                 
                 // Icon | Text | Dev
@@ -78,8 +89,23 @@ struct RepoPrompt: View {
                 
                 VStack {
                     Spacer()
-                    Blur(.systemUltraThinMaterialDark)
+                    Blur(.systemThinMaterialLight)
                         .frame(height: 260)
+                        .overlay(VStack {
+                            HStack {
+                                Spacer()
+                                Button(action: {self.copyURL()}) {
+                                    Image(systemName: "paperclip")
+                                        .font(.system(size: 20))
+                                        .foregroundColor(self.copied ? .green : .white)
+                                        .opacity(0.8)
+                                        .rotationEffect(.degrees(self.copied ? 360 : 0))
+                                        .animation(.spring(dampingFraction: 0.1))
+                                        .padding(20)
+                                }
+                            }
+                            Spacer()
+                        })
                 }.edgesIgnoringSafeArea(.bottom)
                 
                 
@@ -106,10 +132,13 @@ struct Info: View {
     var body: some View {
         ScrollView {
             VStack (spacing: 20) {
-                Banner(["FAQ", "Package Managers", "What is a package manager?"], image: "banner3", bannerHeight: 300, blur: true, inModal: true)
+                Banner(["FAQ", "Package Managers", "What is a package manager?"], image: "banner3", bannerHeight: 300, inModal: true)
                 
-                Paragraph(first: "Package managers are", "applications that help users ")
-                    .padding(20)
+                VStack (alignment: .leading, spacing: 20) {
+                    Paragraph(first: "Package managers are", "applications that help users install, remove, and update packages on their jailbroken devices. Although not required, package installers are highly recommended for *ALL users. Most are intuitive, efficient, and written to save time.")
+                    
+                    Paragraph(first: "Removing and adding", "APT repositories (sources) have never been easier. Simply give a package manager a valid URL and it will do the rest! All tweaks from added sources will be indexed in search.")
+                }.padding(.leading, 20).padding(.trailing, 10)
             }
         }
         .navigationBarTitle("Package Managers", displayMode: .inline)
@@ -147,6 +176,10 @@ struct RepoPrompt_Previews: PreviewProvider {
                 
                 ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.free!)}) {
                     SmallButton("Two")
+                }.buttonStyle(InstallButtonStyle())
+                
+                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.db["kalm"]!)}) {
+                    SmallButton("Three")
                 }.buttonStyle(InstallButtonStyle())
             }
         }
