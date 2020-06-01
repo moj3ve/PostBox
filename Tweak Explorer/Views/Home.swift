@@ -23,7 +23,7 @@ struct Home: View {
     
     var body: some View {
         ScrollView(showsIndicators: true) {
-            VStack(alignment: .center, spacing: 20) {
+            VStack(alignment: .center, spacing: 30) {
                 HomeNavBar().zIndex(1)
                 
                 ForEach(self.flow, id: \.self) { card in

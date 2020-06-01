@@ -58,6 +58,7 @@ struct BannerCard: View {
         .frame(height: self.bannerHeight)
         .cornerRadius(15)
         .padding(.horizontal, 20)
+        .shadow(color: Color.black.opacity(0.2), radius: 50, y: 50)
     }
     
 }

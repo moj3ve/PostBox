@@ -25,7 +25,7 @@ struct CardList: View {
             ZStack {
                 // Background Tap
                 NavigationLink(destination: FullScreenList(Constants.tweakLists.long, subhead: self.subhead)) {
-                    Color(UIColor.secondarySystemBackground)
+                    Color(UIColor.secondarySystemGroupedBackground)
                 }.buttonStyle(NoReactionButtonStyle())
                 // Text Tap
                 NavigationLink(destination: FullScreenList(Constants.tweakLists.long, subhead: self.subhead)) {
@@ -66,7 +66,7 @@ struct CardList: View {
             .frame(height: 395)
             .cornerRadius(15)
             .padding(.horizontal, 20)
-            .shadow(radius: 30, y: 7)
+            .shadow(color: Color.black.opacity(0.2), radius: 50, y: 50)
         }
         .buttonStyle(CardButtonStyle())
     }
@@ -103,11 +103,11 @@ struct SmallButton: View {
     var body: some View {
         Text(text)
             .font(.footnote)
-            .foregroundColor(.white)
+            .foregroundColor(.teal)
             .fontWeight(.semibold)
             .zIndex(1)
             .frame(width: 65, height: 26)
-            .background(Color.teal.cornerRadius(13))
+            .background(Color.gray.opacity(0.15).cornerRadius(13))
     }
 }
 
