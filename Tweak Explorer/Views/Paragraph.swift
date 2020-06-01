@@ -32,6 +32,6 @@ struct Paragraph: View {
 
 struct Paragraph_Previews: PreviewProvider {
     static var previews: some View {
-        Paragraph(first: "Hello World.", "This is a paragraph view that joins multiple views together to create a nice paragraph view!")
+        Paragraph(first: "Hello World.", "This is a paragraph view that joins multiple views together to create a nice paragraph view! \n\nTheETHETHETHETHETHETHETHETHEKSUYDFsuydfgosudyfgwoeiru gosidufgsoidfug osidfug odiufgsoidufg sdoifug osidfugpaieurgf padofg [ad8ofg [odfug paidugf pa8esgf pa9d8fg padf8ug ")
     }
 }

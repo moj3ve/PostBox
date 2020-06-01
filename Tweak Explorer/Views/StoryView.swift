@@ -26,13 +26,10 @@ struct StoryView: View {
                     Banner(self.headingText, image: self.image)
                     
                     // Content
-                    VStack(alignment: .center, spacing: 40) {
-                        Paragraph(first: "Theming is a fundamental feature", "of iOS jailbreaking. Most know that iOS heavily restricts the user from customizing the interface; However, jailbreaking solves that problem.")
-                        Paragraph(first: "Theming is a fundamental feature", "of iOS jailbreaking. Most know that iOS heavily restricts the user from customizing the interface; However, jailbreaking solves that problem.")
-                        Paragraph(first: "Theming is a fundamental feature", "of iOS jailbreaking. Most know that iOS heavily restricts the user from customizing the interface; However, jailbreaking solves that problem.")
-                        Paragraph(first: "Theming is a fundamental feature", "of iOS jailbreaking. Most know that iOS heavily restricts the user from customizing the interface; However, jailbreaking solves that problem.")
-                        Paragraph(first: "Theming is a fundamental feature", "of iOS jailbreaking. Most know that iOS heavily restricts the user from customizing the interface; However, jailbreaking solves that problem.")
-                        Paragraph(first: "Theming is a fundamental feature", "of iOS jailbreaking. Most know that iOS heavily restricts the user from customizing the interface; However, jailbreaking solves that problem.")
+                    VStack(alignment: .center, spacing: 30) {
+                        Paragraph(first: "Unlike Android, Apple", "doesn't provide any default theming options to their devices. Although limited icon theming is possible with an unjailbroken device, many users have found out that the process is highly inefficient. With jailbreaking, users are able to unlock the full potentials of icon theming.")
+                        Paragraph("With appropriate themeing engines such as SnowBoard, Anemone, or iThemer, users can easily change the appearance of app icons, notification badges, dock labels, and even system glyphs.")
+                        Paragraph("As more and more devices are becoming eligible to jailbreaking, develops and designers race to create the ideal themes to appeal their customers. With thousands of theming packages that alters the appearances of the majority of iOS apps, theming can allow devices to stand unique to others.")
                     }.padding(20)
                     Spacer()
                 }.padding(.bottom, 90)

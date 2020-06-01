@@ -107,7 +107,7 @@ struct WishlistView: View {
     @State var sortMethod = 0
     
     var dismiss: () -> ()
-    var sortMethods = ["ABC", "Date"]
+    var sortMethods = ["Alphabetical", "Date"]
     
     var body: some View {
         ZStack {

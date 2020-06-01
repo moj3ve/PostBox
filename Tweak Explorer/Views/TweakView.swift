@@ -115,6 +115,7 @@ struct TweakView: View {
                     
                     VStack {
                         tweak.getIcon(size: 100)
+                            .padding(.bottom, 20)
                         Text(tweak.name)
                             .font(.largeTitle)
                             .fontWeight(.bold)
@@ -130,8 +131,8 @@ struct TweakView: View {
                                     .font(.system(size: 20))
                                     .foregroundColor(.red)
                             }.onAppear(perform: {self.inWishlist = self.user.inWishlist(self.tweak)})
-                        }.padding(.top, 15)
-                    }.padding(.bottom, 150)
+                        }.padding(.top, 10)
+                    }.padding(.bottom, 60)
                 }
             }
         }
