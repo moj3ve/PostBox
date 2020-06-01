@@ -8,14 +8,19 @@ import SwiftUI
 
 struct StoryView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @State var show = false
     
     public var headingText: [String]
     public var image: String
+    public var isBlurred: Bool
+    public var flow: [[String]]
     
-    init(_ headingText: [String], image: String? = nil) {
-        self.headingText = headingText
-        self.image = image ?? "banner1.1"
+
+    init(_ story: [[String]]) {
+        self.image = story[0][3]
+        self.headingText = story[0]
+        self.isBlurred = story[0][4] == "true"
+        
+        self.flow = story
     }
     
     var body: some View {
@@ -27,16 +32,20 @@ struct StoryView: View {
                     
                     // Content
                     VStack(alignment: .center, spacing: 30) {
-                        Paragraph(first: "Unlike Android, Apple", "doesn't provide any default theming options to their devices. Although limited icon theming is possible with an unjailbroken device, many users have found out that the process is highly inefficient. With jailbreaking, users are able to unlock the full potentials of icon theming.")
-                        Paragraph("With appropriate themeing engines such as SnowBoard, Anemone, or iThemer, users can easily change the appearance of app icons, notification badges, dock labels, and even system glyphs.")
-                        Paragraph("As more and more devices are becoming eligible to jailbreaking, develops and designers race to create the ideal themes to appeal their customers. With thousands of theming packages that alters the appearances of the majority of iOS apps, theming can allow devices to stand unique to others.")
-                        LongShareButton("Share Story")
-                        .padding(.top, 15)
+                        ForEach(1..<self.flow.count) { i in
+                            // Paragraph Blocks
+                            if (self.flow[i][0] == "p") {
+                                Paragraph(first: self.flow[i][1], self.flow[i][2])
+                            }
+                            // Image Blocks
+                            else if (self.flow[i][0] == "i"){
+                                ImageBlock(image: self.flow[i][1], caption: self.flow[i][2])
+                            }
+                        }
                     }.padding(20)
                     Spacer()
                 }.padding(.bottom, 100)
             }
-            //BackButton()
         }
         .accentColor(.teal)
         .navigationBarTitle("", displayMode: .large)
@@ -47,6 +56,26 @@ struct StoryView: View {
         })
         .edgesIgnoringSafeArea(.all)
     } // body
+}
+
+struct ImageBlock: View {
+    var image: String
+    var caption: String?=nil ?? ""
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Image(self.image).resizable()
+                .aspectRatio(contentMode: .fit)
+            HStack {
+                Text(self.caption!)
+                    .font(.callout)
+                    .foregroundColor(.gray)
+                Spacer()
+            }
+                .padding(20)
+                .background(Color(.secondarySystemBackground))
+        }.cornerRadius(10)
+    }
 }
 
 
@@ -99,7 +128,7 @@ struct StoryView_Previews: PreviewProvider {
     static var text = ["Reasons to jailbreak", "App Theming", "Change the way your app icons appear."]
     static var previews: some View {
         NavigationView {
-            NavigationLink(destination: StoryView(text)) {
+            NavigationLink(destination: StoryView(Database.stories["app_theming"]!)) {
                 BannerCard(text)
             }
         }

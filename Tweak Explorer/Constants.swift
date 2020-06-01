@@ -7,7 +7,7 @@
 //
 
 struct Constants {
-    static let db: [String: Tweak] = PackageDatabase.database
+    static let db: [String: Tweak] = Database.database
     static let desc = """
         Inspired by the watchOS Motion face, Jellyfish aims to make your Lock screen more modern, more beautiful, and more useful.
 
