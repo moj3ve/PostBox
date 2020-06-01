@@ -65,33 +65,53 @@ struct RepoPrompt: View {
                     }.offset(y: 50)
                 }
                 
-                // Icon | Text | Dev
-                VStack {
-                    Spacer()
-                    VStack {
-                        self.tweak.getIcon(size: 130)
-                        Text(self.tweak.name)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                        Text(self.tweak.repo)
-                            .font(.headline)
-                            .opacity(0.8)
-                            .padding(10)
-                    }
-                    Button(action: {self.showActionMenu.toggle()}) {
-                        AddRepoButton()
-                    }.buttonStyle(InstallButtonStyle())
-                    
-                    Spacer()
-                }
-                    .foregroundColor(.white)
-                    .zIndex(1) // VStack
-                    .offset(y: 180)
+//                // Icon | Text | Dev
+//                VStack {
+//                    Spacer()
+//                    VStack {
+//                        self.tweak.getIcon(size: 130)
+//                        Text(self.tweak.name)
+//                            .font(.largeTitle)
+//                            .fontWeight(.bold)
+//                        Text(self.tweak.repo)
+//                            .font(.headline)
+//                            .opacity(0.8)
+//                            .padding(10)
+//                    }
+//                    Button(action: {self.showActionMenu.toggle()}) {
+//                        AddRepoButton()
+//                    }.buttonStyle(InstallButtonStyle())
+//
+//                    Spacer()
+//                }
+//                .foregroundColor(.white)
                 
                 VStack {
                     Spacer()
                     Blur(.systemThinMaterialDark)
                         .frame(height: 260)
+                        .overlay(
+                            VStack {
+                                Spacer()
+                                VStack {
+                                    self.tweak.getIcon(size: 130)
+                                    Text(self.tweak.name)
+                                        .font(.largeTitle)
+                                        .fontWeight(.bold)
+                                    Text(self.tweak.repo)
+                                        .font(.headline)
+                                        .opacity(0.8)
+                                        .padding(10)
+                                }
+                                Button(action: {self.showActionMenu.toggle()}) {
+                                    AddRepoButton()
+                                }.buttonStyle(InstallButtonStyle())
+                                
+                                Spacer()
+                            }
+                            .offset(y: -50)
+                                .foregroundColor(.white)
+                        )
                         .overlay(VStack {
                             HStack {
                                 Spacer()
@@ -113,8 +133,8 @@ struct RepoPrompt: View {
             }
             .actionSheet(isPresented: self.$showActionMenu) {
                 ActionSheet(title: Text("Select Package Manager"),
-                message: Text("Click the info button for more information."),
-                buttons: self.getApps())
+                            message: Text("Click the info button for more information."),
+                            buttons: self.getApps())
             }
             .navigationBarTitle("Get \(self.tweak.name)", displayMode: .inline)
             .navigationBarItems(
@@ -150,7 +170,7 @@ struct Info: View {
                 self.self.dismiss()
             }) {Text("Done").fontWeight(.semibold)}
         )
-            
+        
     }
 }
 
