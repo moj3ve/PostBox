@@ -62,7 +62,7 @@ struct RepoPrompt: View {
                             .frame(height: g.size.height)
                         
                         Spacer()
-                    }.offset(y: 50)
+                    }
                 }
                 
 //                // Icon | Text | Dev
