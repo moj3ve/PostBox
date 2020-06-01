@@ -116,7 +116,7 @@ class Tweak: Identifiable, Comparable {
     }
     
     public func getLongDesc() -> some View {
-        let blocks = PackageDatabase.descs[self.getTweakID()]!.components(separatedBy: "\n\n")
+        let blocks = Database.descs[self.getTweakID()]!.components(separatedBy: "\n\n")
         let first = Paragraph(first: self.shortDesc, blocks[0])
         
         return VStack(spacing: 40) {
@@ -195,7 +195,7 @@ class User: ObservableObject {
         var wishes = [Tweak]()
         
         for id in wishlistIDs {
-            wishes.append(PackageDatabase.database[id]!)
+            wishes.append(Database.database[id]!)
         }
         
         return wishes

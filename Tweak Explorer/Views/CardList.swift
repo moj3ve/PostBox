@@ -10,6 +10,7 @@ import SwiftUI
 import ModalView
 
 struct CardList: View {
+    @EnvironmentObject var user: User
     public var subhead: String
     public var title: String
     public var tweaks: [Tweak]

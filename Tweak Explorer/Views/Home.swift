@@ -26,18 +26,17 @@ struct Home: View {
             VStack(alignment: .center, spacing: 30) {
                 HomeNavBar().zIndex(1)
                 
-                ForEach(self.flow, id: \.self) { card in
-                    NavigationLink(destination:
-                        StoryView(card, image: card[3])
-                    ) {
-                        if card[4] == "none" {
-                            BannerCardFull(card, image: card[3])
-                        } else {
-                            BannerCard(card, image: card[3])
-                        }
-                    }.buttonStyle(CardButtonStyle())
-                        
-                }
+//                ForEach(self.flow, id: \.self) { card in
+//                    NavigationLink(destination:
+//                        StoryView(card, image: card[3])
+//                    ) {
+//                        if card[4] == "none" {
+//                            BannerCardFull(card, image: card[3])
+//                        } else {
+//                            BannerCard(card, image: card[3])
+//                        }
+//                    }.buttonStyle(CardButtonStyle())
+//                }
                 
                 CardList(Constants.tweakLists.long, subhead: "Jailbreak Tweaks", title: "Tweaks you can't\nsee, but can feel")
                 CardList(Constants.tweakLists.long, subhead: "Hand Picked", title: "Essential\nCosmetic Tweaks")

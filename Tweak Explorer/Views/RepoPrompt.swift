@@ -65,27 +65,6 @@ struct RepoPrompt: View {
                     }
                 }
                 
-//                // Icon | Text | Dev
-//                VStack {
-//                    Spacer()
-//                    VStack {
-//                        self.tweak.getIcon(size: 130)
-//                        Text(self.tweak.name)
-//                            .font(.largeTitle)
-//                            .fontWeight(.bold)
-//                        Text(self.tweak.repo)
-//                            .font(.headline)
-//                            .opacity(0.8)
-//                            .padding(10)
-//                    }
-//                    Button(action: {self.showActionMenu.toggle()}) {
-//                        AddRepoButton()
-//                    }.buttonStyle(InstallButtonStyle())
-//
-//                    Spacer()
-//                }
-//                .foregroundColor(.white)
-                
                 VStack {
                     Spacer()
                     Blur(.systemThinMaterialDark)
@@ -148,6 +127,7 @@ struct RepoPrompt: View {
 }
 
 struct Info: View {
+    @EnvironmentObject var user: User
     var dismiss: () -> ()
     
     var body: some View {
@@ -159,6 +139,9 @@ struct Info: View {
                     Paragraph(first: "Package managers are", "applications that help users install, remove, and update packages on their jailbroken devices. Although not required, package installers are highly recommended for *ALL users. Most are intuitive, efficient, and written to save time.")
                     
                     Paragraph(first: "Removing and adding", "APT repositories (sources) have never been easier. Simply give a package manager a valid URL and it will do the rest! All tweaks from added sources will be indexed in search.")
+                    
+                    CardList(Constants.tweakLists.long)
+
                 }.padding(.leading, 20).padding(.trailing, 10)
             }
         }
