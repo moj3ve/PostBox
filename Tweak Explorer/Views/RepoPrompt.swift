@@ -106,7 +106,7 @@ struct Info: View {
     var body: some View {
         ScrollView {
             VStack (spacing: 20) {
-                Banner(["FAQ", "Package Managers", "What is a package manager?"], image: "banner3", bannerHeight: 300, blur: true, inModal: true)
+                Banner(["FAQ", "Package Managers", "What is a package manager?"], image: "banner3", bannerHeight: 300, inModal: true)
                 
                 Paragraph(first: "Package managers are", "applications that help users ")
                     .padding(20)
