@@ -74,6 +74,19 @@ class Tweak: Identifiable, Comparable {
             .cornerRadius(CGFloat((10.0/57.0) * Double(size)))
     }
     
+    /// Returns Full Card Image
+    public func getFull() -> some View {
+        var imageName = getTweakID() + "_full"
+        if (UIImage(named: imageName) == nil) {
+            imageName = getTweakID() + "_ss_1"
+            if (UIImage(named: imageName) == nil) {
+                imageName = "tweak_full"
+            }
+        }
+        
+        return Image(imageName).resizable().aspectRatio(contentMode: .fill)
+    }
+    
     /// Returns a screenshot of given `frameSize`
     public func getScreenshot(_ i: Int) -> String {
         let imageName = "\(getTweakID())_ss_\(i)"

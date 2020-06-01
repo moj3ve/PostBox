@@ -57,13 +57,15 @@ struct BackButton: View {
     var body: some View {
         VStack {
             HStack {
-                Blur(.systemChromeMaterial)
+                Blur(.systemMaterial)
+                    .overlay(Color(UIColor.label).opacity(0.4))
                     .frame(width: 30, height: 40)
                     .mask(
                         VStack {
                             Spacer()
                             Image(systemName: "chevron.left.circle.fill")
                                 .font(.system(size: 30))
+                                
                             Spacer()
                         }
                 )

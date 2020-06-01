@@ -47,43 +47,42 @@ struct RepoPrompt: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                ZStack {
-                    Image(tweak.getScreenshot(1)).resizable()
-                        .scaledToFill()
-                        .edgesIgnoringSafeArea(.horizontal)
-                        .offset(y: 65)
-                    
-                    // Icon | Text | Dev
-                    VStack {
-                        Spacer()
-                        VStack {
-                            self.tweak.getIcon(size: 100)
-                            Text(self.tweak.name)
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                            Text(self.tweak.repo)
-                                .font(.headline)
-                                .opacity(0.8)
-                        }
-                        Button(action: {self.showActionMenu.toggle()}) {
-                            AddRepoButton()
-                        }.buttonStyle(InstallButtonStyle())
-                        
-                        Spacer()
-                    }
-                        .foregroundColor(.white)
-                        .zIndex(1) // VStack
-                        .offset(y: 175)
-                    
-                    VStack {
-                        Spacer()
-                        Blur(.systemUltraThinMaterialDark)
-                            .frame(height: 300)
-                    }
-                    
-                    
+            ZStack {
+                GeometryReader { g in
+                    self.tweak.getFull()
+                        .offset(y: CGFloat(Double(g.frame(in: .global).minY).squareRoot()))
+                        .frame(height: g.size.height)
                 }
+                
+                // Icon | Text | Dev
+                VStack {
+                    Spacer()
+                    VStack {
+                        self.tweak.getIcon(size: 100)
+                        Text(self.tweak.name)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        Text(self.tweak.repo)
+                            .font(.headline)
+                            .opacity(0.8)
+                    }
+                    Button(action: {self.showActionMenu.toggle()}) {
+                        AddRepoButton()
+                    }.buttonStyle(InstallButtonStyle())
+                    
+                    Spacer()
+                }
+                    .foregroundColor(.white)
+                    .zIndex(1) // VStack
+                    .offset(y: 175)
+                
+                VStack {
+                    Spacer()
+                    Blur(.systemUltraThinMaterialDark)
+                        .frame(height: 260)
+                }.edgesIgnoringSafeArea(.bottom)
+                
+                
             }
             .actionSheet(isPresented: self.$showActionMenu) {
                 ActionSheet(title: Text("Select Package Manager"),
@@ -107,7 +106,7 @@ struct Info: View {
     var body: some View {
         ScrollView {
             VStack (spacing: 20) {
-                Banner(["JAILBREAK INFO", "Package Managers", "What is a package manager?"], image: "banner3", bannerHeight: 300, blur: true, inModal: true)
+                Banner(["JAILBREAK INFO", "Package Managers", "What is a package manager?"], image: "banner3", bannerHeight: 300, inModal: true)
                 
                 Paragraph(first: "Package managers are", "applications that help users ")
                     .padding(20)
@@ -142,9 +141,15 @@ struct AddRepoButton: View {
 struct RepoPrompt_Previews: PreviewProvider {
     static var previews: some View {
         ModalPresenter {
-            ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.paid!)}) {
-                SmallButton("Get")
-            }.buttonStyle(InstallButtonStyle())
+            VStack (spacing: 20) {
+                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.paid!)}) {
+                    SmallButton("One")
+                }.buttonStyle(InstallButtonStyle())
+                
+                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.free!)}) {
+                    SmallButton("Two")
+                }.buttonStyle(InstallButtonStyle())
+            }
         }
     }
 }

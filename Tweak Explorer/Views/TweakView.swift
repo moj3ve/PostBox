@@ -32,7 +32,7 @@ struct TweakView: View {
             VStack {
                 // Banner Image
                 if (self.tweak.getBanner() != "none") {
-                    Banner([], image: self.tweak.getBanner(), bannerHeight: 200) .edgesIgnoringSafeArea(.all)
+                    Banner([], image: self.tweak.getBanner(), bannerHeight: 100) .edgesIgnoringSafeArea(.all)
                 }
                 // Content
                 VStack {
