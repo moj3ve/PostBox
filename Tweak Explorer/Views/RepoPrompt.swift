@@ -117,7 +117,7 @@ struct RepoPrompt: View {
                                 Spacer()
                                 Button(action: {self.copyURL()}) {
                                     Image(systemName: "paperclip")
-                                        .font(.system(size: 20))
+                                        .font(.system(size: 20, weight: .bold))
                                         .foregroundColor(self.copied ? .green : .white)
                                         .opacity(0.8)
                                         .rotationEffect(.degrees(self.copied ? 360 : 0))
