@@ -52,7 +52,6 @@ struct HomeNavBar: View {
     
     var body: some View {
         HStack {
-            // Today and date text
             VStack(alignment: .leading, spacing: 3) {
                 Text(self.dateText)
                     .font(.caption)
@@ -62,11 +61,8 @@ struct HomeNavBar: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
             }
-            
-            // Pushes elements to the side
             Spacer()
             
-            // Small Profile Pic Button
             VStack {
                 Spacer()
                 ModalLink(destination: {AccountView(dismiss: $0).environmentObject(self.user).accentColor(.teal)}) {

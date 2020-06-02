@@ -37,15 +37,15 @@ struct StoryBlock: View {
                         .aspectRatio(contentMode: .fit)
                     HStack {
                         Text(self.text)
-                            .font(.callout)
+                            .font(.footnote)
                             .foregroundColor(.gray)
                         Spacer()
                     }
-                    .padding(20)
+                    .padding(15)
                     .background(Color(.secondarySystemBackground))
                 }
                     .cornerRadius(10)
-                    .shadow(color: Color.black.opacity(0.05), radius: 15, y: 10)
+                    .shadow(color: Color.black.opacity(0.1), radius: 10, y: 10)
             }
         }
     }

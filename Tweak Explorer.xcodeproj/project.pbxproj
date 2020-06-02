@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D8327002486F9FC00DA5825 /* Repos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8326FF2486F9FC00DA5825 /* Repos.swift */; };
 		E91EE952247F672100CA07EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE951247F672100CA07EF /* Constants.swift */; };
 		E91EE954247F730600CA07EF /* TweakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE953247F730600CA07EF /* TweakView.swift */; };
 		E91EE9562481CE1E00CA07EF /* RepoPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE9552481CE1E00CA07EF /* RepoPrompt.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D8326FF2486F9FC00DA5825 /* Repos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repos.swift; sourceTree = "<group>"; };
 		E91EE951247F672100CA07EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E91EE953247F730600CA07EF /* TweakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakView.swift; sourceTree = "<group>"; };
 		E91EE9552481CE1E00CA07EF /* RepoPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoPrompt.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				E91EE95724823BA300CA07EF /* Banners */,
 				E925A50D247C8E1900AFDFB9 /* StoryView.swift */,
 				E925A528247E0CA600AFDFB9 /* Tweaks.swift */,
+				6D8326FF2486F9FC00DA5825 /* Repos.swift */,
 				E925A50F247C9E3100AFDFB9 /* AccountView.swift */,
 				E925A518247CBBFA00AFDFB9 /* StoryBlock.swift */,
 				E9A69B05248702EA00ADAF17 /* SearchView.swift */,
@@ -225,7 +228,8 @@
 				E925A4FB247C8DD000AFDFB9 /* SceneDelegate.swift in Sources */,
 				E963E587248445D9009FD1F7 /* FullTweakLists.swift in Sources */,
 				E91EE95B24823BDE00CA07EF /* BannerCard.swift in Sources */,
-				E9A69B06248702EB00ADAF17 /* SearchView.swift in Sources */,
+				6D8327002486F9FC00DA5825 /* Repos.swift in Sources */,
+				E9F839E02484BA13000466E5 /* SearchView.swift in Sources */,
 				E925A4FD247C8DD000AFDFB9 /* ContentView.swift in Sources */,
 				E925A519247CBBFA00AFDFB9 /* StoryBlock.swift in Sources */,
 				E925A512247CA1FC00AFDFB9 /* InterfaceAdjustments.swift in Sources */,
