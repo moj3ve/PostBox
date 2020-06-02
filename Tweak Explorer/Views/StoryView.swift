@@ -8,6 +8,7 @@ import SwiftUI
 
 struct StoryView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @State var openShareSheet = false
     
     public var headingText: [String]
     public var image: String
@@ -23,6 +24,16 @@ struct StoryView: View {
         story2.removeFirst(1)
         self.flow = story2
     }
+    
+    func shareURL() {
+        openShareSheet.toggle()
+        
+        let string = "Hello"
+        let activityView = UIActivityViewController(activityItems: [string], applicationActivities: nil)
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(activityView, animated: true, completion: nil)
+    }
+    
     var body: some View {
         ZStack {
             ScrollView(showsIndicators: false) {
@@ -37,8 +48,10 @@ struct StoryView: View {
                             Paragraph(first: block[1], block[2], image: block[0] == "i")
                         }
                         Divider()
-                        LongShareButton("Share Story")
-                        .padding(.top, 40)
+                        Button(action: shareURL) {
+                            LongShareButton("Share Story")
+                                .padding(.vertical, 40)
+                        }
                     }.padding(20)
                     Spacer()
                 }.padding(.bottom, 50)
@@ -106,7 +119,7 @@ struct StoryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             NavigationLink(destination: StoryView(Database.stories["app_theming"]!)) {
-                BannerCard(text)
+                BannerCard(Database.stories["app_theming"]!)
             }
         }
     }

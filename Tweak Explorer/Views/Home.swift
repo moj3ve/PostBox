@@ -21,12 +21,12 @@ struct Home: View {
         ScrollView(showsIndicators: true) {
             VStack(alignment: .center, spacing: 30) {
                 HomeNavBar().zIndex(1)
-                
+
                 NavigationLink(destination:
                     // If you get a random error, try putting ! in the back
                     StoryView(Database.stories["app_theming"]!)
                 ) {
-                    Text("REPLACE ME WITH BANNER")
+                    BannerCard(Database.stories["app_theming"]!)
                     // Follow the init of storyview and move to bannercard / bannercardfull
                     
                 }.buttonStyle(CardButtonStyle())

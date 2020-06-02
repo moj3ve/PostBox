@@ -12,13 +12,17 @@ struct BannerCard: View {
     public var texts: [String]
     public var img: String
     public var bannerHeight: CGFloat
+    public var isBlurred: Bool
     private var hideText: Bool
     
-    init (_ texts: [String], image: String? = nil, bannerHeight: CGFloat? = nil) {
-        self.texts = texts
-        self.img = image ?? "banner1"
+    init (_ story: [[String]], bannerHeight: CGFloat? = nil) {
+        let bannerInfo = story[0]
+        
+        self.texts = bannerInfo
+        self.img = bannerInfo[3]
+        self.isBlurred = bannerInfo[4] == "true"
         self.bannerHeight = bannerHeight ?? 410
-        self.hideText = texts.count == 0
+        self.hideText = bannerInfo.count == 0
     }
     
     var body: some View {
@@ -32,26 +36,47 @@ struct BannerCard: View {
                 
             // Text
             if (!self.hideText) {
-                VStack {
-                    Spacer()
-                    HStack {
-                        VStack (alignment: .leading) {
-                            Text(texts[0].uppercased())
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .opacity(0.6)
-                            Text(texts[1])
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                            Text(texts[2])
-                                .font(.caption)
-                                .fontWeight(.semibold)
-                                .padding(.top, 5)
-                                .opacity(0.6)
-                        }.padding(20)
+                if (self.isBlurred) {
+                    VStack {
                         Spacer()
+                        HStack {
+                            VStack (alignment: .leading) {
+                                Text(texts[0].uppercased())
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .opacity(0.6)
+                                Text(texts[1])
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                Text(texts[2])
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .padding(.top, 5)
+                                    .opacity(0.6)
+                            }.padding(20)
+                            Spacer()
+                        }
+                        .background(Blur(.systemChromeMaterial))
                     }
-                    .background(Blur(.systemChromeMaterial))
+                } else {
+                    ZStack {
+                        HStack {
+                            VStack (alignment: .leading) {
+                                Spacer()
+                                Text(texts[0].uppercased())
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                Text(texts[1])
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                Text(texts[2])
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .padding(.top, 10)
+                            }
+                            Spacer()
+                        }.padding(20).foregroundColor(.white)
+                    }
                 }
             }
         }
@@ -63,63 +88,11 @@ struct BannerCard: View {
     
 }
 
-struct BannerCardFull: View {
-    public var texts: [String]
-    public var img: String
-    public var bannerHeight: CGFloat
-    private var hideText: Bool
-    
-    init (_ texts: [String], image: String? = nil, bannerHeight: CGFloat? = nil) {
-        self.texts = texts
-        self.img = image ?? "banner1.1"
-        self.bannerHeight = bannerHeight ?? 410
-        self.hideText = texts.count == 0
-    }
-    
-    var body: some View {
-        ZStack {
-            // Image
-            Image(self.img).resizable()
-                .renderingMode(.original)
-                .aspectRatio(contentMode: .fill)
-                .clipped(antialiased: true)
-                .frame(width: UIScreen.main.bounds.maxX - 40, height: self.bannerHeight)
-                
-            // Text
-            if (!self.hideText) {
-                ZStack {
-                    HStack {
-                        VStack (alignment: .leading) {
-                            Spacer()
-                            Text(texts[0].uppercased())
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                            Text(texts[1])
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                            Text(texts[2])
-                                .font(.caption)
-                                .fontWeight(.semibold)
-                                .padding(.top, 10)
-                        }
-                        Spacer()
-                    }.padding(20).foregroundColor(.white)
-                }
-            }
-        }
-        .frame(height: self.bannerHeight)
-        .cornerRadius(15)
-        .padding(.horizontal, 20)
-        .shadow(radius: 15, y: 10)
-    }
-    
-}
-
 struct BannerCard_Previews: PreviewProvider {
     static var text = ["Reasons to jailbreak", "App Theming", "Change the way your app icons appear."]
     
     static var previews: some View {
-        BannerCard(text)
+        BannerCard(Database.stories["app_theming"]!)
             .environment(\.colorScheme, .dark)
     }
 }
