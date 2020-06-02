@@ -13,16 +13,16 @@ struct StoryView: View {
     public var image: String
     public var isBlurred: Bool
     public var flow: [[String]]
-    
 
     init(_ story: [[String]]) {
         self.image = story[0][3]
         self.headingText = story[0]
         self.isBlurred = story[0][4] == "true"
         
-        self.flow = story
+        var story2 = story
+        story2.removeFirst(1)
+        self.flow = story2
     }
-    
     var body: some View {
         ZStack {
             ScrollView(showsIndicators: false) {
@@ -32,15 +32,9 @@ struct StoryView: View {
                     
                     // Content
                     VStack(alignment: .center, spacing: 30) {
-                        ForEach(1..<self.flow.count) { i in
+                        ForEach(flow, id: \.self) { block in
                             // Paragraph Blocks
-                            if (self.flow[i][0] == "p") {
-                                Paragraph(first: self.flow[i][1], self.flow[i][2])
-                            }
-                            // Image Blocks
-                            else if (self.flow[i][0] == "i"){
-                                ImageBlock(image: self.flow[i][1], caption: self.flow[i][2])
-                            }
+                            Paragraph(first: block[1], block[2], image: block[0] == "i")
                         }
                     }.padding(20)
                     Spacer()
@@ -56,26 +50,6 @@ struct StoryView: View {
         })
         .edgesIgnoringSafeArea(.all)
     } // body
-}
-
-struct ImageBlock: View {
-    var image: String
-    var caption: String?=nil ?? ""
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            Image(self.image).resizable()
-                .aspectRatio(contentMode: .fit)
-            HStack {
-                Text(self.caption!)
-                    .font(.callout)
-                    .foregroundColor(.gray)
-                Spacer()
-            }
-                .padding(20)
-                .background(Color(.secondarySystemBackground))
-        }.cornerRadius(10)
-    }
 }
 
 
