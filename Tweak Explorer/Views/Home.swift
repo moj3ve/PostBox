@@ -16,28 +16,20 @@ struct NullView: View {
 }
 
 struct Home: View {
-    @State private var flow = [
-        ["Reasons to jailbreak", "App Theming", "Change the way your app icons appear", "banner1.1", ""],
-        ["Reasons to jailbreak", "iMessage Theming", "Re-design your message bubbles", "banner2", ""],
-    ]
     
     var body: some View {
         ScrollView(showsIndicators: true) {
             VStack(alignment: .center, spacing: 30) {
                 HomeNavBar().zIndex(1)
                 
-//                ForEach(self.flow, id: \.self) { card in
-//                    NavigationLink(destination:
-//                        StoryView(card, image: card[3])
-//                    ) {
-//                        if card[4] == "none" {
-//                            BannerCardFull(card, image: card[3])
-//                        } else {
-//                            BannerCard(card, image: card[3])
-//                        }
-//                    }.buttonStyle(CardButtonStyle())
-//                }
-                
+                NavigationLink(destination:
+                    // If you get a random error, try putting ! in the back
+                    StoryView(Database.stories["app_theming"]!)
+                ) {
+                    Text("REPLACE ME WITH BANNER")
+                    // Follow the init of storyview and move to bannercard / bannercardfull
+                    
+                }.buttonStyle(CardButtonStyle())
                 CardList(Constants.tweakLists.long, subhead: "Jailbreak Tweaks", title: "Tweaks you can't\nsee, but can feel")
                 CardList(Constants.tweakLists.long, subhead: "Hand Picked", title: "Essential\nCosmetic Tweaks")
                 
