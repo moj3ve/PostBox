@@ -36,9 +36,12 @@ struct StoryView: View {
                             // Paragraph Blocks
                             Paragraph(first: block[1], block[2], image: block[0] == "i")
                         }
+                        Divider()
+                        LongShareButton("Share Story")
+                        .padding(.top, 40)
                     }.padding(20)
                     Spacer()
-                }.padding(.bottom, 100)
+                }.padding(.bottom, 50)
             }
         }
         .accentColor(.teal)
@@ -89,7 +92,7 @@ struct LongShareButton: View {
             Color.teal
             
             Text(self.text)
-                .font(.footnote)
+                .font(.subheadline)
                 .foregroundColor(.white)
                 .fontWeight(.semibold)
         }
