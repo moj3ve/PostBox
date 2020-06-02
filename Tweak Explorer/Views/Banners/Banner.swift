@@ -120,14 +120,14 @@ struct Banner: View {
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: g.size.width, height: g.size.height)
-                            .clipped(antialiased: true)
+                            .clipped(antialiased: false)
                             .animation(.easeOut(duration: 0.4))
                     } else {
                         Image(self.img).resizable()
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
-                            .clipped(antialiased: true)
+                            .clipped(antialiased: false)
                             .offset(y: -g.frame(in: .global).minY)
                             .animation(.easeOut(duration: 0.4))
                     }

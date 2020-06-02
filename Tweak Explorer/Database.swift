@@ -43,11 +43,11 @@ struct Database {
     ]
 
     // To fully enjoy this section below, toggle Preferences > Text Editing > Code Folding Ribbon on and fold all tweaks.
-    static let database: [String: Tweak] = [
+    static let packages: [String: Tweak] = [
         "activator"     : Tweak(
         name: "Activator", dev: "Ryan Petrich", repo: "https://rpetri.ch/repo", shortDesc: "Centralized gestures, button and shortcut management for iOS.", type: "tweak", price: 0),
         "cydia"         : Tweak(
-            name: "Cydia", dev: "Jay Freeman (saurik)", repo: "https://apt.binger.com/", shortDesc: "Graphical iPhone font-end for APT", type: "application", price: 0),
+            name: "Cydia", dev: "Jay Freeman (saurik)", repo: "https://apt.binger.com/", shortDesc: "Graphical iPhone font-end for APT.", type: "application", price: 0),
         "cylinder"      : Tweak(
         name: "Cylinder", dev: "R33d", repo: "https://repo.packix.com", shortDesc: "Make your icons dance.", type: "tweak", price: 0),
         "jellyfish"     : Tweak(

@@ -10,6 +10,7 @@ import SwiftUI
 import ModalView
 
 struct RepoPrompt: View {
+    @EnvironmentObject var user: User
     @State var selected: Int = 0
     @State var showAlert = false
     @State var showActionMenu = false
@@ -54,74 +55,83 @@ struct RepoPrompt: View {
     }
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                GeometryReader { g in
-                    VStack {
-                        self.tweak.getFull()
-                            .frame(height: g.size.height)
-                        
-                        Spacer()
-                    }
-                }
-                
-                VStack {
-                    Spacer()
-                    Blur(.systemThinMaterialDark)
-                        .frame(height: 260)
-                        .overlay(
-                            VStack {
-                                Spacer()
-                                VStack {
-                                    self.tweak.getIcon(size: 130)
-                                    Text(self.tweak.name)
-                                        .font(.largeTitle)
-                                        .fontWeight(.bold)
-                                    Text(self.tweak.repo)
-                                        .font(.headline)
-                                        .opacity(0.8)
-                                        .padding(10)
-                                }
-                                Button(action: {self.showActionMenu.toggle()}) {
-                                    AddRepoButton()
-                                }.buttonStyle(InstallButtonStyle())
-                                
-                                Spacer()
-                            }
-                            .offset(y: -52)
-                                .foregroundColor(.white)
-                        )
-                        .overlay(VStack {
-                            HStack {
-                                Spacer()
-                                Button(action: {self.copyURL()}) {
-                                    Image(systemName: "paperclip")
-                                        .font(.system(size: 20, weight: .bold))
-                                        .foregroundColor(self.copied ? .green : .white)
-                                        .opacity(0.8)
-                                        .rotationEffect(.degrees(self.copied ? 360 : 0))
-                                        .animation(.spring(dampingFraction: 0.1))
-                                        .padding(20)
-                                }
-                            }
+        ModalPresenter {
+            NavigationView {
+                ZStack {
+                    GeometryReader { g in
+                        VStack {
+                            self.tweak.getFull()
+                                .frame(height: g.size.height)
+                            
                             Spacer()
-                        })
-                }.edgesIgnoringSafeArea(.bottom)
-                
-                
+                        }
+                    }
+                    
+                    VStack {
+                        Spacer()
+                        Blur(.systemThinMaterialDark)
+                            .frame(height: 260)
+                            .overlay(
+                                VStack {
+                                    Spacer()
+                                    VStack {
+                                        self.tweak.getIcon(size: 130)
+                                        Text(self.tweak.name)
+                                            .font(.largeTitle)
+                                            .fontWeight(.bold)
+                                        Text(self.tweak.repo)
+                                            .font(.headline)
+                                            .opacity(0.8)
+                                            .padding(10)
+                                    }
+                                    Button(action: {self.showActionMenu.toggle()}) {
+                                        AddRepoButton()
+                                    }.buttonStyle(InstallButtonStyle())
+                                    
+                                    Spacer()
+                                }
+                                .offset(y: -52)
+                                    .foregroundColor(.white)
+                            )
+                            .overlay(VStack {
+                                HStack {
+                                    Button(action: {self.user.toggleWishlistItem(self.tweak)}) {
+                                        Image(systemName: self.user.inWishlist(tweak) ? "heart.fill" : "heart")
+                                            .font(.system(size: 20, weight: .bold))
+                                            .foregroundColor(self.user.inWishlist(tweak) ? .red : .white)
+                                            .opacity(0.8)
+                                            .padding(20)
+                                    }
+                                    Spacer()
+                                    Button(action: {self.copyURL()}) {
+                                        Image(systemName: "paperclip")
+                                            .font(.system(size: 20, weight: .bold))
+                                            .foregroundColor(self.copied ? .green : .white)
+                                            .opacity(0.8)
+                                            .rotationEffect(.degrees(self.copied ? 360 : 0))
+                                            .animation(.spring(dampingFraction: 0.1))
+                                            .padding(20)
+                                    }
+                                }
+                                Spacer()
+                            })
+                    }.edgesIgnoringSafeArea(.bottom)
+                    
+                    
+                }
+                .actionSheet(isPresented: self.$showActionMenu) {
+                    ActionSheet(title: Text("Select Package Manager"),
+                                message: Text("Click the info button for more information."),
+                                buttons: self.getApps())
+                }
+                .navigationBarTitle("Get \(self.tweak.name)", displayMode: .inline)
+                .navigationBarItems(
+                    leading: NavigationLink(destination: Info(dismiss: self.dismiss)) {Image(systemName: "info.circle").font(.system(size: 20))},
+                    trailing: Button (action: {
+                        self.self.dismiss()
+                    }) {Text("Done").fontWeight(.semibold)}
+                )
             }
-            .actionSheet(isPresented: self.$showActionMenu) {
-                ActionSheet(title: Text("Select Package Manager"),
-                            message: Text("Click the info button for more information."),
-                            buttons: self.getApps())
-            }
-            .navigationBarTitle("Get \(self.tweak.name)", displayMode: .inline)
-            .navigationBarItems(
-                leading: NavigationLink(destination: Info(dismiss: self.dismiss)) {Image(systemName: "info.circle").font(.system(size: 20))},
-                trailing: Button (action: {
-                    self.self.dismiss()
-                }) {Text("Done").fontWeight(.semibold)}
-            )
         }
     }
 }
@@ -139,8 +149,6 @@ struct Info: View {
                     StoryBlock(first: "Package managers are", "applications that help users install, remove, and update packages on their jailbroken devices. Although not required, package installers are highly recommended for *ALL users. Most are intuitive, efficient, and written to save time.")
                     
                     StoryBlock(first: "Removing and adding", "APT repositories (sources) have never been easier. Simply give a package manager a valid URL and it will do the rest! All tweaks from added sources will be indexed in search.")
-                    
-                    CardList(Constants.tweakLists.long)
 
                 }.padding(.leading, 20).padding(.trailing, 10)
             }

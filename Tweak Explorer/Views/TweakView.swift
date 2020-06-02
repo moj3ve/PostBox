@@ -52,7 +52,7 @@ struct TweakView: View {
                                 .lineLimit(3)
                                 Spacer()
                             HStack {
-                                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweak)}) {
+                                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweak).environmentObject(self.user)}) {
                                     SmallButton(self.tweak.getPrice())
                                 }.buttonStyle(InstallButtonStyle())
                                 Spacer()
@@ -120,7 +120,7 @@ struct TweakView: View {
                             .font(.largeTitle)
                             .fontWeight(.bold)
                         HStack {
-                            ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweak)}) {
+                            ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweak).environmentObject(self.user)}) {
                                 SmallButton(self.tweak.getPrice())
                             }.buttonStyle(InstallButtonStyle())
                             Button(action: {
@@ -132,11 +132,11 @@ struct TweakView: View {
                                     .foregroundColor(.red)
                             }.onAppear(perform: {self.inWishlist = self.user.inWishlist(self.tweak)})
                         }.padding(.top, 10)
-                    }.padding(.bottom, 60)
+                    }.padding(.bottom, 40)
                 }
             }
         }
-            .edgesIgnoringSafeArea([.horizontal, .bottom])
+            .edgesIgnoringSafeArea(.horizontal)
             .accentColor(.teal)
             .navigationBarTitle("", displayMode: .large)
             .navigationBarBackButtonHidden(true)

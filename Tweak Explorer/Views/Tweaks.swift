@@ -118,7 +118,7 @@ struct Tweaks: View {
                                         }
                                     }.buttonStyle(NoReactionButtonStyle())
                                     Spacer()
-                                    ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
+                                    ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak).environmentObject(self.user)}) {
                                         SmallButton(tweak.getPrice())
                                     }.buttonStyle(InstallButtonStyle())
                                 }

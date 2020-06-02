@@ -41,7 +41,7 @@ struct CardList: View {
                                     .font(.title)
                                     .fontWeight(.bold)
                                     .lineLimit(2)
-                                    Spacer ()
+                                Spacer()
                         }
                         Spacer()
                     }.padding(20)
@@ -55,7 +55,7 @@ struct CardList: View {
                                 NavigationLink(destination: FullScreenList(Constants.tweakLists.long, subhead: self.subhead)) {
                                     CardViewInnerSection(tweak: self.tweaks[i])
                                 }.buttonStyle(NoReactionButtonStyle())
-                                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweaks[i])}) {
+                                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweaks[i]).environmentObject(self.user)}) {
                                     SmallButton(self.tweaks[i].getPrice())
                                 }.buttonStyle(InstallButtonStyle())
                             }

@@ -23,13 +23,11 @@ struct Home: View {
                 HomeNavBar().zIndex(1)
 
                 NavigationLink(destination:
-                    // If you get a random error, try putting ! in the back
                     StoryView(Database.stories["app_theming"]!)
                 ) {
                     BannerCard(Database.stories["app_theming"]!)
-                    // Follow the init of storyview and move to bannercard / bannercardfull
-                    
                 }.buttonStyle(CardButtonStyle())
+                
                 CardList(Constants.tweakLists.long, subhead: "Jailbreak Tweaks", title: "Tweaks you can't\nsee, but can feel")
                 CardList(Constants.tweakLists.long, subhead: "Hand Picked", title: "Essential\nCosmetic Tweaks")
                 

@@ -116,13 +116,14 @@ class Tweak: Identifiable, Comparable {
     }
     
     public func getLongDesc() -> some View {
-        let blocks = Database.descs[self.getTweakID()]!.components(separatedBy: "\n\n")
+        var blocks = Database.descs[self.getTweakID()]!.components(separatedBy: "\n\n")
         let first = StoryBlock(first: self.shortDesc, blocks[0])
+        blocks.removeFirst()
         
         return VStack(spacing: 40) {
             first
-            ForEach(2...blocks.count, id: \.self) { text in
-                StoryBlock(blocks[text - 1])
+            ForEach(blocks, id: \.self) { text in
+                StoryBlock(text)
             }
         }
     }
@@ -195,7 +196,7 @@ class User: ObservableObject {
         var wishes = [Tweak]()
         
         for id in wishlistIDs {
-            wishes.append(Database.database[id]!)
+            wishes.append(Database.packages[id]!)
         }
         
         return wishes
@@ -215,7 +216,6 @@ class User: ObservableObject {
         self.defaults.set(self.wishlist, forKey: "wishlist")
     }
 }
-
 
 struct ContentView: View {
     var body: some View {
@@ -249,7 +249,7 @@ struct ContentView: View {
                             Text("Repo")
                         }
                 }
-                Text("Search")
+                SearchView()
                     .tabItem {
                         VStack {
                             Image(systemName: "magnifyingglass")

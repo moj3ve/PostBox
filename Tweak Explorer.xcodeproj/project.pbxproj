@@ -28,7 +28,7 @@
 		E925A52B247E180D00AFDFB9 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A52A247E180D00AFDFB9 /* CardList.swift */; };
 		E95015E62483484800BD617F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95015E52483484800BD617F /* Database.swift */; };
 		E963E587248445D9009FD1F7 /* FullTweakLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963E586248445D9009FD1F7 /* FullTweakLists.swift */; };
-		E9F839E02484BA13000466E5 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F839DF2484BA13000466E5 /* SearchView.swift */; };
+		E9A69B06248702EB00ADAF17 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A69B05248702EA00ADAF17 /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +54,7 @@
 		E925A52A247E180D00AFDFB9 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		E95015E52483484800BD617F /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		E963E586248445D9009FD1F7 /* FullTweakLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullTweakLists.swift; sourceTree = "<group>"; };
-		E9F839DF2484BA13000466E5 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		E9A69B05248702EA00ADAF17 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,12 +128,12 @@
 				E925A528247E0CA600AFDFB9 /* Tweaks.swift */,
 				E925A50F247C9E3100AFDFB9 /* AccountView.swift */,
 				E925A518247CBBFA00AFDFB9 /* StoryBlock.swift */,
+				E9A69B05248702EA00ADAF17 /* SearchView.swift */,
 				E925A51D247CC54B00AFDFB9 /* Home.swift */,
 				E925A52A247E180D00AFDFB9 /* CardList.swift */,
 				E91EE953247F730600CA07EF /* TweakView.swift */,
 				E91EE9552481CE1E00CA07EF /* RepoPrompt.swift */,
 				E963E586248445D9009FD1F7 /* FullTweakLists.swift */,
-				E9F839DF2484BA13000466E5 /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 				E925A4FB247C8DD000AFDFB9 /* SceneDelegate.swift in Sources */,
 				E963E587248445D9009FD1F7 /* FullTweakLists.swift in Sources */,
 				E91EE95B24823BDE00CA07EF /* BannerCard.swift in Sources */,
-				E9F839E02484BA13000466E5 /* SearchView.swift in Sources */,
+				E9A69B06248702EB00ADAF17 /* SearchView.swift in Sources */,
 				E925A4FD247C8DD000AFDFB9 /* ContentView.swift in Sources */,
 				E925A519247CBBFA00AFDFB9 /* StoryBlock.swift in Sources */,
 				E925A512247CA1FC00AFDFB9 /* InterfaceAdjustments.swift in Sources */,

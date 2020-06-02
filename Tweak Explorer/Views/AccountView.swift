@@ -110,60 +110,62 @@ struct WishlistView: View {
     var sortMethods = ["Alphabetical", "Date"]
     
     var body: some View {
-        ZStack {
-            VStack {
-                Picker("Gender", selection: $sortMethod) {
-                    ForEach(0..<sortMethods.count) {
-                        Text(self.sortMethods[$0])
+        ModalPresenter {
+            ZStack {
+                VStack {
+                    Picker("Gender", selection: $sortMethod) {
+                        ForEach(0..<sortMethods.count) {
+                            Text(self.sortMethods[$0])
+                        }
                     }
-                }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding(10)
-                    .background(Blur(.systemMaterial))
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding(10)
+                        .background(Blur(.systemMaterial))
+                    
+                    Spacer()
+                }.zIndex(1)
                 
-                Spacer()
-            }.zIndex(1)
-            
-            ScrollView {
-                VStack(spacing: 20) {
-                    ForEach(sortMethod == 0 ? self.user.getWishlist().sorted() : self.user.getWishlist()) { tweak in
-                        HStack(alignment: .top) {
-                            // Icon
-                            NavigationLink (destination: TweakView(tweak: tweak)) {
-                                tweak.getIcon(size: 100).padding(.trailing, 10)
-                            }.buttonStyle(NoReactionButtonStyle())
-                            // Text | Button | Divider
-                            VStack(alignment: .leading, spacing: 20) {
-                                VStack(alignment: .leading, spacing: 0) {
-                                    NavigationLink (destination: TweakView(tweak: tweak)) {
-                                        VStack(alignment: .leading, spacing: 5) {
-                                            Text(tweak.name)
-                                                .font(.body)
-                                            Text(tweak.shortDesc)
-                                                .font(.footnote)
-                                                .foregroundColor(Color.gray)
-                                                .lineLimit(2)
-                                        }
-                                    }.buttonStyle(NoReactionButtonStyle())
-                                    
-                                    Spacer()
-                                    
-                                    ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
-                                        SmallButton(tweak.getPrice())
-                                    }.buttonStyle(InstallButtonStyle())
+                ScrollView {
+                    VStack(spacing: 20) {
+                        ForEach(sortMethod == 0 ? self.user.getWishlist().sorted() : self.user.getWishlist()) { tweak in
+                            HStack(alignment: .top) {
+                                // Icon
+                                NavigationLink (destination: TweakView(tweak: tweak)) {
+                                    tweak.getIcon(size: 100).padding(.trailing, 10)
+                                }.buttonStyle(NoReactionButtonStyle())
+                                // Text | Button | Divider
+                                VStack(alignment: .leading, spacing: 20) {
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        NavigationLink (destination: TweakView(tweak: tweak)) {
+                                            VStack(alignment: .leading, spacing: 5) {
+                                                Text(tweak.name)
+                                                    .font(.body)
+                                                Text(tweak.shortDesc)
+                                                    .font(.footnote)
+                                                    .foregroundColor(Color.gray)
+                                                    .lineLimit(2)
+                                            }
+                                        }.buttonStyle(NoReactionButtonStyle())
+                                        
+                                        Spacer()
+                                        
+                                        ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
+                                            SmallButton(tweak.getPrice())
+                                        }.buttonStyle(InstallButtonStyle())
+                                    }
+                                        .frame(height: 100)
+                                    Divider()
                                 }
-                                    .frame(height: 100)
-                                Divider()
-                            }
-                        }.padding(.horizontal, 20)
+                            }.padding(.horizontal, 20)
+                        }
                     }
-                }
-            }.padding(.top, 80)
-        }
-            .navigationBarTitle("Wishlist", displayMode: .inline)
-            .navigationBarItems(trailing: Button (action: {
-                self.dismiss()
+                }.padding(.top, 80)
+            }
+                .navigationBarTitle("Wishlist", displayMode: .inline)
+                .navigationBarItems(trailing: Button (action: {
+                    self.dismiss()
             }) {Text("Done").fontWeight(.semibold)})
+        }
     }
 }
 

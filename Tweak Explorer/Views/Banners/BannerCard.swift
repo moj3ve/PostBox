@@ -31,7 +31,6 @@ struct BannerCard: View {
             Image(self.img).resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fill)
-                .clipped(antialiased: true)
                 .frame(width: UIScreen.main.bounds.maxX-40, height: self.bannerHeight)
                 
             // Text
