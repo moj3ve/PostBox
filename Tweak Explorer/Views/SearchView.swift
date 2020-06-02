@@ -1,4 +1,3 @@
-//
 //  SearchView.swift
 //  Tweak Explorer
 //
@@ -16,57 +15,56 @@ struct SearchView: View {
     init() {
         let pkgs = Array(Database.packages.values)
         let stories = Array(Database.stories.values)
-
+        
         self.pkgs = pkgs
         self.stories = stories
     }
     
     var body: some View {
-        return NavigationView {
-            VStack {
-                SearchBar(searchTerm: $searchTerm)
-                    .disableAutocorrection(true)
-                if searchTerm != "" {
-                    List {
-                        ForEach(pkgs.filter({
-                            $0.name.lowercased().hasPrefix(searchTerm.lowercased()) || searchTerm == ""
-                        })) { tweak in
-                            NavigationLink(destination: TweakView(tweak: tweak)) {
-                                HStack {
-                                    tweak.getIcon(size: 40)
-                                    VStack(alignment: .leading) {
-                                        Text(tweak.name)
-                                            .font(.callout)
-                                        Text(tweak.shortDesc)
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                    }
-                                }
-                            }
-                        }
-                        ForEach(pkgs.filter({
-                            $0.name.lowercased().hasPrefix(searchTerm.lowercased()) || searchTerm == ""
-                        })) { tweak in
-                            NavigationLink(destination: TweakView(tweak: tweak)) {
-                                HStack {
-                                    tweak.getIcon(size: 40)
-                                    VStack(alignment: .leading) {
-                                        Text(tweak.name)
-                                            .font(.callout)
-                                        Text(tweak.shortDesc)
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                    }
+        VStack {
+            SearchBar(searchTerm: $searchTerm)
+                .disableAutocorrection(true)
+            if searchTerm != "" {
+                List {
+                    ForEach(pkgs.filter({
+                        $0.name.lowercased().hasPrefix(searchTerm.lowercased()) || searchTerm == ""
+                    })) { tweak in
+                        NavigationLink(destination: TweakView(tweak: tweak)) {
+                            HStack {
+                                tweak.getIcon(size: 40)
+                                VStack(alignment: .leading) {
+                                    Text(tweak.name)
+                                        .font(.callout)
+                                    Text(tweak.shortDesc)
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
                                 }
                             }
                         }
                     }
-                } else {
-                    EmptyFill()
-                    Spacer()
+                    ForEach(pkgs.filter({
+                        $0.name.lowercased().hasPrefix(searchTerm.lowercased()) || searchTerm == ""
+                    })) { tweak in
+                        NavigationLink(destination: TweakView(tweak: tweak)) {
+                            HStack {
+                                tweak.getIcon(size: 40)
+                                VStack(alignment: .leading) {
+                                    Text(tweak.name)
+                                        .font(.callout)
+                                    Text(tweak.shortDesc)
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                        }
+                    }
                 }
-            }.navigationBarTitle("Search")
-        }
+            } else {
+                EmptyFill()
+                Spacer()
+            }
+        }.navigationBarTitle("Search")
+        
     }
 }
 
@@ -90,11 +88,11 @@ struct SearchBar: View {
                     .opacity(searchTerm == "" ? 0 : 1)
             }
         }
-        .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-        .foregroundColor(.secondary)
-        .background(Color(.secondarySystemBackground))
-        .cornerRadius(10)
-        .padding(.horizontal, 15)
+            .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+            .foregroundColor(.secondary)
+            .background(Color(.secondarySystemBackground))
+            .cornerRadius(10)
+            .padding(.horizontal, 15)
     }
 }
 

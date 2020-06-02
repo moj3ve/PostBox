@@ -258,13 +258,15 @@ struct ContentView: View {
                         }
                     }
 
-                SearchView()
-                    .tabItem {
-                        VStack {
-                            Image(systemName: "magnifyingglass")
-                            Text("Search")
-                        }
+                NavigationView {
+                    SearchView()
                 }
+                    .tabItem {
+                            VStack {
+                                Image(systemName: "magnifyingglass")
+                                Text("Search")
+                            }
+                    }
             } // TabView
         }.accentColor(.teal) // ModalPresenter
     }
