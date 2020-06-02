@@ -226,9 +226,12 @@ struct ContentView: View {
                         .navigationBarTitle("Home", displayMode: .inline)
                         .navigationBarHidden(true)
                 }
-                    .tabItem { VStack {
-                        Image(systemName: "house.fill")
-                        Text("Home")}
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "house.fill")
+                            Text("Home")
+                            
+                        }
                     }
                 
                 NavigationView {
@@ -236,19 +239,25 @@ struct ContentView: View {
                         .navigationBarTitle("Tweaks", displayMode: .inline)
                         .navigationBarHidden(true)
                 }
-                .tabItem {
-                    VStack {
-                        Image(systemName: "cube.box.fill")
-                        Text("Tweaks")
-                    }
-                }
-                Text("Repo")
                     .tabItem {
                         VStack {
-                            Image(systemName: "folder.fill")
-                            Text("Repo")
+                            Image(systemName: "cube.box.fill")
+                            Text("Tweaks")
                         }
+                    }
+                
+                NavigationView {
+                    Repos()
+                        .navigationBarTitle("Repos", displayMode: .inline)
+                        .navigationBarHidden(true)
                 }
+                    .tabItem {
+                            VStack {
+                                Image(systemName: "folder.fill")
+                                Text("Repos")
+                        }
+                    }
+
                 Text("Search")
                     .tabItem {
                         VStack {

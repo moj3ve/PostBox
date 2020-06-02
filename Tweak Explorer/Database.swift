@@ -72,4 +72,9 @@ struct Database {
                         ["p", "", "With appropriate themeing engines such as SnowBoard, Anemone, or iThemer, users can easily change the appearance of app icons, notification badges, dock labels, and even system glyphs."],
                         ["p", "", "As more and more devices are becoming eligible to jailbreaking, develops and designers race to create the ideal themes to appeal their customers. With thousands of theming packages that alters the appearances of the majority of iOS apps, theming can allow devices to stand unique to others."]]
     ]
+    
+    // Repo cards
+    static let repos: [String: [[String]]] = [
+        "packix": [["Packix", "https://repo.packix.com/"]]
+    ]
 }

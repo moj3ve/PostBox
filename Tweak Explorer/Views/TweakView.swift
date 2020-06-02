@@ -132,7 +132,7 @@ struct TweakView: View {
                                     .foregroundColor(.red)
                             }.onAppear(perform: {self.inWishlist = self.user.inWishlist(self.tweak)})
                         }.padding(.top, 10)
-                    }.padding(.bottom, 60)
+                    }.padding(.bottom, 130)
                 }
             }
         }
