@@ -22,7 +22,7 @@
 		E925A510247C9E3100AFDFB9 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A50F247C9E3100AFDFB9 /* AccountView.swift */; };
 		E925A512247CA1FC00AFDFB9 /* InterfaceAdjustments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A511247CA1FC00AFDFB9 /* InterfaceAdjustments.swift */; };
 		E925A515247CA81E00AFDFB9 /* ModalView in Frameworks */ = {isa = PBXBuildFile; productRef = E925A514247CA81E00AFDFB9 /* ModalView */; };
-		E925A519247CBBFA00AFDFB9 /* Paragraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A518247CBBFA00AFDFB9 /* Paragraph.swift */; };
+		E925A519247CBBFA00AFDFB9 /* StoryBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A518247CBBFA00AFDFB9 /* StoryBlock.swift */; };
 		E925A51E247CC54B00AFDFB9 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A51D247CC54B00AFDFB9 /* Home.swift */; };
 		E925A529247E0CA600AFDFB9 /* Tweaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A528247E0CA600AFDFB9 /* Tweaks.swift */; };
 		E925A52B247E180D00AFDFB9 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A52A247E180D00AFDFB9 /* CardList.swift */; };
@@ -48,7 +48,7 @@
 		E925A50D247C8E1900AFDFB9 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		E925A50F247C9E3100AFDFB9 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		E925A511247CA1FC00AFDFB9 /* InterfaceAdjustments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceAdjustments.swift; sourceTree = "<group>"; };
-		E925A518247CBBFA00AFDFB9 /* Paragraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paragraph.swift; sourceTree = "<group>"; };
+		E925A518247CBBFA00AFDFB9 /* StoryBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBlock.swift; sourceTree = "<group>"; };
 		E925A51D247CC54B00AFDFB9 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		E925A528247E0CA600AFDFB9 /* Tweaks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweaks.swift; sourceTree = "<group>"; };
 		E925A52A247E180D00AFDFB9 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 				E925A50D247C8E1900AFDFB9 /* StoryView.swift */,
 				E925A528247E0CA600AFDFB9 /* Tweaks.swift */,
 				E925A50F247C9E3100AFDFB9 /* AccountView.swift */,
-				E925A518247CBBFA00AFDFB9 /* Paragraph.swift */,
+				E925A518247CBBFA00AFDFB9 /* StoryBlock.swift */,
 				E925A51D247CC54B00AFDFB9 /* Home.swift */,
 				E925A52A247E180D00AFDFB9 /* CardList.swift */,
 				E91EE953247F730600CA07EF /* TweakView.swift */,
@@ -227,7 +227,7 @@
 				E91EE95B24823BDE00CA07EF /* BannerCard.swift in Sources */,
 				E9F839E02484BA13000466E5 /* SearchView.swift in Sources */,
 				E925A4FD247C8DD000AFDFB9 /* ContentView.swift in Sources */,
-				E925A519247CBBFA00AFDFB9 /* Paragraph.swift in Sources */,
+				E925A519247CBBFA00AFDFB9 /* StoryBlock.swift in Sources */,
 				E925A512247CA1FC00AFDFB9 /* InterfaceAdjustments.swift in Sources */,
 				E925A52B247E180D00AFDFB9 /* CardList.swift in Sources */,
 				E91EE95924823BAD00CA07EF /* Banner.swift in Sources */,

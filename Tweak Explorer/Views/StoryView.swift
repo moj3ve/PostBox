@@ -45,7 +45,7 @@ struct StoryView: View {
                     VStack(alignment: .center, spacing: 30) {
                         ForEach(flow, id: \.self) { block in
                             // Paragraph Blocks
-                            Paragraph(first: block[1], block[2], image: block[0] == "i")
+                            StoryBlock(first: block[1], block[2], image: block[0] == "i")
                         }
                         Divider()
                         Button(action: shareURL) {

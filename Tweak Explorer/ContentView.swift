@@ -117,12 +117,12 @@ class Tweak: Identifiable, Comparable {
     
     public func getLongDesc() -> some View {
         let blocks = Database.descs[self.getTweakID()]!.components(separatedBy: "\n\n")
-        let first = Paragraph(first: self.shortDesc, blocks[0])
+        let first = StoryBlock(first: self.shortDesc, blocks[0])
         
         return VStack(spacing: 40) {
             first
             ForEach(2...blocks.count, id: \.self) { text in
-                Paragraph(blocks[text - 1])
+                StoryBlock(blocks[text - 1])
             }
         }
     }

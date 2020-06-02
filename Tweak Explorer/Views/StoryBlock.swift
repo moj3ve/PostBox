@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Paragraph: View {
+struct StoryBlock: View {
     public var text: String
     public var first: String
     public var image = false
@@ -43,7 +43,9 @@ struct Paragraph: View {
                     }
                     .padding(20)
                     .background(Color(.secondarySystemBackground))
-                }.cornerRadius(10)
+                }
+                    .cornerRadius(10)
+                    .shadow(color: Color.black.opacity(0.05), radius: 15, y: 10)
             }
         }
     }
@@ -51,6 +53,6 @@ struct Paragraph: View {
 
 struct Paragraph_Previews: PreviewProvider {
     static var previews: some View {
-        Paragraph(first: "Hello World.", "This is a paragraph view that joins multiple views together to create a nice paragraph view! \n\nTheETHETHETHETHETHETHETHETHEKSUYDFsuydfgosudyfgwoeiru gosidufgsoidfug osidfug odiufgsoidufg sdoifug osidfugpaieurgf padofg [ad8ofg [odfug paidugf pa8esgf pa9d8fg padf8ug ")
+        StoryBlock(first: "Hello World.", "This is a paragraph view that joins multiple views together to create a nice paragraph view! \n\nTheETHETHETHETHETHETHETHETHEKSUYDFsuydfgosudyfgwoeiru gosidufgsoidfug osidfug odiufgsoidufg sdoifug osidfugpaieurgf padofg [ad8ofg [odfug paidugf pa8esgf pa9d8fg padf8ug ")
     }
 }

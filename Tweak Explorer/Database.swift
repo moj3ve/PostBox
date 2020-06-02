@@ -68,7 +68,7 @@ struct Database {
     static let stories: [String: [[String]]] = [
         "app_theming": [["Reasons to Jailbreak", "App Theming", "Change the way your app icons appear", "banner1.1", "true"],
                         ["p", "Unlike Android, Apple", "doesn't provide any default theming options to their devices. Although limited icon theming is possible with an unjailbroken device, many users have found out that the process is highly inefficient. With jailbreaking, users are able to unlock the full potentials of icon theming."],
-                        ["i", "jellyfish_banner", "This is a caption. The image above is Jellyfish's banner image."],
+                        ["i", "snowboard_banner", "Snowboard is currently the most popular theming engine. It supports iOS 7+."],
                         ["p", "", "With appropriate themeing engines such as SnowBoard, Anemone, or iThemer, users can easily change the appearance of app icons, notification badges, dock labels, and even system glyphs."],
                         ["p", "", "As more and more devices are becoming eligible to jailbreaking, develops and designers race to create the ideal themes to appeal their customers. With thousands of theming packages that alters the appearances of the majority of iOS apps, theming can allow devices to stand unique to others."]]
     ]
