@@ -14,11 +14,13 @@ struct StoryView: View {
     public var image: String
     public var isBlurred: Bool
     public var flow: [[String]]
+    public var shareTitle: [String]
 
     init(_ story: [[String]]) {
         self.image = story[0][3]
         self.headingText = story[0]
         self.isBlurred = story[0][4] == "true"
+        self.shareTitle = story[0]
         
         var story2 = story
         story2.removeFirst(1)
@@ -28,7 +30,7 @@ struct StoryView: View {
     func shareURL() {
         openShareSheet.toggle()
         
-        let string = "Hello"
+        let string = shareTitle[1]
         let activityView = UIActivityViewController(activityItems: [string], applicationActivities: nil)
         
         UIApplication.shared.windows.first?.rootViewController?.present(activityView, animated: true, completion: nil)
@@ -54,7 +56,7 @@ struct StoryView: View {
                         }
                     }.padding(20)
                     Spacer()
-                }.padding(.bottom, 50)
+                }.padding(.bottom, 90)
             }
         }
         .accentColor(.teal)

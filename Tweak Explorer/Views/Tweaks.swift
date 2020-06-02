@@ -44,7 +44,7 @@ struct Tweaks: View {
                                 HStack{
                                     Spacer()
                                     Text("paid tweaks".uppercased())
-                                        .font(.headline)
+                                        .font(.subheadline)
                                         .fontWeight(.semibold)
                                     Spacer()
                                 }
