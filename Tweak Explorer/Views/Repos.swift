@@ -11,39 +11,14 @@ import ModalView
 
 struct Repos: View {
     var body: some View {
-        ScrollView(showsIndicators: true) {
-            VStack(alignment: .center, spacing: 30) {
-                ReposNavBar().zIndex(1)
-                ScrollView(.horizontal, showsIndicators: false) {
-                    Text("test")
-                }
-
-                
-                
+        NavigationView {
+            ScrollView(showsIndicators: true) {
+                BannerCard(Database.repos["packix"]!)
             }
-        }
-}
-
-struct ReposNavBar: View {
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 3) {
-                Text("Featured")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-            }
-            Spacer()
-            }
-            .padding(.top, 25)
-            .padding(.horizontal, 20)
+            .navigationBarTitle("Featured")
         }
     }
-     
 }
-
-
-
 struct Repos_Previews: PreviewProvider {
     static var previews: some View {
         Repos()
