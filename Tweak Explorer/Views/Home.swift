@@ -16,7 +16,6 @@ struct NullView: View {
 }
 
 struct Home: View {
-    
     var body: some View {
         ScrollView(showsIndicators: true) {
             VStack(alignment: .center, spacing: 30) {

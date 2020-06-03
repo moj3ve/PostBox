@@ -113,7 +113,7 @@ struct EmptyFill: View {
             Image("search").resizable()
                 .aspectRatio(contentMode: .fit)
                 .scaleEffect(0.8)
-            Text("Find Packages, Repos, and Stories.\nWant something be on our app, just ask!")
+            Text("Find Packages, Repos, and Stories.\nWant something be on our app? just ask!")
                 .font(.headline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)

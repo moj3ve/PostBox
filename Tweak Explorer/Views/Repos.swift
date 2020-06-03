@@ -13,7 +13,9 @@ struct Repos: View {
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: true) {
-                BannerCard(Database.repos["packix"]!)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    BannerCard(Database.repos["packix"]!)
+                }
             }
             .navigationBarTitle("Featured")
         }
