@@ -9,24 +9,32 @@
 import SwiftUI
 import ModalView
 
-struct NullView: View {
-    var body: some View {
-        Color.white.frame(width: 0, height: 0)
-    }
-}
-
 struct Home: View {
+    @State var showTop = false
+    
+    private func updateTop(_ g: GeometryProxy) -> some View {
+        self.showTop = g.frame(in: .global).minY <= 20
+        
+        return Rectangle()
+    }
+    
     var body: some View {
-        GeometryReader { geometry in
-                Rectangle()
-                    
-                    .frame(width: UIScreen.main.bounds.maxX, height: geometry.safeAreaInsets.top)
-                    .zIndex(2)
-                    .edgesIgnoringSafeArea(.all)
-                ScrollView(showsIndicators: true) {
+        GeometryReader { g in
+            Blur(.systemChromeMaterial)
+                .frame(width: UIScreen.main.bounds.maxX, height: g.safeAreaInsets.top)
+                .edgesIgnoringSafeArea(.all)
+                .zIndex(2)
+                .opacity(self.showTop ? 1 : 0)
+                .animation(.easeIn(duration: 0.2), value: self.showTop)
+            
+            ScrollView(showsIndicators: true) {
+                VStack(spacing: 0) {
+                    GeometryReader { g2 in
+                        self.updateTop(g2)
+                        }.frame(width: 0, height: 0).padding(0)
                     VStack(alignment: .center, spacing: 30) {
                         HomeNavBar().zIndex(1)
-
+                        
                         NavigationLink(destination:
                             StoryView(Database.stories["app_theming"]!)
                         ) {
@@ -35,10 +43,9 @@ struct Home: View {
                         
                         CardList(Constants.tweakLists.long, subhead: "Jailbreak Tweaks", title: "Tweaks you can't\nsee, but can feel")
                         CardList(Constants.tweakLists.long, subhead: "Hand Picked", title: "Essential\nCosmetic Tweaks")
-                        
-                    }.padding(.bottom, 40)
+                    }
                 }
-            
+            }
         }
     }
 }
@@ -112,6 +119,6 @@ struct Home_Previews: PreviewProvider {
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
-        }.environment(\.colorScheme, .dark)
+        }
     }
 }

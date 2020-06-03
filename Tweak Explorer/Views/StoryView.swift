@@ -60,6 +60,7 @@ struct StoryView: View {
             }
         }
         .accentColor(.teal)
+        .navigationBarHidden(false)
         .navigationBarTitle("", displayMode: .large)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
