@@ -75,6 +75,7 @@ struct Database {
     
     // Repo cards
     static let repos: [String: [[String]]] = [
-        "packix": [["Editor's Choice", "Packix","repo.packix.com","repobanner1","true"]]
+        "packix": [["Editor's Choice", "Packix","repo.packix.com","packix_banner","false"]],
+        "chariz": [["Editor's Choice", "Chariz","repo.chariz.com","chariz_banner","false"]]
     ]
 }

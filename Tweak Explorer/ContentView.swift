@@ -39,7 +39,7 @@ struct ContentView: View {
             TabView {
                 Tab(title: "Home", img: "house.fill", hidden: true) { Home() }
                 Tab(title: "Tweaks", img: "cube.box.fill", hidden: true) { Tweaks() }
-                Tab(title: "Repos", img: "folder.fill", hidden: true) { Repos() }
+//                Tab(title: "Repos", img: "folder.fill", hidden: true) { Repos() }
                 Tab(title: "Search", img: "magnifyingglass", hidden: false) { SearchView() }
             }
         }

@@ -31,7 +31,6 @@
 		E925A52B247E180D00AFDFB9 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A52A247E180D00AFDFB9 /* CardList.swift */; };
 		E95015E62483484800BD617F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95015E52483484800BD617F /* Database.swift */; };
 		E963E587248445D9009FD1F7 /* FullTweakLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963E586248445D9009FD1F7 /* FullTweakLists.swift */; };
-		E9A087172487FCBD002C5873 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A087162487FCBD002C5873 /* Repo.swift */; };
 		E9A69B082487144D00ADAF17 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A69B072487144D00ADAF17 /* SearchView.swift */; };
 		E9A69B0D2487816000ADAF17 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A69B0C2487816000ADAF17 /* User.swift */; };
 		E9A69B0F2487818B00ADAF17 /* Tweak.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A69B0E2487818B00ADAF17 /* Tweak.swift */; };
@@ -97,6 +96,7 @@
 			children = (
 				E925A4F7247C8DD000AFDFB9 /* Tweak Explorer */,
 				E925A4F6247C8DD000AFDFB9 /* Products */,
+				E94C0BD124885A6300E4780D /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +153,14 @@
 				E963E586248445D9009FD1F7 /* FullTweakLists.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E94C0BD124885A6300E4780D /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				E9A087162487FCBD002C5873 /* Repo.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		E9A69B0B2487814700ADAF17 /* Custom Classes */ = {
@@ -251,7 +259,6 @@
 				E9A69B0F2487818B00ADAF17 /* Tweak.swift in Sources */,
 				E925A4F9247C8DD000AFDFB9 /* AppDelegate.swift in Sources */,
 				E91EE952247F672100CA07EF /* Constants.swift in Sources */,
-				E9A087172487FCBD002C5873 /* Repo.swift in Sources */,
 				E91EE9562481CE1E00CA07EF /* RepoPrompt.swift in Sources */,
 				E925A50E247C8E1900AFDFB9 /* StoryView.swift in Sources */,
 				E9A69B0D2487816000ADAF17 /* User.swift in Sources */,
