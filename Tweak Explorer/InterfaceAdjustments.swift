@@ -29,17 +29,6 @@ struct Blur: UIViewRepresentable {
     }
 }
 
-//extension UINavigationController: UIGestureRecognizerDelegate {
-//    override open func viewDidLoad() {
-//        super.viewDidLoad()
-//        interactivePopGestureRecognizer?.delegate = self
-//    }
-//
-//    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return viewControllers.count > 1
-//    }
-//}
-
 // Word Case
 extension StringProtocol {
     var firstUppercased: String { return prefix(1).uppercased() + dropFirst() }
@@ -47,7 +36,7 @@ extension StringProtocol {
 
 // Custom Button Animation
 struct CardButtonStyle: ButtonStyle {
- 
+    
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
@@ -57,7 +46,7 @@ struct CardButtonStyle: ButtonStyle {
 
 // Custom Button Animation (Install)
 struct InstallButtonStyle: ButtonStyle {
- 
+    
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .brightness(configuration.isPressed ? -0.5 : 0)
@@ -67,7 +56,7 @@ struct InstallButtonStyle: ButtonStyle {
 
 // Custom Button Animation (Install)
 struct NoReactionButtonStyle: ButtonStyle {
- 
+    
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
     }

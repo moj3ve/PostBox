@@ -97,15 +97,15 @@ struct RepoPrompt: View {
                                 HStack {
                                     Button(action: {self.user.toggleWishlistItem(self.tweak)}) {
                                         Image(systemName: self.user.inWishlist(tweak) ? "heart.fill" : "heart")
-                                            .font(.system(size: 20, weight: .bold))
+                                            .font(.system(size: 20, weight: .semibold))
                                             .foregroundColor(self.user.inWishlist(tweak) ? .red : .white)
                                             .opacity(0.8)
                                             .padding(20)
                                     }
                                     Spacer()
                                     Button(action: {self.copyURL()}) {
-                                        Image(systemName: "paperclip")
-                                            .font(.system(size: 20, weight: .bold))
+                                        Image(systemName: "doc.on.clipboard")
+                                            .font(.system(size: 20, weight: .semibold))
                                             .foregroundColor(self.copied ? .green : .white)
                                             .opacity(0.8)
                                             .rotationEffect(.degrees(self.copied ? 360 : 0))
