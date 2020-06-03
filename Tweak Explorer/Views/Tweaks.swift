@@ -23,13 +23,13 @@ struct Tweaks: View {
                                 .renderingMode(.original)
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: g.size.width, height: g.size.height)
-                                .clipped(antialiased: true)
+                                .clipped()
                         } else {
                             Image("banner1.1").resizable()
                                 .renderingMode(.original)
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
-                                .clipped(antialiased: true)
+                                .clipped()
                                 .offset(y: -g.frame(in: .global).minY)
                         }
                     }

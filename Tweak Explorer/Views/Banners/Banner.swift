@@ -34,14 +34,14 @@ struct BannerFull: View {
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: g.size.width, height: g.size.height)
-                            .clipped(antialiased: true)
+                            .clipped()
                             .animation(.easeOut(duration: 0.4))
                     } else {
                         Image(self.img).resizable()
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
-                            .clipped(antialiased: true)
+                            .clipped()
                             .offset(y: -g.frame(in: .global).minY)
                             .animation(.easeOut(duration: 0.4))
                     }
@@ -51,13 +51,13 @@ struct BannerFull: View {
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: g.size.width, height: g.size.height)
-                            .clipped(antialiased: true)
+                            .clipped()
                     } else {
                         Image(self.img).resizable()
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
-                            .clipped(antialiased: true)
+                            .clipped()
                             .offset(y: -g.frame(in: .global).minY)
                     }
                 }
@@ -120,14 +120,14 @@ struct Banner: View {
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: g.size.width, height: g.size.height)
-                            .clipped(antialiased: false)
+                            .clipped()
                             .animation(.easeOut(duration: 0.4))
                     } else {
                         Image(self.img).resizable()
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
-                            .clipped(antialiased: false)
+                            .clipped()
                             .offset(y: -g.frame(in: .global).minY)
                             .animation(.easeOut(duration: 0.4))
                     }
@@ -137,13 +137,13 @@ struct Banner: View {
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: g.size.width, height: g.size.height)
-                            .clipped(antialiased: true)
+                            .clipped()
                     } else {
                         Image(self.img).resizable()
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
-                            .clipped(antialiased: true)
+                            .clipped()
                             .offset(y: -g.frame(in: .global).minY)
                     }
                 }
