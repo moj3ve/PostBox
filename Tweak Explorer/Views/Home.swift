@@ -17,20 +17,28 @@ struct NullView: View {
 
 struct Home: View {
     var body: some View {
-        ScrollView(showsIndicators: true) {
-            VStack(alignment: .center, spacing: 30) {
-                HomeNavBar().zIndex(1)
+        GeometryReader { geometry in
+                Rectangle()
+                    
+                    .frame(width: UIScreen.main.bounds.maxX, height: geometry.safeAreaInsets.top)
+                    .zIndex(2)
+                    .edgesIgnoringSafeArea(.all)
+                ScrollView(showsIndicators: true) {
+                    VStack(alignment: .center, spacing: 30) {
+                        HomeNavBar().zIndex(1)
 
-                NavigationLink(destination:
-                    StoryView(Database.stories["app_theming"]!)
-                ) {
-                    BannerCard(Database.stories["app_theming"]!)
-                }.buttonStyle(CardButtonStyle())
-                
-                CardList(Constants.tweakLists.long, subhead: "Jailbreak Tweaks", title: "Tweaks you can't\nsee, but can feel")
-                CardList(Constants.tweakLists.long, subhead: "Hand Picked", title: "Essential\nCosmetic Tweaks")
-                
-            }.padding(.bottom, 40)
+                        NavigationLink(destination:
+                            StoryView(Database.stories["app_theming"]!)
+                        ) {
+                            BannerCard(Database.stories["app_theming"]!)
+                        }.buttonStyle(CardButtonStyle())
+                        
+                        CardList(Constants.tweakLists.long, subhead: "Jailbreak Tweaks", title: "Tweaks you can't\nsee, but can feel")
+                        CardList(Constants.tweakLists.long, subhead: "Hand Picked", title: "Essential\nCosmetic Tweaks")
+                        
+                    }.padding(.bottom, 40)
+                }
+            
         }
     }
 }
