@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6D8327002486F9FC00DA5825 /* Repos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8326FF2486F9FC00DA5825 /* Repos.swift */; };
+		6DAC35C72488389E00DFE894 /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC35C62488389E00DFE894 /* RepoView.swift */; };
+		6DAC35C924883DF500DFE894 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC35C824883DF500DFE894 /* Repo.swift */; };
 		E91EE952247F672100CA07EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE951247F672100CA07EF /* Constants.swift */; };
 		E91EE954247F730600CA07EF /* TweakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE953247F730600CA07EF /* TweakView.swift */; };
 		E91EE9562481CE1E00CA07EF /* RepoPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE9552481CE1E00CA07EF /* RepoPrompt.swift */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		6D8326FF2486F9FC00DA5825 /* Repos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repos.swift; sourceTree = "<group>"; };
+		6DAC35C62488389E00DFE894 /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
+		6DAC35C824883DF500DFE894 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		E91EE951247F672100CA07EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E91EE953247F730600CA07EF /* TweakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakView.swift; sourceTree = "<group>"; };
 		E91EE9552481CE1E00CA07EF /* RepoPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoPrompt.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 				E925A50D247C8E1900AFDFB9 /* StoryView.swift */,
 				E925A528247E0CA600AFDFB9 /* Tweaks.swift */,
 				6D8326FF2486F9FC00DA5825 /* Repos.swift */,
+				6DAC35C62488389E00DFE894 /* RepoView.swift */,
 				E925A50F247C9E3100AFDFB9 /* AccountView.swift */,
 				E925A518247CBBFA00AFDFB9 /* StoryBlock.swift */,
 				E9A69B072487144D00ADAF17 /* SearchView.swift */,
@@ -152,8 +157,9 @@
 			isa = PBXGroup;
 			children = (
 				E9A69B0C2487816000ADAF17 /* User.swift */,
-				E9A69B0E2487818B00ADAF17 /* Tweak.swift */,
 				E9A69B10248785DF00ADAF17 /* Story.swift */,
+				E9A69B0E2487818B00ADAF17 /* Tweak.swift */,
+				6DAC35C824883DF500DFE894 /* Repo.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -238,6 +244,7 @@
 				E925A529247E0CA600AFDFB9 /* Tweaks.swift in Sources */,
 				E9A69B082487144D00ADAF17 /* SearchView.swift in Sources */,
 				E95015E62483484800BD617F /* Database.swift in Sources */,
+				6DAC35C924883DF500DFE894 /* Repo.swift in Sources */,
 				E91EE954247F730600CA07EF /* TweakView.swift in Sources */,
 				E9A69B0F2487818B00ADAF17 /* Tweak.swift in Sources */,
 				E925A4F9247C8DD000AFDFB9 /* AppDelegate.swift in Sources */,
@@ -257,6 +264,7 @@
 				E925A51E247CC54B00AFDFB9 /* Home.swift in Sources */,
 				E925A510247C9E3100AFDFB9 /* AccountView.swift in Sources */,
 				E9A69B11248785DF00ADAF17 /* Story.swift in Sources */,
+				6DAC35C72488389E00DFE894 /* RepoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
