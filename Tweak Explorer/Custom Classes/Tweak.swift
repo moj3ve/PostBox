@@ -60,12 +60,18 @@ class Tweak: Identifiable, Comparable {
         return self.price == 0 ? freeText : "$" + String(format: "%.2f", self.price)
     }
     
-    /// Returns `some View` of the tweak's icon.
-    public func getIcon(size: CGFloat) -> some View {
+    /// Returns `String` of the tweak's icon name.
+    public func getIconName() -> String {
         var fileID = self.getTweakID() + "_icon"
         if UIImage(named: fileID) == nil {
             fileID = "tweak_icon"
         }
+        return fileID
+    }
+    
+    /// Returns `some View` of the tweak's icon.
+    public func getIcon(size: CGFloat) -> some View {
+        let fileID = self.getIconName()
         
         return Image(fileID).resizable()
             .renderingMode(.original)

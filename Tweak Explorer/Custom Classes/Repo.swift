@@ -39,27 +39,21 @@ class Repo: Identifiable, Comparable {
         return name.lowercased().replacingOccurrences(of: " ", with: "_")
     }
     
-    public func getIcon(size: CGFloat) -> some View {
+    public func getIconName() -> String {
         var fileID = self.getRepoID() + "_icon"
         if UIImage(named: fileID) == nil {
             fileID = "tweak_icon"
         }
+        return fileID
+    }
+    
+    public func getIcon(size: CGFloat) -> some View {
+        let fileID = self.getIconName()
         
         return Image(fileID).resizable()
             .renderingMode(.original)
             .frame(width: size, height: size)
             .cornerRadius(CGFloat((13.0/57.0) * Double(size)))
-    }
-    
-    public func getBanner() -> some View {
-        var fileID = self.getRepoID() + "_banner"
-        if UIImage(named: fileID) == nil {
-            fileID = "tweak_icon"
-        }
-        
-        return Image(fileID).resizable()
-            .renderingMode(.original)
-        
     }
     
     public func getTweaks() -> [Tweak] {

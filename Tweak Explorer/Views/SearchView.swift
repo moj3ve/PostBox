@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ModalView
 
 struct SearchView: View {
     @State var searchTerm = ""
@@ -73,7 +74,7 @@ struct SearchView: View {
                         ForEach(repos.filter({
                             $0.name.lowercased().hasPrefix(searchTerm.lowercased()) || searchTerm == ""
                         })) { repo in
-                            NavigationLink(destination: Text(repo.name)) {
+                            ModalLink(destination: {RepoView(dismiss: $0, repo: repo)}) {
                                 HStack {
                                     repo.getIcon(size: 40)
                                     
@@ -85,6 +86,10 @@ struct SearchView: View {
                                             .foregroundColor(.secondary)
                                             .lineLimit(1)
                                     }
+                                    Spacer()
+                                    Image(systemName: "chevron.up")
+                                        .font(.system(size: 15, weight: .semibold))
+                                        .foregroundColor(.secondary)
                                 }
                             }
                         }

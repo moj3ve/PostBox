@@ -14,7 +14,7 @@ struct Repos: View {
     
     /// Updates `showtop` when scrolling
     private func updateTop(_ g: GeometryProxy) -> some View {
-        self.showTop = g.frame(in: .global).minY <= 20
+        self.showTop = g.frame(in: .global).minY <= 30
         return Rectangle().frame(width: 0, height: 0)
     }
     
@@ -56,7 +56,9 @@ struct Repos: View {
                     ScrollView (.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
                             ForEach(Constants.repoLists.editorsPicks) { repo in
-                                RepoCard(repo)
+                                ModalLink(destination: {RepoView(dismiss: $0, repo: repo)}) {
+                                    RepoCard(repo)
+                                }.buttonStyle(CardButtonStyle())
                             }
                         }
                         .padding(20)
@@ -92,8 +94,13 @@ struct RepoCard: View {
     
     var body: some View {
         ZStack {
-            repo.getBanner()
+            Image(repo.getIconName()).resizable()
                 .aspectRatio(contentMode: .fill)
+                .scaleEffect(1.05)
+                .frame(width: 313, height: 240)
+                .edgesIgnoringSafeArea(.bottom)
+                .brightness(-0.15)
+                .blur(radius: 20)
                 .frame(width: 313, height: 240)
             
             ZStack {

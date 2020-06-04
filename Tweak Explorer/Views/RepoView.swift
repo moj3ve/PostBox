@@ -10,15 +10,21 @@ import SwiftUI
 import ModalView
 
 struct RepoView: View {
-    public var repo: Repo
+    @State var popup = false
     public var dismiss: () -> ()
+    public var repo: Repo
     
     var body: some View {
         ZStack {
-            repo.getBanner()
+            Image(repo.getIconName()).resizable()
+                .renderingMode(.original)
                 .aspectRatio(contentMode: .fill)
+                .scaleEffect(1.05)
                 .frame(width: UIScreen.main.bounds.maxX)
                 .edgesIgnoringSafeArea(.bottom)
+                .brightness(-0.15)
+                .blur(radius: 20)
+                .frame(width: UIScreen.main.bounds.maxX)
             
             Button (action: self.dismiss) {
                 CloseModalButton()
@@ -50,10 +56,13 @@ struct RepoView: View {
                     SmallButton("ADD")
                         .padding(.horizontal, 15)
                 }
-                .frame(height: 50)
-                .background(Blur(.systemThinMaterial))
-                .cornerRadius(9)
-            }.padding(.horizontal, 20)
+                    .frame(height: 50)
+                    .background(Blur(.systemThinMaterial))
+                    .cornerRadius(9)
+                    .offset(y: self.popup ? 0 : 200)
+                    .onAppear(perform: {self.popup.toggle()})
+                    .animation(.spring(response: 1), value: self.popup)
+            }.padding(20)
         }
     }
 }
@@ -61,7 +70,7 @@ struct RepoView: View {
 struct RepoView_Previews: PreviewProvider {
     static var previews: some View {
         ModalPresenter {
-            ModalLink(destination: {RepoView(repo: Database.repos["packix"]!, dismiss: $0)}) {
+            ModalLink(destination: {RepoView(dismiss: $0, repo: Database.repos["packix"]!)}) {
                 Text("Click Here")
             }
         }

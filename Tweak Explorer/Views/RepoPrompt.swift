@@ -11,6 +11,7 @@ import ModalView
 
 struct RepoPrompt: View {
     @State var showActionMenu = false
+    @State var popup = false
     
     public var dismiss: () -> ()
     public var tweak: Tweak
@@ -47,12 +48,13 @@ struct RepoPrompt: View {
     
     var body: some View {
         ZStack {
-            Image(tweak.id + "_icon").resizable()
+            Image(tweak.getIconName()).resizable()
+                .renderingMode(.original)
                 .aspectRatio(contentMode: .fill)
                 .scaleEffect(1.05)
                 .frame(width: UIScreen.main.bounds.maxX)
                 .edgesIgnoringSafeArea(.bottom)
-                .brightness(-0.1)
+                .brightness(-0.15)
                 .blur(radius: 20)
                 .frame(width: UIScreen.main.bounds.maxX)
             
@@ -87,10 +89,13 @@ struct RepoPrompt: View {
                         SmallButton("ADD")
                     }.padding(.horizontal, 15)
                 }
-                .frame(height: 50)
-                .background(Blur(.systemMaterial))
-                .cornerRadius(9)
-            }.padding(.horizontal, 20)
+                    .frame(height: 50)
+                    .background(Blur(.systemThinMaterial))
+                    .cornerRadius(9)
+                    .offset(y: self.popup ? 0 : 200)
+                    .onAppear(perform: {self.popup.toggle()})
+                    .animation(.spring(response: 1), value: self.popup)
+            }.padding(20)
         }
         .actionSheet(isPresented: self.$showActionMenu) {
             ActionSheet(title: Text("Select Package Manager"),
@@ -100,7 +105,71 @@ struct RepoPrompt: View {
     }
 }
 
-struct RepooPrompt: View {
+struct Info: View {
+    @EnvironmentObject var user: User
+    var dismiss: () -> ()
+    
+    var body: some View {
+        ScrollView {
+            VStack (spacing: 20) {
+                Banner(["FAQ", "Package Managers", "What is a package manager?"], image: "banner3", bannerHeight: 300, inModal: true)
+                
+                VStack (alignment: .leading, spacing: 20) {
+                    StoryBlock(first: "Package managers are", "applications that help users install, remove, and update packages on their jailbroken devices. Although not required, package installers are highly recommended for *ALL users. Most are intuitive, efficient, and written to save time.")
+                    
+                    StoryBlock(first: "Removing and adding", "APT repositories (sources) have never been easier. Simply give a package manager a valid URL and it will do the rest! All tweaks from added sources will be indexed in search.")
+
+                }.padding(.leading, 20).padding(.trailing, 10)
+            }
+        }
+        .navigationBarTitle("Package Managers", displayMode: .inline)
+        .navigationBarBackButtonHidden(false)
+        .navigationBarHidden(false)
+        .navigationBarItems(
+            trailing: Button (action: {
+                self.self.dismiss()
+            }) {Text("Done").fontWeight(.semibold)}
+        )
+        
+    }
+}
+
+struct AddRepoButton: View {
+    var body: some View {
+        ZStack {
+            Color.teal.cornerRadius(10)
+            Text("Add Repo")
+                .font(.callout)
+                .foregroundColor(.white)
+                .fontWeight(.semibold)
+        }
+        .frame(width: 212, height: 40)
+    }
+}
+
+struct RepoPrompt_Previews: PreviewProvider {
+    static var previews: some View {
+        ModalPresenter {
+            VStack (spacing: 20) {
+                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.paid!).environmentObject(User())}) {
+                    SmallButton("One")
+                }.buttonStyle(InstallButtonStyle())
+                
+                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.free!).environmentObject(User())}) {
+                    SmallButton("Two")
+                }.buttonStyle(InstallButtonStyle())
+                
+                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.db["cylinder"]!).environmentObject(User())}) {
+                    SmallButton("Three")
+                }.buttonStyle(InstallButtonStyle())
+            }
+        }
+            .environmentObject(User())
+            .environment(\.colorScheme, .dark)
+    }
+}
+
+struct RepoPromptOld: View {
     @EnvironmentObject var user: User
     @State var selected: Int = 0
     @State var showAlert = false
@@ -224,69 +293,5 @@ struct RepooPrompt: View {
                 )
             }
         }
-    }
-}
-
-struct Info: View {
-    @EnvironmentObject var user: User
-    var dismiss: () -> ()
-    
-    var body: some View {
-        ScrollView {
-            VStack (spacing: 20) {
-                Banner(["FAQ", "Package Managers", "What is a package manager?"], image: "banner3", bannerHeight: 300, inModal: true)
-                
-                VStack (alignment: .leading, spacing: 20) {
-                    StoryBlock(first: "Package managers are", "applications that help users install, remove, and update packages on their jailbroken devices. Although not required, package installers are highly recommended for *ALL users. Most are intuitive, efficient, and written to save time.")
-                    
-                    StoryBlock(first: "Removing and adding", "APT repositories (sources) have never been easier. Simply give a package manager a valid URL and it will do the rest! All tweaks from added sources will be indexed in search.")
-
-                }.padding(.leading, 20).padding(.trailing, 10)
-            }
-        }
-        .navigationBarTitle("Package Managers", displayMode: .inline)
-        .navigationBarBackButtonHidden(false)
-        .navigationBarHidden(false)
-        .navigationBarItems(
-            trailing: Button (action: {
-                self.self.dismiss()
-            }) {Text("Done").fontWeight(.semibold)}
-        )
-        
-    }
-}
-
-struct AddRepoButton: View {
-    var body: some View {
-        ZStack {
-            Color.teal.cornerRadius(10)
-            Text("Add Repo")
-                .font(.callout)
-                .foregroundColor(.white)
-                .fontWeight(.semibold)
-        }
-        .frame(width: 212, height: 40)
-    }
-}
-
-struct RepoPrompt_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalPresenter {
-            VStack (spacing: 20) {
-                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.paid!).environmentObject(User())}) {
-                    SmallButton("One")
-                }.buttonStyle(InstallButtonStyle())
-                
-                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.free!).environmentObject(User())}) {
-                    SmallButton("Two")
-                }.buttonStyle(InstallButtonStyle())
-                
-                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.db["kalm"]!).environmentObject(User())}) {
-                    SmallButton("Three")
-                }.buttonStyle(InstallButtonStyle())
-            }
-        }
-            .environmentObject(User())
-            .environment(\.colorScheme, .dark)
     }
 }

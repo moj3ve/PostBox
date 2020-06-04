@@ -13,7 +13,7 @@ struct Home: View {
     @State var showTop = false
     
     private func updateTop(_ g: GeometryProxy) -> some View {
-        self.showTop = g.frame(in: .global).minY <= 20
+        self.showTop = g.frame(in: .global).minY <= 30
         return Rectangle()
     }
     
