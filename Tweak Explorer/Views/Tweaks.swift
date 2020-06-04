@@ -110,7 +110,7 @@ struct Tweaks: View {
                                     NavigationLink(destination: TweakView(tweak: tweak)) {
                                         VStack(alignment: .leading, spacing: 3) {
                                             Text(tweak.name)
-                                                .font(.headline)
+                                                .font(.body)
                                             Text(tweak.shortDesc)
                                                 .font(.footnote)
                                                 .foregroundColor(Color.gray)
