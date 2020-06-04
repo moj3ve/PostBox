@@ -45,7 +45,7 @@ struct Home: View {
                         CardList(Constants.tweakLists.long, subhead: "Hand Picked", title: "Essential\nCosmetic Tweaks")
                     }
                 }
-            }
+            }.padding(.bottom, 60)
         }
     }
 }

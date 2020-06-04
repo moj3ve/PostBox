@@ -119,7 +119,7 @@ struct RepoCard: View {
             
         }
         .cornerRadius(15)
-        .shadow(color: Color.black.opacity(0.15), radius: 20, y: 10)
+        .shadow(color: Color.black.opacity(0.15), radius: 15, y: 10)
     }
 }
 

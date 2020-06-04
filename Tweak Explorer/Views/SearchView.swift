@@ -11,13 +11,16 @@ struct SearchView: View {
     @State var searchTerm = ""
     var pkgs: [Tweak]
     var stories: [[[String]]]
+    var repos: [Repo]
     
     init() {
         let pkgs = Array(Database.packages.values)
         let stories = Array(Database.stories.values)
+        let repos = Array(Database.repos.values)
         
         self.pkgs = pkgs
         self.stories = stories
+        self.repos = repos
     }
     
     var body: some View {
@@ -60,6 +63,24 @@ struct SearchView: View {
                                         Text(story[0][1])
                                             .font(.callout)
                                         Text(story[0][2])
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                            .lineLimit(1)
+                                    }
+                                }
+                            }
+                        }
+                        ForEach(repos.filter({
+                            $0.name.lowercased().hasPrefix(searchTerm.lowercased()) || searchTerm == ""
+                        })) { repo in
+                            NavigationLink(destination: Text(repo.name)) {
+                                HStack {
+                                    repo.getIcon(size: 40)
+                                    
+                                    VStack (alignment: .leading){
+                                        Text(repo.name)
+                                            .font(.callout)
+                                        Text(repo.urlNoProtocol)
                                             .font(.caption)
                                             .foregroundColor(.secondary)
                                             .lineLimit(1)
