@@ -79,7 +79,7 @@ struct BackButton: View {
         VStack {
             HStack {
                 Blur(.systemMaterial)
-                    .overlay(Color(UIColor.label).opacity(0.4))
+                    .overlay(Color(UIColor.secondaryLabel).opacity(0.4))
                     .frame(width: 30, height: 40)
                     .mask(
                         VStack {

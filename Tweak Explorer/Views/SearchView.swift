@@ -114,7 +114,7 @@ struct EmptyFill: View {
                 .aspectRatio(contentMode: .fit)
                 .scaleEffect(0.8)
             Text("Find Packages, Repos, and Stories.\nWant something be on our app? just ask!")
-                .font(.headline)
+                .font(.body)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)
