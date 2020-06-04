@@ -65,9 +65,9 @@ struct Repos: View {
                     
                     VStack(alignment: .leading, spacing: 20) {
                         HStack {
-                            Text("Popular Repos")
+                            Text("Expand Your Tweak Library")
                                 .font(.headline)
-                                .fontWeight(.bold)
+                                .fontWeight(.semibold)
                             Spacer()
                             Text("See All")
                                 .foregroundColor(.teal)
@@ -87,7 +87,7 @@ struct RepoCard: View {
     
     init (_ repo: Repo, category: String? = nil) {
         self.repo = repo
-        self.category = category ?? "Recommended Repo"
+        self.category = category ?? "Recommended"
     }
     
     var body: some View {
@@ -102,14 +102,14 @@ struct RepoCard: View {
                         Spacer()
                         Text(category.uppercased())
                             .font(.subheadline)
-                            .fontWeight(.semibold)
+                            .fontWeight(.medium)
                             .opacity(0.6)
                         Text(repo.name)
                             .font(.largeTitle)
-                            .fontWeight(.bold)
+                            .fontWeight(.semibold)
                         Text(repo.url)
                             .font(.caption)
-                            .fontWeight(.semibold)
+                            .fontWeight(.regular)
                             .padding(.top, 3)
                             .opacity(0.8)
                     }

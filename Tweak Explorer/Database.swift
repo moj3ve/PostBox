@@ -75,8 +75,8 @@ struct Database {
 
     // Migrate to this
     static let repos: [String: Repo] = [
-        "packix": Repo("Packix", url: "https://repo.packix.com"),
-        "chariz": Repo("Chariz", url: "https://repo.chariz.com"),
-        "dynastic": Repo("Dynastic", url: "https://repo.dynastic.co"),
+        "packix": Repo("Packix", url: "repo.packix.com"),
+        "chariz": Repo("Chariz", url: "chariz.com"),
+        "dynastic": Repo("Dynastic", url: "repo.dynastic.co"),
     ]
 }

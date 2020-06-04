@@ -73,7 +73,7 @@ struct TweakView: View {
                                 .foregroundColor(.lightgray)
                             + Text(self.tweak.type.firstUppercased)
                                 .font(.callout)
-                                .fontWeight(.semibold)
+                                .fontWeight(.medium)
                         }
                         
                         Spacer()
@@ -84,7 +84,7 @@ struct TweakView: View {
                                 .foregroundColor(.lightgray)
                             + Text(self.tweak.dev)
                                 .font(.callout)
-                                .fontWeight(.semibold)
+                                .fontWeight(.medium)
                         }
                         
                     }.padding(20)
@@ -118,7 +118,7 @@ struct TweakView: View {
                             .padding(.bottom, 20)
                         Text(tweak.name)
                             .font(.largeTitle)
-                            .fontWeight(.bold)
+                            .fontWeight(.semibold)
                         HStack {
                             ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweak).environmentObject(self.user)}) {
                                 SmallButton(self.tweak.getPrice())

@@ -110,7 +110,7 @@ struct LongShareButton: View {
             Text(self.text)
                 .font(.subheadline)
                 .foregroundColor(.white)
-                .fontWeight(.semibold)
+                .fontWeight(.medium)
         }
             .frame(width: 270, height: 45)
             .cornerRadius(10)

@@ -33,13 +33,13 @@ struct CardList: View {
                     VStack (alignment: .leading) {
                             Text(self.subhead.uppercased())
                                 .font(.headline)
-                                .fontWeight(.semibold)
+                                .fontWeight(.medium)
                                 .foregroundColor(.gray)
                                 .padding(.bottom, 10)
                             HStack {
                                 Text(self.title)
                                     .font(.title)
-                                    .fontWeight(.bold)
+                                    .fontWeight(.semibold)
                                     .lineLimit(2)
                                 Spacer()
                         }
@@ -82,7 +82,7 @@ struct CardViewInnerSection: View {
                 self.tweak.getIcon(size: 45)
                 VStack(alignment: .leading, spacing: 3) {
                     Text(self.tweak.name)
-                        .font(.headline)
+                        .font(.body)
                     Text(self.tweak.shortDesc)
                         .font(.caption)
                         .foregroundColor(Color.gray)
@@ -104,11 +104,11 @@ struct SmallButton: View {
     var body: some View {
         Text(text)
             .font(.footnote)
-            .foregroundColor(.teal)
+            .foregroundColor(.white)
             .fontWeight(.semibold)
             .zIndex(1)
             .frame(width: 65, height: 26)
-            .background(Color.gray.opacity(0.15).cornerRadius(13))
+            .background(Color.teal.cornerRadius(13))
     }
 }
 

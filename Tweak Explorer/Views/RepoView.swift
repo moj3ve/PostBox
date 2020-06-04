@@ -29,21 +29,21 @@ struct RepoView: View {
                 
                 VStack(alignment: .leading, spacing: 5) {
                     Text("ADD REPO")
-                        .fontWeight(.semibold)
+                        .fontWeight(.medium)
                         .foregroundColor(.white)
                         .opacity(0.6)
                         .padding(.bottom, 5)
                     
                     Text(self.repo.name)
                         .font(.largeTitle)
-                        .fontWeight(.bold)
+                        .fontWeight(.semibold)
                         .foregroundColor(.white)
                 }.padding(.horizontal, 10)
                 
                 HStack {
                     Text(self.repo.url)
                         .font(.footnote)
-                        .fontWeight(.semibold)
+                        .fontWeight(.medium)
                         .foregroundColor(.white)
                         .padding(.horizontal, 20)
                     Spacer()

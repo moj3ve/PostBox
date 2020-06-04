@@ -48,7 +48,7 @@ struct AccountView: View {
             .navigationBarTitle("Account", displayMode: .inline)
             .navigationBarItems(trailing: Button (action: {
                 self.self.dismiss()
-            }) {Text("Done").fontWeight(.semibold)})
+            }) {Text("Done").fontWeight(.medium)})
         }
     }
 }
@@ -76,7 +76,7 @@ struct UserPrefs: View {
                 
                 Text(user.name == "" ? "Guest" : user.name)
                     .font(.title)
-                    .fontWeight(.bold)
+                    .fontWeight(.medium)
                 
                 HStack {
                     Picker("Gender", selection: $gender) {
@@ -98,7 +98,7 @@ struct UserPrefs: View {
             self.mode.wrappedValue.dismiss()
             self.user.saveName(self.newName)
             self.user.savePic(self.genderPics[self.gender])
-        }) {Text("Save").fontWeight(.semibold)})
+        }) {Text("Save").fontWeight(.medium)})
     }
 }
 
@@ -164,7 +164,7 @@ struct WishlistView: View {
                 .navigationBarTitle("Wishlist", displayMode: .inline)
                 .navigationBarItems(trailing: Button (action: {
                     self.dismiss()
-            }) {Text("Done").fontWeight(.semibold)})
+            }) {Text("Done").fontWeight(.medium)})
         }
     }
 }

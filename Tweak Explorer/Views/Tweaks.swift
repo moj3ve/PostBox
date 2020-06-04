@@ -52,7 +52,7 @@ struct Tweaks: View {
                         Text("Don't Pirate Tweaks.\nSupport Developers.")
                             .foregroundColor(.white)
                             .font(.title)
-                            .fontWeight(.bold)
+                            .fontWeight(.semibold)
                         ModalLink(destination: Text("Modal")) {
                             LongButton("Browse Paid Tweaks")
                                 .padding(.top, 15)
@@ -65,7 +65,7 @@ struct Tweaks: View {
                                     Spacer()
                                     Text("No in-app purchases. Obviously.")
                                         .font(.caption)
-                                        .fontWeight(.semibold)
+                                        .fontWeight(.medium)
                                     Spacer()
                                 }
                             )
@@ -92,7 +92,7 @@ struct Tweaks: View {
                     HStack {
                         Text("Popular Free Tweaks")
                             .font(.headline)
-                            .fontWeight(.bold)
+                            .fontWeight(.semibold)
                         Spacer()
                         NavigationLink(destination: FullScreenList(Constants.tweakLists.free)) {
                             Text("See All")
