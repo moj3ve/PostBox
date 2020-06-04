@@ -93,7 +93,7 @@ struct SearchView: View {
                     EmptyFill()
                     Spacer()
                 }
-            }.navigationBarTitle("Search")
+            }.navigationBarTitle("Search", displayMode: .large)
         
     }
 }

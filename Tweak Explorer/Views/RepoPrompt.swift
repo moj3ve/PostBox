@@ -6,45 +6,101 @@
 //  Copyright © 2020 icycabbage. All rights reserved.
 //
 
-
-
-
-
-
-
-
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-//Prepare to rewrite RepoPrompt.swift
-
-
-
-
-
-
-
-
-
 import SwiftUI
 import ModalView
 
 struct RepoPrompt: View {
+    @State var showActionMenu = false
+    
+    public var dismiss: () -> ()
+    public var tweak: Tweak
+    
+    var packageManagers = ["Cydia", "Sileo", "Zebra", "Installer"]
+    var initialProtocolUrls = [
+        "cydia://url/https://cydia.saurik.com/api/share#?source=",
+        "sileo://source/",
+        "zbra://sources/add/",
+        "installer://add/repo="
+    ]
+    
+    func addRepo(_ selected: Int) {
+        let url = self.initialProtocolUrls[selected] + self.tweak.repoWithProtocol
+        UIApplication.shared.open(URL(string: url)!)
+    }
+    
+    func appExists(_ selected: Int) -> Bool {
+        let url = self.initialProtocolUrls[selected] + self.tweak.repoWithProtocol
+        return UIApplication.shared.canOpenURL(URL(string: url)!)
+    }
+    
+    func getApps() -> [ActionSheet.Button] {
+        var buttonList = [ActionSheet.Button]()
+        for i in (0..<packageManagers.count) {
+            if (self.appExists(i)) {
+                buttonList.append(.default(Text(packageManagers[i])) { self.addRepo(i) } )
+            }
+        }
+        
+        buttonList.append(.cancel())
+        return buttonList
+    }
+    
+    var body: some View {
+        ZStack {
+            Image(tweak.id + "_icon").resizable()
+                .aspectRatio(contentMode: .fill)
+                .scaleEffect(1.05)
+                .frame(width: UIScreen.main.bounds.maxX)
+                .edgesIgnoringSafeArea(.bottom)
+                .brightness(-0.1)
+                .blur(radius: 20)
+                .frame(width: UIScreen.main.bounds.maxX)
+            
+            Button (action: self.dismiss) {
+                CloseModalButton()
+            }
+            
+            VStack (alignment: .leading, spacing: 20) {
+                Spacer()
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("ADD TWEAK")
+                        .fontWeight(.medium)
+                        .foregroundColor(.white)
+                        .opacity(0.6)
+                        .padding(.bottom, 5)
+                    
+                    Text(self.tweak.name)
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                }.padding(.horizontal, 10)
+                
+                HStack {
+                    Text(self.tweak.repoWithProtocol)
+                        .font(.footnote)
+                        .fontWeight(.medium)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 20)
+                    Spacer()
+                    Button(action: {self.showActionMenu.toggle()}) {
+                        SmallButton("ADD")
+                    }.padding(.horizontal, 15)
+                }
+                .frame(height: 50)
+                .background(Blur(.systemMaterial))
+                .cornerRadius(9)
+            }.padding(.horizontal, 20)
+        }
+        .actionSheet(isPresented: self.$showActionMenu) {
+            ActionSheet(title: Text("Select Package Manager"),
+                        message: Text("Check the FAQ in settings for more info."),
+                        buttons: self.getApps())
+        }
+    }
+}
+
+struct RepooPrompt: View {
     @EnvironmentObject var user: User
     @State var selected: Int = 0
     @State var showAlert = false
@@ -217,18 +273,20 @@ struct RepoPrompt_Previews: PreviewProvider {
     static var previews: some View {
         ModalPresenter {
             VStack (spacing: 20) {
-                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.paid!)}) {
+                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.paid!).environmentObject(User())}) {
                     SmallButton("One")
                 }.buttonStyle(InstallButtonStyle())
                 
-                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.free!)}) {
+                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.tweak.free!).environmentObject(User())}) {
                     SmallButton("Two")
                 }.buttonStyle(InstallButtonStyle())
                 
-                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.db["kalm"]!)}) {
+                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: Constants.db["kalm"]!).environmentObject(User())}) {
                     SmallButton("Three")
                 }.buttonStyle(InstallButtonStyle())
             }
-        }.environmentObject(User())
+        }
+            .environmentObject(User())
+            .environment(\.colorScheme, .dark)
     }
 }

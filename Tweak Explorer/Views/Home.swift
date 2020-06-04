@@ -14,7 +14,6 @@ struct Home: View {
     
     private func updateTop(_ g: GeometryProxy) -> some View {
         self.showTop = g.frame(in: .global).minY <= 20
-        
         return Rectangle()
     }
     
@@ -44,8 +43,8 @@ struct Home: View {
                         CardList(Constants.tweakLists.long, subhead: "Jailbreak Tweaks", title: "Tweaks you can't\nsee, but can feel")
                         CardList(Constants.tweakLists.long, subhead: "Hand Picked", title: "Essential\nCosmetic Tweaks")
                     }
-                }
-            }.padding(.bottom, 60)
+                }.padding(.bottom, 60)
+            }
         }
     }
 }
@@ -60,7 +59,6 @@ struct HomeNavBar: View {
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMM d"
-        print(formatter.string(from: date))
         self.dateText = formatter.string(from: date).uppercased()
     }
     
