@@ -55,8 +55,8 @@ struct Repos: View {
                     
                     ScrollView (.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
-                            RepoCard(Database.repos["packix"]!)
-                            RepoCard(Database.repos["chariz"]!)
+                            RepoCard(Database.repoOld["packix"]!)
+                            RepoCard(Database.repoOld["chariz"]!)
                         }.padding(.horizontal, 20)
                     }
                     

@@ -114,10 +114,9 @@ struct Home_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ModalPresenter {
-                Home()
-                    .environmentObject(User())
+                Home().environmentObject(User())
             }
-            .navigationBarTitle("")
+            .navigationBarTitle("Home", displayMode: .inline)
             .navigationBarHidden(true)
         }
     }

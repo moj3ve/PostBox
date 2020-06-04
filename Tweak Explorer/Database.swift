@@ -74,8 +74,15 @@ struct Database {
     ]
     
     // Repo cards
-    static let repos: [String: [[String]]] = [
+    static let repoOld: [String: [[String]]] = [
         "packix": [["Editor's Choice", "Packix","repo.packix.com","packix_banner","false"]],
         "chariz": [["Editor's Choice", "Chariz","repo.chariz.com","chariz_banner","false"]]
+    ]
+    
+    // Migrate to this
+    static let repos: [String: Repo] = [
+        "packix": Repo("Packix", url: "https://repo.packix.com"),
+        "chariz": Repo("Chariz", url: "https://repo.chariz.com"),
+        "dynastic": Repo("Dynastic", url: "https://repo.dynastic.co"),
     ]
 }
