@@ -32,6 +32,7 @@ struct RepoView: View {
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                         .opacity(0.6)
+                        .padding(.bottom, 5)
                     
                     Text(self.repo.name)
                         .font(.largeTitle)
@@ -41,7 +42,7 @@ struct RepoView: View {
                 
                 HStack {
                     Text(self.repo.url)
-                        .font(.caption)
+                        .font(.footnote)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
                         .padding(.horizontal, 20)
@@ -51,7 +52,7 @@ struct RepoView: View {
                 }
                 .frame(height: 50)
                 .background(Blur(.systemThinMaterial))
-                .cornerRadius(10)
+                .cornerRadius(9)
             }.padding(.horizontal, 20)
         }
     }
