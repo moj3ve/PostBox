@@ -60,9 +60,16 @@ struct Repos: View {
                         }.padding(.horizontal, 20)
                     }
                     
-                    VStack {
-                        Text("Hello")
-                    }
+                    VStack(alignment: .leading, spacing: 20) {
+                        HStack {
+                            Text("Popular Free Tweaks")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                            Spacer()
+                            Text("See All")
+                            .foregroundColor(.teal)
+                        }
+                    }.padding(20)
                     
                     Spacer()
                 }
@@ -111,8 +118,8 @@ struct RepoCard: View {
                                 Text(repoText[2])
                                     .font(.caption)
                                     .fontWeight(.semibold)
-                                    .padding(.top, 5)
-                                    .opacity(0.6)
+                                    .padding(.top, 3)
+                                    .opacity(0.8)
                             }.padding(20)
                             Spacer()
                         }
@@ -126,13 +133,15 @@ struct RepoCard: View {
                                 Text(repoText[0].uppercased())
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
+                                    .opacity(0.6)
                                 Text(repoText[1])
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
                                 Text(repoText[2])
-                                    .font(.caption)
+                                    .font(.callout)
                                     .fontWeight(.semibold)
-                                    .padding(.top, 10)
+                                    .padding(.top, 3)
+                                    .opacity(0.8)
                             }
                             Spacer()
                         }.padding(20).foregroundColor(.white)
