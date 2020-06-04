@@ -55,21 +55,24 @@ struct Repos: View {
                     
                     ScrollView (.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
-                            RepoCard(Database.repoOld["packix"]!)
-                            RepoCard(Database.repoOld["chariz"]!)
-                        }.padding(.horizontal, 20)
+                            ForEach(Constants.repoLists.editorsPicks) { repo in
+                                RepoCard(repo)
+                            }
+                        }
+                        .padding(20)
+                        .padding(.bottom, 20)
                     }
                     
                     VStack(alignment: .leading, spacing: 20) {
                         HStack {
-                            Text("Popular Free Tweaks")
+                            Text("Popular Repos")
                                 .font(.headline)
                                 .fontWeight(.bold)
                             Spacer()
                             Text("See All")
-                            .foregroundColor(.teal)
+                                .foregroundColor(.teal)
                         }
-                    }.padding(20)
+                    }.padding(.horizontal, 20)
                     
                     Spacer()
                 }
@@ -79,77 +82,44 @@ struct Repos: View {
 }
 
 struct RepoCard: View {
-    public var repoText: [String]
-    public var repoImg: String
-    public var repoCardHeight: CGFloat
-    public var repoIsBlurred: Bool
-    private var repoHideText: Bool
+    public var repo: Repo
+    public var category: String
     
-    init (_ repotitle: [[String]], repoCardHeight: CGFloat? = nil) {
-        let repoInfo = repotitle[0]
-        
-        self.repoText = repoInfo
-        self.repoImg = repoInfo[3]
-        self.repoIsBlurred = repoInfo[4] == "true"
-        self.repoCardHeight = 240
-        self.repoHideText = repoInfo.count == 0
+    init (_ repo: Repo, category: String? = nil) {
+        self.repo = repo
+        self.category = category ?? "Recommended Repo"
     }
     
     var body: some View {
         ZStack {
-            Image(self.repoImg).resizable()
-                .renderingMode(.original)
+            repo.getBanner()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 313, height: self.repoCardHeight)
+                .frame(width: 313, height: 240)
             
-            if (!self.repoHideText) {
-                if (self.repoIsBlurred) {
-                    VStack {
+            ZStack {
+                HStack {
+                    VStack (alignment: .leading) {
                         Spacer()
-                        HStack {
-                            VStack (alignment: .leading) {
-                                Text(repoText[0].uppercased())
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
-                                    .opacity(0.6)
-                                Text(repoText[1])
-                                    .font(.largeTitle)
-                                    .fontWeight(.bold)
-                                Text(repoText[2])
-                                    .font(.caption)
-                                    .fontWeight(.semibold)
-                                    .padding(.top, 3)
-                                    .opacity(0.8)
-                            }.padding(20)
-                            Spacer()
-                        }
-                        .background(Blur(.systemChromeMaterial))
+                        Text(category.uppercased())
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .opacity(0.6)
+                        Text(repo.name)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        Text(repo.url)
+                            .font(.caption)
+                            .fontWeight(.semibold)
+                            .padding(.top, 3)
+                            .opacity(0.8)
                     }
-                } else {
-                    ZStack {
-                        HStack {
-                            VStack (alignment: .leading) {
-                                Spacer()
-                                Text(repoText[0].uppercased())
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
-                                    .opacity(0.6)
-                                Text(repoText[1])
-                                    .font(.largeTitle)
-                                    .fontWeight(.bold)
-                                Text(repoText[2])
-                                    .font(.callout)
-                                    .fontWeight(.semibold)
-                                    .padding(.top, 3)
-                                    .opacity(0.8)
-                            }
-                            Spacer()
-                        }.padding(20).foregroundColor(.white)
-                    }
-                }
+                    Spacer()
+                }.padding(20).foregroundColor(.white)
             }
+            
         }
-            .cornerRadius(15)
+        .cornerRadius(15)
+        .shadow(color: Color.black.opacity(0.15), radius: 20, y: 10)
     }
 }
 

@@ -13,11 +13,13 @@ class Repo: Identifiable, Comparable {
     public var id: String
     public var name: String
     public var url: String
+    public var urlNoProtocol: String
     
     init (_ name: String, url: String) {
         self.id = name.lowercased().replacingOccurrences(of: " ", with: "_")
         self.name = name
         self.url = url
+        self.urlNoProtocol = url.replacingOccurrences(of: "https://", with: "").replacingOccurrences(of: "https://", with: "")
     }
     
     /// Compare functions
