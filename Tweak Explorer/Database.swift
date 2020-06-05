@@ -31,15 +31,33 @@ struct Database {
 
                             Jellyfish also adds weather to your Lock screen, so you can always view it at a quick glance. While adding this new level of information, your Lock screen retains its simplicity, avoiding a cluttered look.
                             """),
-        "kalm"          : desc,
+        "kalm"          : ("""
+                            Kalm is a beautiful first sight when you look at your device. It’s soft, it’s modern, it’s clean – always tinted in your wallpapers colors so it fits right in.
+                            """),
         "lockplus_pro"  : desc,
-        "portrait_xi"   : desc,
+        "portrait_xi"   : ("""
+                            PortraitXI is a unique tweak which allows you take real portrait mode pictures on a single camera device. Generally native portrait mode requires dual camera devices with the exception of iPhone XR. With this tweak, you can now get real portrait mode photos on your old device.
+
+                            The main focus of the tweak is to produce human portrait pictures in a single shutter press. This happens in a fully automatic manner and no manual tweaking is required. The tweak also smartly analyses the photo and perform automatic corrections to get an image with better colors.
+                            While PortraitXI was designed for human portrait shots, it can also take objects/pets pictures. But without the dual camera hardware setup, the effect on objects will not be so good. It will work best on big objects with regular geometric shapes and having far with contrasting backgrounds. For example, taking pictures of flowers will be not any good. For tips on how to get good shots, check the tips section below.
+                            After installing, there will be a PortraitXI button besides switch camera button in camera app. Tap on it to make it selected, and then take a picture normally and the effect will be applied.
+                            """),
         "snowboard"     : ("""
                             Snowboard is a lightweight spiritual successor to the legendary Winterboard theming engine. It works with iOS 7 and up and supports formats from all other popular theming engines.
 
                             Snowboard is faithful to the spirit of jailbreaking, and as an essential tool, it is therefore available for free.
                             """),
-        "xen_html"      : desc,
+        "xen_html"      : ("""
+                            Xen HTML widgets are web-based, built with JavaScript and HTML. This can also include using frameworks such as React or Vue.js, or transpiled languages such as TypeScript.
+
+                            You can add widgets:
+                            - On top of the wallpaper in the Lockscreen (no touch support)
+                            - Inline with the original Lockscreen clock and notifications, so that they move when you swipe
+                            - On top of the wallpaper in the Homescreen
+                            - Inline with application icons on any page, so that they move when you swipe
+
+                            Go to the Settings app to configure widgets, or enter 'wiggle mode' on the Homescreen and press 'Add Widget'. You can add as many widgets as you want in any of the above locations.
+                            """),
     ]
 
     // To fully enjoy this section below, toggle Preferences > Text Editing > Code Folding Ribbon on and fold all tweaks.
