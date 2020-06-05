@@ -19,13 +19,13 @@ struct Tweaks: View {
                 ZStack {
                     GeometryReader { g in
                         if (g.frame(in: .global).minY <= 0) {
-                            Image("banner1.1").resizable()
+                            Image("tweaks_banner").resizable()
                                 .renderingMode(.original)
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: g.size.width, height: g.size.height)
                                 .clipped()
                         } else {
-                            Image("banner1.1").resizable()
+                            Image("tweaks_banner").resizable()
                                 .renderingMode(.original)
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
