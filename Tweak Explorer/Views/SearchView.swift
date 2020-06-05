@@ -88,8 +88,9 @@ struct SearchView: View {
                                     }
                                     Spacer()
                                     Image(systemName: "chevron.up")
-                                        .font(.system(size: 15, weight: .semibold))
+                                        .font(.system(size: 13, weight: .semibold))
                                         .foregroundColor(.gray)
+                                        .opacity(0.5)
                                 }
                             }
                         }
