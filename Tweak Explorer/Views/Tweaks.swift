@@ -77,7 +77,7 @@ struct Tweaks: View {
                         HStack {
                             Spacer()
                             ModalLink(
-                                destination: { AccountView(dismiss: $0).environmentObject(self.user) },
+                                destination: { Settings(dismiss: $0).environmentObject(self.user) },
                                 label: { SmallProfile() }
                             )
                         }

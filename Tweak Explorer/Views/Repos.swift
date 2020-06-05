@@ -43,7 +43,7 @@ struct Repos: View {
                             VStack {
                                 Spacer()
                                 ModalLink(destination: {
-                                    AccountView(dismiss:$0)
+                                    Settings(dismiss:$0)
                                         .environmentObject(self.user)
                                         .accentColor(.teal)
                                 }) { SmallProfile() }

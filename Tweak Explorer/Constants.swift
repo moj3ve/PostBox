@@ -58,6 +58,7 @@ struct Constants {
         static let editorsPicks = [
             dbr["packix"]!,
             dbr["chariz"]!,
+            dbr["dynastic"]!,
         ]
     }
 }

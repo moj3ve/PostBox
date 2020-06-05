@@ -10,9 +10,41 @@ import SwiftUI
 import ModalView
 
 struct RepoPrompt: View {
+    @State var showActionMenu = false
     @State var popup = false
+    
     public var dismiss: () -> ()
     public var repo: Repo
+    
+    var packageManagers = ["Cydia", "Sileo", "Zebra", "Installer"]
+    var initialProtocolUrls = [
+        "cydia://url/https://cydia.saurik.com/api/share#?source=",
+        "sileo://source/",
+        "zbra://sources/add/",
+        "installer://add/repo="
+    ]
+    
+    func addRepo(_ selected: Int) {
+        let url = self.initialProtocolUrls[selected] + self.repo.url
+        UIApplication.shared.open(URL(string: url)!)
+    }
+    
+    func appExists(_ selected: Int) -> Bool {
+        let url = self.initialProtocolUrls[selected] + self.repo.url
+        return UIApplication.shared.canOpenURL(URL(string: url)!)
+    }
+    
+    func getApps() -> [ActionSheet.Button] {
+        var buttonList = [ActionSheet.Button]()
+        for i in (0..<packageManagers.count) {
+            if (self.appExists(i)) {
+                buttonList.append(.default(Text(packageManagers[i])) { self.addRepo(i) } )
+            }
+        }
+        
+        buttonList.append(.cancel())
+        return buttonList
+    }
     
     var body: some View {
         ZStack {
@@ -53,8 +85,9 @@ struct RepoPrompt: View {
                         .foregroundColor(.white)
                         .padding(.horizontal, 20)
                     Spacer()
-                    SmallButton("ADD")
-                        .padding(.horizontal, 15)
+                    Button(action: {self.showActionMenu.toggle()}) {
+                        SmallButton("ADD")
+                    }.padding(.horizontal, 15)
                 }
                     .frame(height: 50)
                     .background(Blur(.systemThinMaterial))
@@ -64,6 +97,11 @@ struct RepoPrompt: View {
                     .animation(.spring(response: 1), value: self.popup)
             }.padding(20)
         }
+            .actionSheet(isPresented: self.$showActionMenu) {
+                ActionSheet(title: Text("Select Package Manager"),
+                            message: Text("Check the FAQ in settings for more info."),
+                            buttons: self.getApps())
+            }
     }
 }
 

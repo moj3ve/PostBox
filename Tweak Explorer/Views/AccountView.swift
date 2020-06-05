@@ -9,14 +9,8 @@
 import SwiftUI
 import ModalView
 
-struct AccountView: View {
+struct Settings: View {
     @EnvironmentObject var user: User
-    
-    @State var newName = ""
-    @State var gender = 0
-    
-    var genderPics = ["generic", "generic_f"]
-    var genderOps = ["Picture #1", "Picture #2"]
     var dismiss: () -> ()
     
     var body: some View {
@@ -44,11 +38,20 @@ struct AccountView: View {
                         Text("Wishlist")
                     }.padding(.leading, 5)
                 }
+                
+                Section {
+                    NavigationLink(destination: WishlistView(dismiss: self.dismiss)) {
+                        Text("Changelog")
+                    }.padding(.leading, 5)
+                    NavigationLink(destination: WishlistView(dismiss: self.dismiss)) {
+                        Text("Credits")
+                    }.padding(.leading, 5)
+                }
             }
             .navigationBarTitle("Account", displayMode: .inline)
-            .navigationBarItems(trailing: Button (action: {
-                self.self.dismiss()
-            }) {Text("Done").fontWeight(.medium)})
+            .navigationBarItems(trailing: Button (action: self.dismiss) {
+                Text("Done").fontWeight(.medium)
+            })
         }
     }
 }
@@ -173,7 +176,7 @@ struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
         ModalPresenter {
             ModalLink(
-                destination: { AccountView(dismiss: $0).environmentObject(User()) },
+                destination: { Settings(dismiss: $0).environmentObject(User()) },
                 label: { SmallProfile().environmentObject(User()) }
             )
         }
