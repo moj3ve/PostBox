@@ -449,7 +449,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.icycabbage.Post-Box";
+				PRODUCT_BUNDLE_IDENTIFIER = "polar.Post-Box";
 				PRODUCT_NAME = PostBox;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -471,7 +471,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.icycabbage.Post-Box";
+				PRODUCT_BUNDLE_IDENTIFIER = "polar.Post-Box";
 				PRODUCT_NAME = PostBox;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
