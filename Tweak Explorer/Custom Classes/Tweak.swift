@@ -117,7 +117,7 @@ class Tweak: Identifiable, Comparable {
     /// Returns the tweak's banner image name
     public func getBanner() -> String {
         let bannerName = getTweakID() + "_banner"
-        return UIImage(named: bannerName) == nil ? "none" : bannerName
+        return UIImage(named: bannerName) == nil ? "tweak_banner" : bannerName
     }
     
     public func getLongDesc() -> some View {

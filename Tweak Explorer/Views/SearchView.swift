@@ -74,7 +74,7 @@ struct SearchView: View {
                         ForEach(repos.filter({
                             $0.name.lowercased().hasPrefix(searchTerm.lowercased()) || searchTerm == ""
                         })) { repo in
-                            ModalLink(destination: {RepoView(dismiss: $0, repo: repo)}) {
+                            ModalLink(destination: {RepoPrompt(dismiss: $0, repo: repo)}) {
                                 HStack {
                                     repo.getIcon(size: 40)
                                     
@@ -89,7 +89,7 @@ struct SearchView: View {
                                     Spacer()
                                     Image(systemName: "chevron.up")
                                         .font(.system(size: 15, weight: .semibold))
-                                        .foregroundColor(.secondary)
+                                        .foregroundColor(.gray)
                                 }
                             }
                         }

@@ -149,7 +149,7 @@ struct WishlistView: View {
                                         
                                         Spacer()
                                         
-                                        ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak)}) {
+                                        ModalLink(destination: {TweakPrompt(dismiss: $0, tweak: tweak)}) {
                                             SmallButton(tweak.getPrice())
                                         }.buttonStyle(InstallButtonStyle())
                                     }

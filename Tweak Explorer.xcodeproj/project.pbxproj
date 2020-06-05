@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6D8327002486F9FC00DA5825 /* Repos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8326FF2486F9FC00DA5825 /* Repos.swift */; };
-		6DAC35C72488389E00DFE894 /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC35C62488389E00DFE894 /* RepoView.swift */; };
+		6DAC35C72488389E00DFE894 /* RepoPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC35C62488389E00DFE894 /* RepoPrompt.swift */; };
 		6DAC35C924883DF500DFE894 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAC35C824883DF500DFE894 /* Repo.swift */; };
 		E91EE952247F672100CA07EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE951247F672100CA07EF /* Constants.swift */; };
 		E91EE954247F730600CA07EF /* TweakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE953247F730600CA07EF /* TweakView.swift */; };
-		E91EE9562481CE1E00CA07EF /* RepoPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE9552481CE1E00CA07EF /* RepoPrompt.swift */; };
+		E91EE9562481CE1E00CA07EF /* TweakPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE9552481CE1E00CA07EF /* TweakPrompt.swift */; };
 		E91EE95924823BAD00CA07EF /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE95824823BAD00CA07EF /* Banner.swift */; };
 		E91EE95B24823BDE00CA07EF /* BannerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EE95A24823BDE00CA07EF /* BannerCard.swift */; };
 		E925A4F9247C8DD000AFDFB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A4F8247C8DD000AFDFB9 /* AppDelegate.swift */; };
@@ -39,11 +39,11 @@
 
 /* Begin PBXFileReference section */
 		6D8326FF2486F9FC00DA5825 /* Repos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repos.swift; sourceTree = "<group>"; };
-		6DAC35C62488389E00DFE894 /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
+		6DAC35C62488389E00DFE894 /* RepoPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoPrompt.swift; sourceTree = "<group>"; };
 		6DAC35C824883DF500DFE894 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		E91EE951247F672100CA07EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E91EE953247F730600CA07EF /* TweakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakView.swift; sourceTree = "<group>"; };
-		E91EE9552481CE1E00CA07EF /* RepoPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoPrompt.swift; sourceTree = "<group>"; };
+		E91EE9552481CE1E00CA07EF /* TweakPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweakPrompt.swift; sourceTree = "<group>"; };
 		E91EE95824823BAD00CA07EF /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		E91EE95A24823BDE00CA07EF /* BannerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCard.swift; sourceTree = "<group>"; };
 		E925A4F5247C8DD000AFDFB9 /* PostBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,14 +142,14 @@
 				E925A50D247C8E1900AFDFB9 /* StoryView.swift */,
 				E925A528247E0CA600AFDFB9 /* Tweaks.swift */,
 				6D8326FF2486F9FC00DA5825 /* Repos.swift */,
-				6DAC35C62488389E00DFE894 /* RepoView.swift */,
+				6DAC35C62488389E00DFE894 /* RepoPrompt.swift */,
 				E925A50F247C9E3100AFDFB9 /* AccountView.swift */,
 				E925A518247CBBFA00AFDFB9 /* StoryBlock.swift */,
 				E9A69B072487144D00ADAF17 /* SearchView.swift */,
 				E925A51D247CC54B00AFDFB9 /* Home.swift */,
 				E925A52A247E180D00AFDFB9 /* CardList.swift */,
 				E91EE953247F730600CA07EF /* TweakView.swift */,
-				E91EE9552481CE1E00CA07EF /* RepoPrompt.swift */,
+				E91EE9552481CE1E00CA07EF /* TweakPrompt.swift */,
 				E963E586248445D9009FD1F7 /* FullTweakLists.swift */,
 			);
 			path = Views;
@@ -259,7 +259,7 @@
 				E9A69B0F2487818B00ADAF17 /* Tweak.swift in Sources */,
 				E925A4F9247C8DD000AFDFB9 /* AppDelegate.swift in Sources */,
 				E91EE952247F672100CA07EF /* Constants.swift in Sources */,
-				E91EE9562481CE1E00CA07EF /* RepoPrompt.swift in Sources */,
+				E91EE9562481CE1E00CA07EF /* TweakPrompt.swift in Sources */,
 				E925A50E247C8E1900AFDFB9 /* StoryView.swift in Sources */,
 				E9A69B0D2487816000ADAF17 /* User.swift in Sources */,
 				E925A4FB247C8DD000AFDFB9 /* SceneDelegate.swift in Sources */,
@@ -274,7 +274,7 @@
 				E925A51E247CC54B00AFDFB9 /* Home.swift in Sources */,
 				E925A510247C9E3100AFDFB9 /* AccountView.swift in Sources */,
 				E9A69B11248785DF00ADAF17 /* Story.swift in Sources */,
-				6DAC35C72488389E00DFE894 /* RepoView.swift in Sources */,
+				6DAC35C72488389E00DFE894 /* RepoPrompt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

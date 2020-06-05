@@ -101,27 +101,25 @@ struct Tweaks: View {
                     }
                     
                     ForEach(Constants.tweakLists.free) { tweak in
-                        VStack {
+                        HStack {
+                            NavigationLink(destination: TweakView(tweak: tweak)) {
+                                tweak.getIcon(size: 60)
+                            }.buttonStyle(NoReactionButtonStyle())
                             HStack {
                                 NavigationLink(destination: TweakView(tweak: tweak)) {
-                                    tweak.getIcon(size: 60)
+                                    VStack(alignment: .leading, spacing: 3) {
+                                        Text(tweak.name)
+                                            .font(.body)
+                                        Text(tweak.shortDesc)
+                                            .font(.footnote)
+                                            .foregroundColor(.secondary)
+                                            .lineLimit(1)
+                                    }
                                 }.buttonStyle(NoReactionButtonStyle())
-                                HStack {
-                                    NavigationLink(destination: TweakView(tweak: tweak)) {
-                                        VStack(alignment: .leading, spacing: 3) {
-                                            Text(tweak.name)
-                                                .font(.body)
-                                            Text(tweak.shortDesc)
-                                                .font(.footnote)
-                                                .foregroundColor(Color.gray)
-                                                .lineLimit(1)
-                                        }
-                                    }.buttonStyle(NoReactionButtonStyle())
-                                    Spacer()
-                                    ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak).environmentObject(self.user)}) {
-                                        SmallButton(tweak.getPrice())
-                                    }.buttonStyle(InstallButtonStyle())
-                                }
+                                Spacer()
+                                ModalLink(destination: {TweakPrompt(dismiss: $0, tweak: tweak).environmentObject(self.user)}) {
+                                    SmallButton(tweak.getPrice())
+                                }.buttonStyle(InstallButtonStyle())
                             }
                         }
                     }

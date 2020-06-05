@@ -40,7 +40,7 @@ struct TweakView: View {
                     // ICON | Title | Subheading | Button | Share
                     HStack (spacing: 20){
                         tweak.getIcon(size: 120)
-                        VStack (alignment: .leading, spacing: 10) {
+                        VStack (alignment: .leading) {
                             Group {
                                 Text(self.tweak.name) // Title
                                     .font(.title)
@@ -50,9 +50,9 @@ struct TweakView: View {
                                     .foregroundColor(.lightgray)
                             }
                                 .lineLimit(3)
-                                Spacer()
+                            Spacer()
                             HStack {
-                                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweak).environmentObject(self.user)}) {
+                                ModalLink(destination: {TweakPrompt(dismiss: $0, tweak: self.tweak).environmentObject(self.user)}) {
                                     SmallButton(self.tweak.getPrice())
                                 }.buttonStyle(InstallButtonStyle())
                                 Spacer()
@@ -120,7 +120,7 @@ struct TweakView: View {
                             .font(.largeTitle)
                             .fontWeight(.semibold)
                         HStack {
-                            ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweak).environmentObject(self.user)}) {
+                            ModalLink(destination: {TweakPrompt(dismiss: $0, tweak: self.tweak).environmentObject(self.user)}) {
                                 SmallButton(self.tweak.getPrice())
                             }.buttonStyle(InstallButtonStyle())
                             Button(action: {
@@ -173,7 +173,7 @@ struct TweakView_Previews: PreviewProvider {
                 TweakView(tweak:
 
                 Tweak(
-                    name: "Jellyfish",
+                    name: "Snowboard",
                       dev: "Dynastic",
                       repo: "https://repo.dynastic.co",
                       shortDesc: "Modernize your lockscreen.",

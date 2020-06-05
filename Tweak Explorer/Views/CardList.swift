@@ -14,9 +14,11 @@ struct CardList: View {
     public var subhead: String
     public var title: String
     public var tweaks: [Tweak]
+    public var tweaksShort: [Tweak]
     
     init(_ tweaks: [Tweak], subhead: String? = nil, title: String? = nil) {
         self.tweaks = tweaks
+        self.tweaksShort = Array(tweaks.prefix(4))
         self.subhead = subhead ?? "Jailbreak tweaks"
         self.title = title ?? "Essesential Must\nInstall Tweaks"
     }
@@ -25,72 +27,64 @@ struct CardList: View {
         Button(action: {}) {
             ZStack {
                 // Background Tap
-                NavigationLink(destination: FullScreenList(Constants.tweakLists.long, subhead: self.subhead)) {
-                    Color(UIColor.secondarySystemGroupedBackground)
+                NavigationLink(destination: FullScreenList(self.tweaks, subhead: self.subhead)) {
+                    Color(UIColor.secondarySystemBackground)
                 }.buttonStyle(NoReactionButtonStyle())
+                
                 // Text Tap
-                NavigationLink(destination: FullScreenList(Constants.tweakLists.long, subhead: self.subhead)) {
+                NavigationLink(destination: FullScreenList(self.tweaks, subhead: self.subhead)) {
                     VStack (alignment: .leading) {
-                            Text(self.subhead.uppercased())
-                                .font(.headline)
-                                .fontWeight(.medium)
-                                .foregroundColor(.gray)
-                                .padding(.bottom, 10)
-                            HStack {
-                                Text(self.title)
-                                    .font(.title)
-                                    .fontWeight(.semibold)
-                                    .lineLimit(2)
-                                Spacer()
+                        Text(self.subhead.uppercased())
+                            .font(.headline)
+                            .fontWeight(.medium)
+                            .foregroundColor(.gray)
+                            .padding(.bottom, 10)
+                        HStack {
+                            Text(self.title)
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .lineLimit(2)
+                            Spacer()
                         }
                         Spacer()
                     }.padding(20)
                 }.buttonStyle(NoReactionButtonStyle())
                 // Section Tap
+                
                 VStack {
                     Spacer()
                     VStack(alignment: .leading, spacing: 20) {
-                        ForEach(0..<4) { i in
+                        ForEach(self.tweaksShort) { tweak in
                             HStack {
-                                NavigationLink(destination: FullScreenList(Constants.tweakLists.long, subhead: self.subhead)) {
-                                    CardViewInnerSection(tweak: self.tweaks[i])
+                                NavigationLink(destination: FullScreenList(self.tweaks, subhead: self.subhead)) {
+                                    HStack {
+                                        tweak.getIcon(size: 45)
+                                        VStack(alignment: .leading, spacing: 3) {
+                                            Text(tweak.name)
+                                                .font(.body)
+                                            Text(tweak.shortDesc)
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                                .lineLimit(1)
+                                        }
+                                        Spacer()
+                                    }
                                 }.buttonStyle(NoReactionButtonStyle())
-                                ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: self.tweaks[i]).environmentObject(self.user)}) {
-                                    SmallButton(self.tweaks[i].getPrice())
+                                ModalLink(destination: {TweakPrompt(dismiss: $0, tweak: tweak).environmentObject(self.user)}) {
+                                    SmallButton(tweak.getPrice())
                                 }.buttonStyle(InstallButtonStyle())
                             }
                         }
                     }
                 }
                 .padding(20)
+                
             }
-            .frame(height: 395)
-            .cornerRadius(15)
-            .padding(.horizontal, 20)
-            .shadow(color: Color.black.opacity(0.15), radius: 50, y: 30)
-        }
-        .buttonStyle(CardButtonStyle())
-    }
-}
-
-struct CardViewInnerSection: View {
-    public var tweak: Tweak
-    
-    var body: some View {
-        VStack {
-            HStack {
-                self.tweak.getIcon(size: 45)
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(self.tweak.name)
-                        .font(.body)
-                    Text(self.tweak.shortDesc)
-                        .font(.caption)
-                        .foregroundColor(Color.gray)
-                        .lineLimit(1)
-                }
-                Spacer()
-            }
-        }
+                .frame(height: 395)
+                .cornerRadius(15, antialiased: false)
+                .padding(.horizontal, 20)
+                .shadow(color: Color.black.opacity(0.15), radius: 50, y: 30)
+        }.buttonStyle(CardButtonStyle())
     }
 }
 
@@ -102,13 +96,16 @@ struct SmallButton: View {
     }
     
     var body: some View {
-        Text(text)
-            .font(.footnote)
-            .foregroundColor(.white)
-            .fontWeight(.semibold)
-            .zIndex(1)
+        ZStack {
+            RoundedRectangle(cornerRadius: 13)
+                .foregroundColor(.teal)
+            Text(text)
+                .font(.footnote)
+                .foregroundColor(.white)
+                .fontWeight(.semibold)
+        }
             .frame(width: 65, height: 26)
-            .background(Color.teal.cornerRadius(13))
+            
     }
 }
 

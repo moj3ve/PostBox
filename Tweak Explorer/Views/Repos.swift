@@ -14,7 +14,7 @@ struct Repos: View {
     
     /// Updates `showtop` when scrolling
     private func updateTop(_ g: GeometryProxy) -> some View {
-        self.showTop = g.frame(in: .global).minY <= 30
+        self.showTop = g.frame(in: .global).minY <= 15
         return Rectangle().frame(width: 0, height: 0)
     }
     
@@ -56,7 +56,7 @@ struct Repos: View {
                     ScrollView (.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
                             ForEach(Constants.repoLists.editorsPicks) { repo in
-                                ModalLink(destination: {RepoView(dismiss: $0, repo: repo)}) {
+                                ModalLink(destination: {RepoPrompt(dismiss: $0, repo: repo)}) {
                                     RepoCard(repo)
                                 }.buttonStyle(CardButtonStyle())
                             }
@@ -114,7 +114,7 @@ struct RepoCard: View {
                         Text(repo.name)
                             .font(.largeTitle)
                             .fontWeight(.semibold)
-                        Text(repo.url)
+                        Text(repo.urlNoProtocol)
                             .font(.caption)
                             .fontWeight(.regular)
                             .padding(.top, 3)

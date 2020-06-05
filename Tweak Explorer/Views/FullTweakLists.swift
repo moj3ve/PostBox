@@ -42,7 +42,7 @@ struct FullScreenListOnly: View {
                             
                             Spacer()
                             
-                            ModalLink(destination: {RepoPrompt(dismiss: $0, tweak: tweak).environmentObject(self.user)}) {
+                            ModalLink(destination: {TweakPrompt(dismiss: $0, tweak: tweak).environmentObject(self.user)}) {
                                 SmallButton(tweak.getPrice())
                             }.buttonStyle(InstallButtonStyle())
                         }
