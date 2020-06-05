@@ -34,11 +34,11 @@ struct Home: View {
                     VStack(alignment: .center, spacing: 30) {
                         HomeNavBar().zIndex(1)
                         
-//                        NavigationLink(destination:
-//                            StoryView(Database.stories["app_theming"]!)
-//                        ) {
-//                            BannerCard(Database.stories["app_theming"]!)
-//                        }.buttonStyle(CardButtonStyle())
+                        NavigationLink(destination:
+                            StoryView(Database.stories["app_theming"]!)
+                        ) {
+                            BannerCard(Database.stories["app_theming"]!)
+                        }.buttonStyle(CardButtonStyle())
                         
                         
                         CardList(Constants.tweakLists.long, subhead: "Jailbreak Tweaks", title: "Tweaks you can't\nsee, but can feel").buttonStyle(CardButtonStyle())

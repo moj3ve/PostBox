@@ -28,7 +28,7 @@ struct CardList: View {
             ZStack {
                 // Background Tap
                 NavigationLink(destination: FullScreenList(self.tweaks, subhead: self.subhead)) {
-                    Color(UIColor.secondarySystemBackground)
+                    Color(UIColor.secondarySystemGroupedBackground)
                 }.buttonStyle(NoReactionButtonStyle())
                 
                 // Text Tap
