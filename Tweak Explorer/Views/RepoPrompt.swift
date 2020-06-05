@@ -91,7 +91,7 @@ struct RepoPrompt: View {
                 }
                     .frame(height: 50)
                     .background(Blur(.systemThinMaterial))
-                    .cornerRadius(9)
+                    .cornerRadius(13)
                     .offset(y: self.popup ? 0 : 200)
                     .onAppear(perform: {self.popup.toggle()})
                     .animation(.spring(response: 1), value: self.popup)
