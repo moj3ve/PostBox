@@ -43,7 +43,7 @@ struct Settings: View {
                 
                 Section {
                     Toggle(isOn: $replay) {
-                        Text("Replay Welcome Screen").padding(.leading, 5)
+                        Text("Play Splash Screen on launch").padding(.leading, 5)
                     }
                     NavigationLink(destination: ChangelogView(dismiss: self.dismiss)) {
                         Text("Changelog")

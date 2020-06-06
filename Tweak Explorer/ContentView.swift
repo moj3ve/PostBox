@@ -60,7 +60,7 @@ struct WelcomePage: View {
                     Image("mailbox").resizable()
                         .scaledToFit()
                         .scaleEffect(0.6)
-                        .offset(y: animate ? -20 : 150)
+                        .offset(y: animate ? 0 : 180)
                     VStack {
                         Text("PostBox")
                             .font(.system(size: 55))

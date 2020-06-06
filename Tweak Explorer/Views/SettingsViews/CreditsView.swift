@@ -20,9 +20,9 @@ struct CreditsView: View {
             
             VStack {
                 Group {
-                    Text(offset == CGSize.zero ? "@b0kch01" : "Dev").fontWeight(.semibold).font(.title)
-                    Text("x").fontWeight(.bold)
-                    Text(offset == CGSize.zero ? "@polarizz" : "Des").fontWeight(.semibold).font(.title)
+                    Text(offset == CGSize.zero ? "@b0kch01" : "Developer").fontWeight(.semibold).font(.title)
+                    Text("&").fontWeight(.bold)
+                    Text(offset == CGSize.zero ? "@polarizz" : "Designer").fontWeight(.semibold).font(.title)
                 }
                     .foregroundColor(.white)
                     .shadow(color: .white, radius: offset == CGSize.zero ? 0 : 4)

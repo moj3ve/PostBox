@@ -10,23 +10,29 @@
 var changelog =
     
 """
-# Version 1.2
+# Version B.1.3
+## Changes
+    * ⌨️ Failed to revive developer
+    * 🐛 REEEEE
+    * 🔧 Successfully revived designer
+---
+# Version B.1.2
 ## Changes
     * ⌨️ Killed the people
     * 🐛 Destroyed people
     * 🔧 Fixed some people
 
-Hello world@@Today is the day
+Hello world@@@Today is the day
 ---
-# Version 1.1
+# Version B.1.1
 ## Changes
     * ⌨️ Killed the developer
     * 🐛 Destroyed people
     * 🔧 Fixed some bugs
 ---
-# Version 1.0
+# Version B.1.0
 ## Changes
-    * ⭐️ Initial Release
+    * ⭐️ Begin Killing Scheme
     * 🙋‍♂️ Destroyed people
     * 🔫 Killed the designer
 """

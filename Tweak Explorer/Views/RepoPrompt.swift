@@ -94,7 +94,7 @@ struct RepoPrompt: View {
                     .cornerRadius(13)
                     .offset(y: self.popup ? 0 : 200)
                     .onAppear(perform: {self.popup.toggle()})
-                    .animation(.spring(response: 1), value: self.popup)
+                    .animation(.spring(response: 0.8), value: self.popup)
             }.padding(20)
         }
             .actionSheet(isPresented: self.$showActionMenu) {
