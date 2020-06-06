@@ -8,7 +8,6 @@
 
 import SwiftUI
 import ModalView
-import MDText
 
 struct ChangelogView: View {
     var dismiss: () -> ()
@@ -16,16 +15,8 @@ struct ChangelogView: View {
     var body: some View {
         ScrollView {
             VStack {
-                ForEach(changelog.components(separatedBy: "\n\n---\n\n"), id: \.self) { version in
-                    VStack {
-                        MDText(markdown: version)
-                            .lineSpacing(10)
-                            .padding(20)
-                        Divider()
-                    }
-                }
-                    
-                Spacer()
+                Banner(["ABOUT THE APP", "Changelog", "Latest changes, known issues, and more."], image: "banner4", inModal: true)
+                MarkdownParser(string: changelog).getView().padding(20)
             }
         }
             .frame(width: UIScreen.main.bounds.maxX)

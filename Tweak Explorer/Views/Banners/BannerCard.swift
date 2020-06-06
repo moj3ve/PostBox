@@ -15,14 +15,12 @@ struct BannerCard: View {
     public var isBlurred: Bool
     private var hideText: Bool
     
-    init (_ story: [[String]], bannerHeight: CGFloat? = nil) {
-        let bannerInfo = story[0]
-        
-        self.texts = bannerInfo
-        self.img = bannerInfo[3]
-        self.isBlurred = bannerInfo[4] == "true"
+    init (_ story: Story, bannerHeight: CGFloat? = nil) {
+        self.texts = story.header
+        self.img = story.img
+        self.isBlurred = story.blurred
         self.bannerHeight = bannerHeight ?? 410
-        self.hideText = bannerInfo.count == 0
+        self.hideText = story.header.count == 0
     }
     
     var body: some View {

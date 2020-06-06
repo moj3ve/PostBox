@@ -11,6 +11,8 @@ import ModalView
 
 struct Settings: View {
     @EnvironmentObject var user: User
+    @State var replay: Bool = !UserDefaults.standard.bool(forKey: "welcomed")
+    
     var dismiss: () -> ()
 
     var body: some View {
@@ -40,16 +42,22 @@ struct Settings: View {
                 }
                 
                 Section {
+                    Toggle(isOn: $replay) {
+                        Text("Replay Welcome Screen").padding(.leading, 5)
+                    }
                     NavigationLink(destination: ChangelogView(dismiss: self.dismiss)) {
                         Text("Changelog")
                     }.padding(.leading, 5)
-                    NavigationLink(destination: WishlistView(dismiss: self.dismiss)) {
+                    NavigationLink(destination: CreditsView(dismiss: self.dismiss)) {
                         Text("Credits")
                     }.padding(.leading, 5)
                 }
             }
             .navigationBarTitle("Account", displayMode: .inline)
-            .navigationBarItems(trailing: Button (action: self.dismiss) {
+            .navigationBarItems(trailing: Button (action: {
+                UserDefaults.standard.set(!self.replay, forKey: "welcomed")
+                self.dismiss()
+            }) {
                 Text("Done").fontWeight(.medium)
             })
         }

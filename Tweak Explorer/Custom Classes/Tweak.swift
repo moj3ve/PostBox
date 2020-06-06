@@ -121,15 +121,8 @@ class Tweak: Identifiable, Comparable {
     }
     
     public func getLongDesc() -> some View {
-        var blocks = Database.descs[self.getTweakID()]!.components(separatedBy: "\n\n")
-        let first = StoryBlock(first: self.shortDesc, blocks[0])
-        blocks.removeFirst()
+        let desc = Database.descs[self.getTweakID()]!
         
-        return VStack(spacing: 40) {
-            first
-            ForEach(blocks, id: \.self) { text in
-                StoryBlock(text)
-            }
-        }
+        return MarkdownParser(string: "\(self.shortDesc)@@ " + desc).getView()
     }
 }

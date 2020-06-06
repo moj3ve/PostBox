@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "MDText",
-        "repositoryURL": "https://github.com/B0kCh01/MDText.git",
-        "state": {
-          "branch": "master",
-          "revision": "2d378f544028fcb68a42367aa19175285acc98f4",
-          "version": null
-        }
-      },
-      {
         "package": "ModalView",
         "repositoryURL": "https://github.com/diniska/modal-view.git",
         "state": {

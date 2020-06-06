@@ -14,39 +14,30 @@ class Story: Identifiable {
     public var header: [String]
     public var img: String
     public var blurred: Bool
-    public var content = [StoryElement]()
+    public var input: String
     
-    init(_ header: [String], img: String? = nil, blurred: Bool = true, input: [[String]]) {
+    init(_ header: [String], img: String? = nil, blurred: Bool = true, input: String) {
         self.header = header
-        self.id = header[1].lowercased().replacingOccurrences(of: " ", with: "_")
+        self.id = header[1]
+            .lowercased()
+            .replacingOccurrences(of: " ", with: "_")
+        
         self.img = img ?? "banner1.1"
         self.blurred = blurred
-        
-        for str in input {
-            self.content.append(StoryElement(str))
+        self.input = input
+    }
+    
+    func getBanner() -> some View {
+        return Group {
+            if blurred {
+                Banner(header, image: img)
+            } else {
+                BannerFull(header, image: img)
+            }
         }
     }
-}
-
-class StoryElement {
-    public var type = "unknown"
-    public var content: [String]
     
-    init(_ info: [String]) {
-        if info[0] == "p" {
-            self.type = "text"
-        } else if info[0] == "i" {
-            self.type = "image"
-        }
-        
-        self.content = info
-     }
-    
-    func getElement() -> some View {
-        if self.type == "p" {
-            return StoryBlock(first: content[1], content[2], image: false)
-        } else {
-            return StoryBlock(first: content[1], content[2], image: true)
-        }
+    func getContent() -> some View {
+        return MarkdownParser(string: input).getView()
     }
 }

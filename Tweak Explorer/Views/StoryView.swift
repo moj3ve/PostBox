@@ -10,27 +10,16 @@ struct StoryView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var openShareSheet = false
     
-    public var headingText: [String]
-    public var image: String
-    public var isBlurred: Bool
-    public var flow: [[String]]
-    public var shareTitle: [String]
+    var story: Story
 
-    init(_ story: [[String]]) {
-        self.image = story[0][3]
-        self.headingText = story[0]
-        self.isBlurred = story[0][4] == "true"
-        self.shareTitle = story[0]
-        
-        var story2 = story
-        story2.removeFirst(1)
-        self.flow = story2
+    init(_ story: Story) {
+        self.story = story
     }
     
     func shareURL() {
         openShareSheet.toggle()
         
-        let string = shareTitle[1]
+        let string = story.header[0]
         let activityView = UIActivityViewController(activityItems: [string], applicationActivities: nil)
         
         UIApplication.shared.windows.first?.rootViewController?.present(activityView, animated: true, completion: nil)
@@ -41,14 +30,11 @@ struct StoryView: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     // Image | Title
-                    Banner(self.headingText, image: self.image)
+                    self.story.getBanner()
                     
                     // Content
                     VStack(alignment: .center, spacing: 30) {
-                        ForEach(flow, id: \.self) { block in
-                            // Paragraph Blocks
-                            StoryBlock(first: block[1], block[2], image: block[0] == "i")
-                        }
+                        self.story.getContent()
                         Divider()
                         Button(action: shareURL) {
                             LongShareButton("Share Story")

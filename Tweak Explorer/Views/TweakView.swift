@@ -172,14 +172,15 @@ struct TweakView_Previews: PreviewProvider {
             NavigationView {
                 TweakView(tweak:
 
-                Tweak(
-                    name: "Snowboard",
-                      dev: "Dynastic",
-                      repo: "https://repo.dynastic.co",
-                      shortDesc: "Modernize your lockscreen.",
-                      type: "tweak",
-                      price: 0.99))
-                
+//                Tweak(
+//                    name: "Snowboard",
+//                      dev: "Dynastic",
+//                      repo: "https://repo.dynastic.co",
+//                      shortDesc: "Modernize your lockscreen.",
+//                      type: "tweak",
+//                      price: 0.99)
+                    Database.packages["lockplus_pro"]!
+                )
                 
             }.environmentObject(User())
         }

@@ -10,22 +10,22 @@ var changelog =
     
 """
 # Version 1.2
-    - ⌨️ Killed the people
-    - 🐛 Destroyed people
-    - 🔧 Fixed some people
+## Changes
+    * ⌨️ Killed the people
+    * 🐛 Destroyed people
+    * 🔧 Fixed some people
 
+Hello world@@Today is the day
 ---
-
 # Version 1.1
-    - ⌨️ Killed the developer
-    - 🐛 Destroyed people
-    - 🔧 Fixed some bugs
-
+## Changes
+    * ⌨️ Killed the developer
+    * 🐛 Destroyed people
+    * 🔧 Fixed some bugs
 ---
-
 # Version 1.0
-    - ⭐️ Initial Release
-    - 🙋‍♂️ Destroyed people
-    - 🔫 Killed the designer
-
+## Changes
+    * ⭐️ Initial Release
+    * 🙋‍♂️ Destroyed people
+    * 🔫 Killed the designer
 """

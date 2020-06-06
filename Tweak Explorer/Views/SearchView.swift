@@ -11,7 +11,7 @@ import ModalView
 struct SearchView: View {
     @State var searchTerm = ""
     var pkgs: [Tweak]
-    var stories: [[[String]]]
+    var stories: [Story]
     var repos: [Repo]
     
     init() {
@@ -49,10 +49,10 @@ struct SearchView: View {
                             }
                         }
                         ForEach(stories.filter({
-                            $0[0][1].lowercased().hasPrefix(searchTerm.lowercased()) ||
-                            $0[0][2].lowercased().hasPrefix(searchTerm.lowercased()) ||
+                            $0.header[1].lowercased().hasPrefix(searchTerm.lowercased()) ||
+                                $0.header[2].lowercased().hasPrefix(searchTerm.lowercased()) ||
                             searchTerm == ""
-                        }), id: \.self) { story in
+                        })) { story in
                             NavigationLink(destination: StoryView(story)) {
                                 HStack {
                                     Image("story_icon").resizable()
@@ -61,9 +61,9 @@ struct SearchView: View {
                                         .cornerRadius(CGFloat((13.0/57.0) * Double(40)))
                                     
                                     VStack (alignment: .leading){
-                                        Text(story[0][1])
+                                        Text(story.header[1])
                                             .font(.callout)
-                                        Text(story[0][2])
+                                        Text(story.header[2])
                                             .font(.caption)
                                             .foregroundColor(.secondary)
                                             .lineLimit(1)
