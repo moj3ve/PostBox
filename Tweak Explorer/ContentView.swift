@@ -60,20 +60,18 @@ struct WelcomePage: View {
                     Image("mailbox").resizable()
                         .scaledToFit()
                         .scaleEffect(0.6)
-                        .offset(y: animate ? -50 : 150)
+                        .offset(y: animate ? -20 : 150)
                     VStack {
                         Text("PostBox")
-                            .font(.system(size: 60))
-                            .fontWeight(.bold)
-                            .padding(.top, 130)
+                            .font(.system(size: 55))
+                            .fontWeight(.semibold)
+                            .padding(.top, 100)
                         Spacer()
-                        Text("Paul chill its still beta")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
                         Button(action: {
                             self.page += 1
                         }) {
                             LongButton("Continue")
+                                .padding(.bottom, 25)
                         }.buttonStyle(InstallButtonStyle())
                     }.opacity(animate ? 1 : -10)
                 }
@@ -117,6 +115,7 @@ struct WelcomePage: View {
                             UserDefaults.standard.set(true, forKey: "welcomed")
                         }) {
                             LongButton("Continue")
+                                .padding(.bottom, 25)
                         }.buttonStyle(InstallButtonStyle())
                         
                     }

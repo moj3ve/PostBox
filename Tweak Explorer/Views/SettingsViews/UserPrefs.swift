@@ -18,7 +18,7 @@ struct UserPrefs: View {
     var dismiss: () -> ()
     
     var genderPics = ["generic", "generic_f"]
-    var genderOps = ["Picture #1", "Picture #2"]
+    var genderOps = ["Image 1", "Image2"]
     
     var body: some View {
         ScrollView {
