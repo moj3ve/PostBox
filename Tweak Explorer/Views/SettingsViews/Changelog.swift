@@ -22,7 +22,7 @@ var changelog =
     * 🐛 Destroyed people
     * 🔧 Fixed some people
 
-Hello world@@@Today is the day
+Hello world@@Today is the day
 ---
 # Version B.1.1
 ## Changes
