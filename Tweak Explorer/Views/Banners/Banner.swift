@@ -15,13 +15,15 @@ struct BannerFull: View {
     public var bannerHeight: CGFloat
     private var hideText: Bool
     private var inModal: Bool
+    private var repo: Bool
     
-    init (_ texts: [String], image: String? = nil, bannerHeight: CGFloat? = nil, inModal: Bool? = nil) {
+    init (_ texts: [String], image: String? = nil, bannerHeight: CGFloat? = nil, inModal: Bool = false, repo: Bool = false) {
         self.texts = texts
         self.img = image ?? "banner1.1"
         self.bannerHeight = bannerHeight ?? 410
         self.hideText = texts.count == 0
-        self.inModal = inModal ?? false
+        self.inModal = inModal
+        self.repo = repo
     }
     
     var body: some View {
@@ -50,12 +52,18 @@ struct BannerFull: View {
                         Image(self.img).resizable()
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fill)
+                            .scaleEffect(self.repo ? 1.1 : 1)
+                            .brightness(self.repo ? -0.15 : 0)
+                            .blur(radius: self.repo ? 20 : 0)
                             .frame(width: g.size.width, height: g.size.height)
                             .clipped()
                     } else {
                         Image(self.img).resizable()
                             .renderingMode(.original)
                             .aspectRatio(contentMode: .fill)
+                            .scaleEffect(self.repo ? 1.1 : 1)
+                            .brightness(self.repo ? -0.15 : 0)
+                            .blur(radius: self.repo ? 20 : 0)
                             .frame(width: g.size.width, height: g.size.height + g.frame(in: .global).minY)
                             .clipped()
                             .offset(y: -g.frame(in: .global).minY)

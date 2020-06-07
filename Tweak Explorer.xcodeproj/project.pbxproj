@@ -29,6 +29,7 @@
 		E925A529247E0CA600AFDFB9 /* Tweaks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A528247E0CA600AFDFB9 /* Tweaks.swift */; };
 		E925A52B247E180D00AFDFB9 /* CardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925A52A247E180D00AFDFB9 /* CardList.swift */; };
 		E93AB3F9248B6E1500D32543 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AB3F8248B6E1500D32543 /* CreditsView.swift */; };
+		E93AB3FC248C475700D32543 /* TweaksInRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93AB3FB248C475700D32543 /* TweaksInRepo.swift */; };
 		E95015E62483484800BD617F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95015E52483484800BD617F /* Database.swift */; };
 		E963E587248445D9009FD1F7 /* FullTweakLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E963E586248445D9009FD1F7 /* FullTweakLists.swift */; };
 		E987F75A248AF2BD000925EC /* UserPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E987F759248AF2BD000925EC /* UserPrefs.swift */; };
@@ -66,6 +67,7 @@
 		E925A528247E0CA600AFDFB9 /* Tweaks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweaks.swift; sourceTree = "<group>"; };
 		E925A52A247E180D00AFDFB9 /* CardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardList.swift; sourceTree = "<group>"; };
 		E93AB3F8248B6E1500D32543 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
+		E93AB3FB248C475700D32543 /* TweaksInRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweaksInRepo.swift; sourceTree = "<group>"; };
 		E95015E52483484800BD617F /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		E963E586248445D9009FD1F7 /* FullTweakLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullTweakLists.swift; sourceTree = "<group>"; };
 		E987F759248AF2BD000925EC /* UserPrefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefs.swift; sourceTree = "<group>"; };
@@ -148,12 +150,11 @@
 		E925A50C247C8DF800AFDFB9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E93AB3FA248C472300D32543 /* RepoList */,
 				E987F758248AF2A0000925EC /* SettingsViews */,
 				E91EE95724823BA300CA07EF /* Banners */,
 				E925A50D247C8E1900AFDFB9 /* StoryView.swift */,
 				E925A528247E0CA600AFDFB9 /* Tweaks.swift */,
-				6D8326FF2486F9FC00DA5825 /* Repos.swift */,
-				6DAC35C62488389E00DFE894 /* RepoPrompt.swift */,
 				E9A69B072487144D00ADAF17 /* SearchView.swift */,
 				E925A51D247CC54B00AFDFB9 /* Home.swift */,
 				E925A52A247E180D00AFDFB9 /* CardList.swift */,
@@ -162,6 +163,16 @@
 				E963E586248445D9009FD1F7 /* FullTweakLists.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E93AB3FA248C472300D32543 /* RepoList */ = {
+			isa = PBXGroup;
+			children = (
+				6D8326FF2486F9FC00DA5825 /* Repos.swift */,
+				6DAC35C62488389E00DFE894 /* RepoPrompt.swift */,
+				E93AB3FB248C475700D32543 /* TweaksInRepo.swift */,
+			);
+			path = RepoList;
 			sourceTree = "<group>";
 		};
 		E94C0BD124885A6300E4780D /* Recovered References */ = {
@@ -277,6 +288,7 @@
 				E925A529247E0CA600AFDFB9 /* Tweaks.swift in Sources */,
 				E9A69B082487144D00ADAF17 /* SearchView.swift in Sources */,
 				E95015E62483484800BD617F /* Database.swift in Sources */,
+				E93AB3FC248C475700D32543 /* TweaksInRepo.swift in Sources */,
 				6DAC35C924883DF500DFE894 /* Repo.swift in Sources */,
 				E93AB3F9248B6E1500D32543 /* CreditsView.swift in Sources */,
 				E91EE954247F730600CA07EF /* TweakView.swift in Sources */,

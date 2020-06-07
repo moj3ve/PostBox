@@ -29,7 +29,10 @@ struct Repos: View {
             
             ScrollView {
                 VStack {
+                    // Blur
                     GeometryReader { g_in in self.updateTop(g_in) }
+                    
+                    // Header
                     VStack {
                         HStack {
                             VStack(alignment: .leading) {
@@ -53,6 +56,7 @@ struct Repos: View {
                         .padding(.horizontal, 20)
                     }
                     
+                    // Horizontal Scroll View
                     ScrollView (.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
                             ForEach(Constants.repoLists.editorsPicks) { repo in
@@ -65,7 +69,9 @@ struct Repos: View {
                         .padding(.bottom, 20)
                     }
                     
+                    // Main List
                     VStack(alignment: .leading, spacing: 20) {
+                        // List title
                         HStack {
                             Text("Expand Your Tweak Library")
                                 .font(.headline)
@@ -73,6 +79,25 @@ struct Repos: View {
                             Spacer()
                             Text("See All")
                                 .foregroundColor(.teal)
+                        }
+                        
+                        ForEach(Array(Database.repos.values).prefix(8)) { repo in
+                            NavigationLink (destination: TweaksInRepo(repo)) {
+                                HStack (spacing: 20){
+                                    repo.getIcon(size: 50)
+                                    VStack(alignment: .leading) {
+                                        Text(repo.name).font(.headline)
+                                            .foregroundColor(.primary)
+                                        Text(repo.url).font(.subheadline)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 13, weight: .semibold))
+                                        .foregroundColor(.gray)
+                                        .opacity(0.5)
+                                }
+                            }.buttonStyle(DefaultButtonStyle())
                         }
                     }.padding(.horizontal, 20)
                     

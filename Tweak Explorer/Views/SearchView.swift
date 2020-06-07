@@ -15,9 +15,9 @@ struct SearchView: View {
     var repos: [Repo]
     
     init() {
-        let pkgs = Array(Database.packages.values)
+        let pkgs = Array(Database.packages.values).sorted()
         let stories = Array(Database.stories.values)
-        let repos = Array(Database.repos.values)
+        let repos = Array(Database.repos.values).sorted()
         
         self.pkgs = pkgs
         self.stories = stories

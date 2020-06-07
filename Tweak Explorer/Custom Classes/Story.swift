@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-class Story: Identifiable {
+class Story: Identifiable, Comparable {
     public var id: String
     public var header: [String]
     public var img: String
@@ -25,6 +25,18 @@ class Story: Identifiable {
         self.img = img ?? "banner1.1"
         self.blurred = blurred
         self.input = input
+    }
+    
+    static func == (lhs: Story, rhs: Story) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    static func < (lhs: Story, rhs: Story) -> Bool {
+        return lhs.id < rhs.id
+    }
+    
+    static func > (lhs: Story, rhs: Story) -> Bool {
+        return lhs.id > rhs.id
     }
     
     func getBanner() -> some View {

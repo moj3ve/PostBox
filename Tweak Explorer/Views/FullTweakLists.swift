@@ -66,8 +66,22 @@ struct FullScreenList: View {
     
     var body: some View {
         ScrollView {
-            FullScreenListOnly(self.tweaks, subhead: self.subhead)
-            .padding(20)
+            if (self.tweaks.count >= 1) {
+                FullScreenListOnly(self.tweaks, subhead: self.subhead)
+                    .padding(20)
+            } else {
+                VStack {
+                    Image("empty").resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaleEffect(0.8)
+                    Text("This section is empty!")
+                        .font(.body)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 40)
+                    Spacer()
+                }
+            }
         }
         .navigationBarTitle(Text(self.subhead), displayMode: .inline)
         .navigationBarBackButtonHidden(false)
