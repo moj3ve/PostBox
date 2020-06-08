@@ -59,7 +59,7 @@ struct Repos: View {
                     // Horizontal Scroll View
                     ScrollView (.horizontal, showsIndicators: false) {
                         HStack(spacing: 20) {
-                            ForEach(Constants.repoLists.editorsPicks) { repo in
+                            ForEach(Constants.repoLists.editorsPicks.sorted()) { repo in
                                 ModalLink(destination: {RepoPrompt(dismiss: $0, repo: repo)}) {
                                     RepoCard(repo)
                                 }.buttonStyle(CardButtonStyle())
@@ -81,7 +81,7 @@ struct Repos: View {
                                 .foregroundColor(.teal)
                         }
                         
-                        ForEach(Array(Database.repos.values).prefix(8)) { repo in
+                        ForEach(Array(Database.repos.values).sorted().prefix(8)) { repo in
                             NavigationLink (destination: TweaksInRepo(repo)) {
                                 HStack (spacing: 20){
                                     repo.getIcon(size: 50)
@@ -99,7 +99,8 @@ struct Repos: View {
                                 }
                             }.buttonStyle(DefaultButtonStyle())
                         }
-                    }.padding(.horizontal, 20)
+                    }
+                        .padding([.bottom, .horizontal], 20)
                     
                     Spacer()
                 }

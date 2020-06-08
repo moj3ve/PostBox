@@ -118,5 +118,6 @@ struct Database {
         "packix": Repo("Packix", url: "https://repo.packix.com"),
         "chariz": Repo("Chariz", url: "https://chariz.com"),
         "dynastic": Repo("Dynastic", url: "https://repo.dynastic.co"),
+        "sparkdev": Repo("Spark Dev", url: "https://sparkdev.me")
     ]
 }

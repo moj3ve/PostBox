@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import ModalView
 
 struct TweaksInRepo: View {
     var repo: Repo
@@ -28,14 +29,14 @@ struct TweaksInRepo: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 0) {
                 BannerFull(["REPOSITORY", self.repo.name, self.repo.urlNoProtocol], image: self.repo.getIconName(), bannerHeight: 300, repo: true)
                 ForEach(Array(sections.keys).sorted(), id: \.self) { sectionName in
                     NavigationLink(
                         destination: FullScreenList(self.sections[sectionName]!,
-                        subhead: self.repo.name)
+                                                    subhead: sectionName.firstUppercased + "s")
                     ) {
-                        VStack {
+                        VStack(spacing: 0) {
                             HStack {
                                 Text(sectionName.firstUppercased + "s")
                                     .foregroundColor(.primary)
@@ -48,9 +49,10 @@ struct TweaksInRepo: View {
                                     .foregroundColor(.gray)
                                     .opacity(0.5)
                             }
-                                .padding(.vertical, 10)
+                                .padding(.vertical, 20)
                                 .padding(.horizontal, 20)
-                            Divider()                                    .padding(.leading, 20)
+                            Divider()
+                                .padding(.leading, 20)
                         }
                     }
                 }
@@ -64,9 +66,11 @@ struct TweaksInRepo: View {
 
 struct TweaksInRepo_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            TweaksInRepo(Database.repos["packix"]!)
-                .environmentObject(User())
+        ModalPresenter {
+            NavigationView {
+                TweaksInRepo(Database.repos["packix"]!)
+                    .environmentObject(User())
+            }
         }
     }
 }
