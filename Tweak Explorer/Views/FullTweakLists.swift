@@ -21,6 +21,7 @@ struct FullScreenListOnly: View {
     
     var body: some View {
         VStack(spacing: 20) {
+            swipeBackGesture()
             ForEach(self.tweaks) { tweak in
                 HStack(alignment: .top) {
                     // Icon
@@ -87,6 +88,44 @@ struct FullScreenList: View {
         .navigationBarBackButtonHidden(false)
         .navigationBarHidden(false)
     }
+}
+
+struct swipeBackGesture : UIViewRepresentable {
+    
+    func makeCoordinator() ->swipeBackGesture.coordinator {
+        return swipeBackGesture.coordinator()
+    }
+    
+    func makeUIView(context: UIViewRepresentableContext<swipeBackGesture>) -> UIView {
+            
+        let view = UIView()
+        view.backgroundColor = .clear
+        let left = UISwipeGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.left))
+        left.direction = .left
+    
+        let right = UISwipeGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.right))
+        right.direction = .right
+    
+        view.addGestureRecognizer(left)
+        view.addGestureRecognizer(right)
+    
+        return view
+        
+    }
+    
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<swipeBackGesture>) {
+    }
+    
+    class coordinator : NSObject {
+        @objc func left(){
+            print("left")
+        }
+        @objc func right(){
+            print("right")
+        }
+        
+    }
+    
 }
 
 struct FullTweakList_Previews: PreviewProvider {
