@@ -70,7 +70,7 @@ struct Repos: View {
                     }
                     
                     // Main List
-                    VStack(alignment: .leading, spacing: 20) {
+                    VStack(alignment: .leading, spacing: 23) {
                         // List title
                         HStack {
                             Text("Expand Your Tweak Library")
@@ -79,6 +79,7 @@ struct Repos: View {
                             Spacer()
                             Text("See All")
                                 .foregroundColor(.teal)
+                                .font(.callout)
                         }
                         
                         ForEach(Array(Database.repos.values).sorted().prefix(8)) { repo in

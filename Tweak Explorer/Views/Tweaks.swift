@@ -44,18 +44,19 @@ struct Tweaks: View {
                                 HStack{
                                     Spacer()
                                     Text("paid tweaks".uppercased())
-                                        .font(.subheadline)
+                                        .font(.body)
                                         .fontWeight(.semibold)
                                     Spacer()
                                 }
                             )
                         Text("Don't Pirate Tweaks.\nSupport Developers.")
                             .foregroundColor(.white)
-                            .font(.title)
+                            .font(.largeTitle)
                             .fontWeight(.semibold)
+                            .padding(.top, 10)
                         ModalLink(destination: Text("Modal")) {
                             LongButton("Browse Paid Tweaks")
-                                .padding(.top, 15)
+                                .padding(.top, 20)
                         }
                         
                         Blur(.systemChromeMaterialLight)
@@ -64,12 +65,12 @@ struct Tweaks: View {
                                 HStack{
                                     Spacer()
                                     Text("No in-app purchases. Obviously.")
-                                        .font(.caption)
+                                        .font(.footnote)
                                         .fontWeight(.medium)
                                     Spacer()
                                 }
                             )
-                            .padding(.vertical, 15)
+                            .padding(.vertical, 17)
                     }
                     
                     // Profile Pic
@@ -88,7 +89,7 @@ struct Tweaks: View {
                 }.frame(height: 600)
                 
                 // Content
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 23) {
                     HStack {
                         Text("Popular Free Tweaks")
                             .font(.headline)
@@ -97,6 +98,7 @@ struct Tweaks: View {
                         NavigationLink(destination: FullScreenList(Constants.tweakLists.free)) {
                             Text("See All")
                                 .foregroundColor(.teal)
+                                .font(.callout)
                         }
                     }
                     
@@ -141,11 +143,11 @@ struct LongButton: View {
             Color.teal
             
             Text(self.text)
-                .font(.footnote)
+                .font(.subheadline)
                 .foregroundColor(.white)
                 .fontWeight(.semibold)
         }
-            .frame(width: 270, height: 45)
+            .frame(width: 310, height: 45)
             .cornerRadius(10)
     }
 }

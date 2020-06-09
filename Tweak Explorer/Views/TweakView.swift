@@ -143,7 +143,7 @@ struct TweakView: View {
             .navigationBarItems(leading:
                 Button(action: {self.mode.wrappedValue.dismiss()}){
                     Image(systemName: "chevron.left.circle.fill")
-                        .font(.system(size: 25))
+                        .font(.system(size: 30))
                         .foregroundColor(.teal)
             })
     }
